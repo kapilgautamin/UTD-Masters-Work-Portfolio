@@ -17,5 +17,5 @@ Fall 2020
 3. CS6364 - Artificial Intelligence
 
 Spring 2021
-1. CS6350 - Big Data Management and Analytics
-2. CS6322 - Information Retrieval
+1. CS6322 - Information Retrieval
+2. CS6350 - Big Data Management and Analytics
