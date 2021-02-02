@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Top-5 Baby Names</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		table{
+			border: 1px solid black;
+		}
+		th:nth-child(1),th:nth-child(6),td:nth-child(1),td:nth-child(6){
+			border-right:1px solid black;
+		}
+		td:nth-child(n){
+			background: #eedd82;
+		}
+		td:nth-child(2n){
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+<div class='mx-4 my-3'>
+		Year : 
+		<select name="year" id="year_dropdown">
+			<option value="All years">All years</option>
+			<option value="2005">2005</option>
+			<option value="2006">2006</option>
+			<option value="2007">2007</option>
+			<option value="2008">2008</option>
+			<option value="2009">2009</option>
+			<option value="2010">2010</option>
+			<option value="2011">2011</option>
+			<option value="2012">2012</option>
+			<option value="2013">2013</option>
+			<option value="2014">2014</option>
+			<option value="2015">2015</option>
+		</select>
+		Gender :
+		<select name="gender" id="gender_dropdown">
+			<option value="Both">Both</option>
+			<option value="m">Male</option>
+			<option value="f">Female</option>
+		</select>
+	
+	<button class='btn-primary mx-3' id="submit">Submit</button>
+</div>
+<div id="table"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="babynames.js"></script>
+</body>
+</html>
