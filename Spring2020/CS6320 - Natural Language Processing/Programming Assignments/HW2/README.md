@@ -5,6 +5,8 @@ with stop words and regularization parameters(where applicable).
 The output of the whole dataset is provided in 'output.txt'.
 The cumulation of the various results are helped by a helper file(batch_run.sh) to run all the possible combinations.
 
+(In order to run the program, first extract the train.zip and test.zip in the same directory as sentiment.py.)
+
 To run the program:
 python3 sentiment.py arg1 arg2 arg3 arg4 arg5 arg6
 
