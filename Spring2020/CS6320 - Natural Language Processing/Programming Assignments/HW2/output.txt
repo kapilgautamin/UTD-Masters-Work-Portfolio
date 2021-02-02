@@ -1,0 +1,272 @@
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'regression', '0', 'no']
+Parameters: Representation = bow, Classifier = regression, Stop word = 0, Regularization = no
+Accuracy:  0.86132
+              precision    recall  f1-score   support
+
+         neg       0.85      0.87      0.86     12500
+         pos       0.87      0.85      0.86     12500
+
+    accuracy                           0.86     25000
+   macro avg       0.86      0.86      0.86     25000
+weighted avg       0.86      0.86      0.86     25000
+
+Confusion Matrix:
+[[10889  1611]
+ [ 1856 10644]]
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'regression', '1', 'no']
+Parameters: Representation = bow, Classifier = regression, Stop word = 1, Regularization = no
+Accuracy:  0.83364
+              precision    recall  f1-score   support
+
+         neg       0.82      0.85      0.84     12500
+         pos       0.84      0.82      0.83     12500
+
+    accuracy                           0.83     25000
+   macro avg       0.83      0.83      0.83     25000
+weighted avg       0.83      0.83      0.83     25000
+
+Confusion Matrix:
+[[10606  1894]
+ [ 2265 10235]]
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'regression', '0', 'l1']
+Parameters: Representation = bow, Classifier = regression, Stop word = 0, Regularization = l1
+Accuracy:  0.86444
+              precision    recall  f1-score   support
+
+         neg       0.86      0.87      0.87     12500
+         pos       0.87      0.86      0.86     12500
+
+    accuracy                           0.86     25000
+   macro avg       0.86      0.86      0.86     25000
+weighted avg       0.86      0.86      0.86     25000
+
+Confusion Matrix:
+[[10871  1629]
+ [ 1760 10740]]
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'regression', '1', 'l1']
+Parameters: Representation = bow, Classifier = regression, Stop word = 1, Regularization = l1
+Accuracy:  0.85912
+              precision    recall  f1-score   support
+
+         neg       0.85      0.87      0.86     12500
+         pos       0.87      0.85      0.86     12500
+
+    accuracy                           0.86     25000
+   macro avg       0.86      0.86      0.86     25000
+weighted avg       0.86      0.86      0.86     25000
+
+Confusion Matrix:
+[[10847  1653]
+ [ 1869 10631]]
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'regression', '0', 'l2']
+Parameters: Representation = bow, Classifier = regression, Stop word = 0, Regularization = l2
+Accuracy:  0.86672
+              precision    recall  f1-score   support
+
+         neg       0.86      0.87      0.87     12500
+         pos       0.87      0.86      0.87     12500
+
+    accuracy                           0.87     25000
+   macro avg       0.87      0.87      0.87     25000
+weighted avg       0.87      0.87      0.87     25000
+
+Confusion Matrix:
+[[10933  1567]
+ [ 1765 10735]]
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'regression', '1', 'l2']
+Parameters: Representation = bow, Classifier = regression, Stop word = 1, Regularization = l2
+Accuracy:  0.85904
+              precision    recall  f1-score   support
+
+         neg       0.85      0.87      0.86     12500
+         pos       0.87      0.85      0.86     12500
+
+    accuracy                           0.86     25000
+   macro avg       0.86      0.86      0.86     25000
+weighted avg       0.86      0.86      0.86     25000
+
+Confusion Matrix:
+[[10849  1651]
+ [ 1873 10627]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'regression', '0', 'no']
+Parameters: Representation = tfidf, Classifier = regression, Stop word = 0, Regularization = no
+Accuracy:  0.85512
+              precision    recall  f1-score   support
+
+         neg       0.84      0.87      0.86     12500
+         pos       0.87      0.84      0.85     12500
+
+    accuracy                           0.86     25000
+   macro avg       0.86      0.86      0.86     25000
+weighted avg       0.86      0.86      0.86     25000
+
+Confusion Matrix:
+[[10874  1626]
+ [ 1996 10504]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'regression', '1', 'no']
+Parameters: Representation = tfidf, Classifier = regression, Stop word = 1, Regularization = no
+Accuracy:  0.84844
+              precision    recall  f1-score   support
+
+         neg       0.83      0.87      0.85     12500
+         pos       0.87      0.82      0.84     12500
+
+    accuracy                           0.85     25000
+   macro avg       0.85      0.85      0.85     25000
+weighted avg       0.85      0.85      0.85     25000
+
+Confusion Matrix:
+[[10907  1593]
+ [ 2196 10304]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'regression', '0', 'l1']
+Parameters: Representation = tfidf, Classifier = regression, Stop word = 0, Regularization = l1
+Accuracy:  0.8794
+              precision    recall  f1-score   support
+
+         neg       0.89      0.87      0.88     12500
+         pos       0.87      0.89      0.88     12500
+
+    accuracy                           0.88     25000
+   macro avg       0.88      0.88      0.88     25000
+weighted avg       0.88      0.88      0.88     25000
+
+Confusion Matrix:
+[[10826  1674]
+ [ 1341 11159]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'regression', '1', 'l1']
+Parameters: Representation = tfidf, Classifier = regression, Stop word = 1, Regularization = l1
+Accuracy:  0.87332
+              precision    recall  f1-score   support
+
+         neg       0.88      0.86      0.87     12500
+         pos       0.86      0.89      0.88     12500
+
+    accuracy                           0.87     25000
+   macro avg       0.87      0.87      0.87     25000
+weighted avg       0.87      0.87      0.87     25000
+
+Confusion Matrix:
+[[10746  1754]
+ [ 1413 11087]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'regression', '0', 'l2']
+Parameters: Representation = tfidf, Classifier = regression, Stop word = 0, Regularization = l2
+Accuracy:  0.88316
+              precision    recall  f1-score   support
+
+         neg       0.88      0.88      0.88     12500
+         pos       0.88      0.88      0.88     12500
+
+    accuracy                           0.88     25000
+   macro avg       0.88      0.88      0.88     25000
+weighted avg       0.88      0.88      0.88     25000
+
+Confusion Matrix:
+[[11055  1445]
+ [ 1476 11024]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'regression', '1', 'l2']
+Parameters: Representation = tfidf, Classifier = regression, Stop word = 1, Regularization = l2
+Accuracy:  0.879
+              precision    recall  f1-score   support
+
+         neg       0.88      0.88      0.88     12500
+         pos       0.88      0.88      0.88     12500
+
+    accuracy                           0.88     25000
+   macro avg       0.88      0.88      0.88     25000
+weighted avg       0.88      0.88      0.88     25000
+
+Confusion Matrix:
+[[10969  1531]
+ [ 1494 11006]]
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'nbayes', '0']
+Parameters: Representation = bow, Classifier = nbayes, Stop word = 0, Regularization = no
+Accuracy:  0.81356
+              precision    recall  f1-score   support
+
+         neg       0.78      0.88      0.82     12500
+         pos       0.86      0.75      0.80     12500
+
+    accuracy                           0.81     25000
+   macro avg       0.82      0.81      0.81     25000
+weighted avg       0.82      0.81      0.81     25000
+
+Confusion Matrix:
+[[10984  1516]
+ [ 3145  9355]]
+
+
+ ['sentiment.py', 'train', 'test', 'bow', 'nbayes', '1']
+Parameters: Representation = bow, Classifier = nbayes, Stop word = 1, Regularization = no
+Accuracy:  0.81968
+              precision    recall  f1-score   support
+
+         neg       0.79      0.88      0.83     12500
+         pos       0.86      0.76      0.81     12500
+
+    accuracy                           0.82     25000
+   macro avg       0.82      0.82      0.82     25000
+weighted avg       0.82      0.82      0.82     25000
+
+Confusion Matrix:
+[[10995  1505]
+ [ 3003  9497]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'nbayes', '0']
+Parameters: Representation = tfidf, Classifier = nbayes, Stop word = 0, Regularization = no
+Accuracy:  0.82956
+              precision    recall  f1-score   support
+
+         neg       0.79      0.89      0.84     12500
+         pos       0.87      0.77      0.82     12500
+
+    accuracy                           0.83     25000
+   macro avg       0.83      0.83      0.83     25000
+weighted avg       0.83      0.83      0.83     25000
+
+Confusion Matrix:
+[[11114  1386]
+ [ 2875  9625]]
+
+
+ ['sentiment.py', 'train', 'test', 'tfidf', 'nbayes', '1']
+Parameters: Representation = tfidf, Classifier = nbayes, Stop word = 1, Regularization = no
+Accuracy:  0.82992
+              precision    recall  f1-score   support
+
+         neg       0.80      0.88      0.84     12500
+         pos       0.87      0.78      0.82     12500
+
+    accuracy                           0.83     25000
+   macro avg       0.83      0.83      0.83     25000
+weighted avg       0.83      0.83      0.83     25000
+
+Confusion Matrix:
+[[10979  1521]
+ [ 2731  9769]]
