@@ -1,0 +1,5 @@
+1. NLP bot
+https://medium.com/rasa-blog/do-it-yourself-nlp-for-bot-developers-2e2da2817f3d
+
+2. LSTM model
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
