@@ -1,0 +1,42 @@
+
+.done {
+		text-decoration: line-through;
+}
+
+
+li {
+	background: #fff; height: 40px; 
+	line-height: 40px; 
+	color: #666;
+	list-style-type: none;
+}
+
+li:nth-child(2n){
+	background: #f7f7f7;
+}
+
+#todo h3 {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1rem;
+	text-transform: uppercase;
+	color: white;
+	background: #2980b9;
+}
+
+#new {
+	display: none;
+	margin-left: 15px;
+	width: 15rem;
+}
+
+#todo span {
+	display: none;
+	background: red;
+	color:white;
+	padding: 7px;
+	margin-right: 5px;
+}
+
+
+

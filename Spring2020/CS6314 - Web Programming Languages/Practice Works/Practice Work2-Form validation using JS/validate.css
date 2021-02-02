@@ -1,0 +1,18 @@
+.ok, .info, .error {
+	padding: 0px 2px;
+}
+
+.ok {
+	background: #cfc;
+	border: 2px solid #9c9;
+}
+
+.info {
+	background: #ffc;
+	border: 2px solid #cc9;
+}
+
+.error {
+	background: #fcc;
+	border: 2px solid #c99;
+}

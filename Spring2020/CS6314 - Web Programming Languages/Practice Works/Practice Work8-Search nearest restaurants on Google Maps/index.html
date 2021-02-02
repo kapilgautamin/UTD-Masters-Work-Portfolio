@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurants Nearby</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      #address{
+          width: 75%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        width: 40%;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input id="address" type="text" placeholder="Enter your address">
+      <input id="submit" type="button" value="Get Restaurants">
+    </div>
+    <div id="map"></div>
+    <script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        initAutocomplete(geocoder,map);
+
+        document.getElementById('submit').addEventListener('click', function() {  
+            geocodeAddress(geocoder, map);
+        });
+      }
+
+    function initAutocomplete(geocoder, resultsMap) {
+        // Create the autocomplete object, restricting the search predictions to
+        // geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('address'), {types: ['geocode']});
+
+        // Avoid paying for data that you don't need by restricting the set of
+        // place fields that are returned to just the address components.
+        autocomplete.setFields(['address_component']);
+    }
+
+    function geocodeAddress(geocoder, resultsMap) {
+
+        var address = document.getElementById('address').value;
+        console.log("address is = "+address);
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            console.log("Geocoded location = " + results[0].geometry.location);
+            resultsMap.setCenter(results[0].geometry.location);
+
+            var request = {
+                location: results[0].geometry.location,
+                radius: '1500',
+                query: 'restaurant'
+            };
+
+            service = new google.maps.places.PlacesService(resultsMap);
+            service.textSearch(request, function(results,status){
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    console.log("Found " + results.length + " places in 1500 meter.")
+                    console.log(results);
+                    createMarkers(resultsMap,results);
+                }
+            });
+
+            
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+    function createMarkers(resultsMap,places) {
+        var bounds = new google.maps.LatLngBounds();
+
+        for (var i = 0, place; place = places[i]; i++) {
+            var image = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
+
+            var marker = new google.maps.Marker({
+                map: resultsMap,
+                icon: place.photos ? place.photos[0].getUrl({maxWidth: 35, maxHeight: 35}) : image,
+                title: place.name,
+                position: place.geometry.location
+            });
+
+            bounds.extend(place.geometry.location);
+            console.log(i + " " + place.name);
+        }
+        resultsMap.fitBounds(bounds);
+    }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcWhzcS0fRqtT4czOHzFBfbw4PqiIhnk4&callback=initMap&libraries=places">
+    </script>
+  </body>
+</html>
