@@ -1,0 +1,15 @@
+1. Feature Selection Techniques in Machine Learning with Python
+https://towardsdatascience.com/feature-selection-techniques-in-machine-learning-with-python-f24e7da3f36e
+
+
+2. Comparative Study of Various ML supervised algorithms
+https://towardsdatascience.com/comparative-study-on-classic-machine-learning-algorithms-24f9ff6ab222
+
+3. Comparative Study on Classic Machine learning Algorithms , Part-2
+https://medium.com/@dannymvarghese/comparative-study-on-classic-machine-learning-algorithms-part-2-5ab58b683ec0
+
+4. Why not Mean Squared Error(MSE) as a loss function for Logistic Regression? 
+https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c
+
+5.Kernel Functions
+https://towardsdatascience.com/kernel-function-6f1d2be6091
