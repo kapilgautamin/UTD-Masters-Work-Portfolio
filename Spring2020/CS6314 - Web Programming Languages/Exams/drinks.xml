@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders>
+
+<order>
+<customer>James</customer>
+<drink>
+	<name>Caffe Americano</name>
+	<size>small</size>
+</drink>
+</order>
+
+<order>
+<customer>Jaden</customer>
+<drink>
+	<name>Cappuccino</name>
+	<size>large</size>
+</drink>
+<drink>
+	<name>White Chocolate Mocha</name>
+	<size>medium</size>
+</drink>
+</order>
+
+<order>
+<customer>Emily</customer>
+<drink>
+	<name>Caffe Latte</name>
+	<size>small</size>
+</drink>
+<drink>
+	<name>Oatmilk Honey Latte</name>
+	<size>small</size>
+</drink>
+</order>
+
+</orders>
