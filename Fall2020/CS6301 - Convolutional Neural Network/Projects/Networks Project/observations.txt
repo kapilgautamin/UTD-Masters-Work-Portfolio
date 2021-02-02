@@ -1,0 +1,505 @@
+Model(
+  (enc_tail): ModuleList(
+    (0): Conv2d(3, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  )
+  (enc_0): ModuleList(
+    (0): XBlock(
+      (bn1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(24, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(24, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(24, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (enc_1): ModuleList(
+    (0): XBlock(
+      (conv0): Conv2d(24, 56, kernel_size=(1, 1), stride=(2, 2), groups=8, bias=False)
+      (bn1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(24, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(24, 24, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(24, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (enc_2): ModuleList(
+    (0): XBlock(
+      (conv0): Conv2d(56, 152, kernel_size=(1, 1), stride=(2, 2), groups=8, bias=False)
+      (bn1): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(56, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(56, 56, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(56, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (1): XBlock(
+      (bn1): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(152, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(56, 56, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(56, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (2): XBlock(
+      (bn1): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(152, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(56, 56, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(56, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (3): XBlock(
+      (bn1): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(152, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(56, 56, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(56, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (enc_3): ModuleList(
+    (0): XBlock(
+      (conv0): Conv2d(152, 368, kernel_size=(1, 1), stride=(2, 2), groups=8, bias=False)
+      (bn1): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(152, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(152, 152, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(368, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(152, 368, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (1): XBlock(
+      (bn1): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(368, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(152, 152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(368, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(152, 368, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (2): XBlock(
+      (bn1): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(368, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(152, 152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(368, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(152, 368, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (3): XBlock(
+      (bn1): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(368, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(152, 152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(368, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(152, 368, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (4): XBlock(
+      (bn1): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(368, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(152, 152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(368, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(152, 368, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (5): XBlock(
+      (bn1): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(368, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(152, 152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(368, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(152, 368, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (6): XBlock(
+      (bn1): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu1): ReLU()
+      (conv1): Conv2d(368, 152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu2): ReLU()
+      (conv2): Conv2d(152, 152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=8, bias=False)
+      (bn3): BatchNorm2d(368, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu3): ReLU()
+      (conv3): Conv2d(152, 368, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (dec): ModuleList(
+    (0): AdaptiveAvgPool2d(output_size=(1, 1))
+    (1): Flatten()
+    (2): Linear(in_features=368, out_features=100, bias=True)
+  )
+)
+
+
+
+
+
+
+Initial = 32
+Epoch  0 time 155.695 lr = 0.010000 avg loss = 0.007395 accuracy = 18.79
+Epoch  1 time 157.581 lr = 0.010000 avg loss = 0.005894 accuracy = 28.43
+Epoch  2 time 158.014 lr = 0.010000 avg loss = 0.005210 accuracy = 37.98
+Epoch  3 time 157.912 lr = 0.010000 avg loss = 0.004855 accuracy = 41.60
+Epoch  4 time 157.503 lr = 0.011363 avg loss = 0.004623 accuracy = 42.99
+Epoch  5 time 157.664 lr = 0.015359 avg loss = 0.004463 accuracy = 42.21
+Epoch  6 time 157.871 lr = 0.021716 avg loss = 0.004330 accuracy = 43.86
+Epoch  7 time 157.472 lr = 0.030000 avg loss = 0.004234 accuracy = 43.58
+Epoch  8 time 157.561 lr = 0.039647 avg loss = 0.004160 accuracy = 46.14
+Epoch  9 time 157.718 lr = 0.050000 avg loss = 0.004086 accuracy = 44.94
+
+
+
+Initial = 24
+Epoch  0 time 140.363 lr = 0.010000 avg loss = 0.007306 accuracy = 21.83
+Epoch  1 time 142.393 lr = 0.010000 avg loss = 0.005833 accuracy = 32.55
+Epoch  2 time 142.495 lr = 0.010000 avg loss = 0.005180 accuracy = 34.68
+Epoch  3 time 142.765 lr = 0.010000 avg loss = 0.004847 accuracy = 38.76
+Epoch  4 time 142.771 lr = 0.011363 avg loss = 0.004625 accuracy = 41.93
+Epoch  5 time 142.616 lr = 0.015359 avg loss = 0.004442 accuracy = 41.49
+Epoch  6 time 142.387 lr = 0.021716 avg loss = 0.004306 accuracy = 45.81
+Epoch  7 time 142.640 lr = 0.030000 avg loss = 0.004214 accuracy = 45.29
+Epoch  8 time 142.372 lr = 0.039647 avg loss = 0.004125 accuracy = 46.79
+Epoch  9 time 142.207 lr = 0.050000 avg loss = 0.004074 accuracy = 48.46
+
+Weight decay = 0
+Epoch  0 time 140.764 lr = 0.010000 avg loss = 0.007257 accuracy = 23.48
+Epoch  1 time 147.317 lr = 0.010000 avg loss = 0.005745 accuracy = 33.98
+Epoch  2 time 147.179 lr = 0.010000 avg loss = 0.004994 accuracy = 39.95
+Epoch  3 time 147.323 lr = 0.010000 avg loss = 0.004583 accuracy = 40.56
+Epoch  4 time 147.472 lr = 0.011363 avg loss = 0.004288 accuracy = 46.44
+Epoch  5 time 146.890 lr = 0.015359 avg loss = 0.004050 accuracy = 50.41
+Epoch  6 time 147.130 lr = 0.021716 avg loss = 0.003874 accuracy = 52.00
+Epoch  7 time 147.034 lr = 0.030000 avg loss = 0.003734 accuracy = 53.10
+Epoch  8 time 147.344 lr = 0.039647 avg loss = 0.003614 accuracy = 55.06
+Epoch  9 time 147.165 lr = 0.050000 avg loss = 0.003519 accuracy = 55.79
+
+Add bn to other left out conv layers
+Epoch  0 time 150.379 lr = 0.010000 avg loss = 0.007250 accuracy = 21.53
+Epoch  1 time 151.645 lr = 0.010000 avg loss = 0.005702 accuracy = 35.00
+Epoch  2 time 151.531 lr = 0.010000 avg loss = 0.004952 accuracy = 41.80
+Epoch  3 time 151.429 lr = 0.010000 avg loss = 0.004522 accuracy = 45.	
+Epoch  4 time 151.418 lr = 0.011363 avg loss = 0.004231 accuracy = 46.81
+Epoch  5 time 151.448 lr = 0.015359 avg loss = 0.003995 accuracy = 49.57
+Epoch  6 time 151.510 lr = 0.021716 avg loss = 0.003810 accuracy = 52.21
+Epoch  7 time 151.239 lr = 0.030000 avg loss = 0.003682 accuracy = 54.25
+Epoch  8 time 151.275 lr = 0.039647 avg loss = 0.003547 accuracy = 54.04
+Epoch  9 time 151.371 lr = 0.050000 avg loss = 0.003448 accuracy = 56.01
+
+residual channels removed in later part of blocks in layer
+Epoch  0 time 184.498 lr = 0.010000 avg loss = 0.007503 accuracy = 15.26
+Epoch  1 time 185.043 lr = 0.010000 avg loss = 0.005995 accuracy = 30.21
+Epoch  2 time 184.967 lr = 0.010000 avg loss = 0.005109 accuracy = 37.37
+Epoch  3 time 184.714 lr = 0.010000 avg loss = 0.004598 accuracy = 46.22
+Epoch  4 time 184.953 lr = 0.010193 avg loss = 0.004259 accuracy = 48.44
+Epoch  5 time 184.561 lr = 0.010769 avg loss = 0.004011 accuracy = 50.43
+Epoch  6 time 184.617 lr = 0.011722 avg loss = 0.003825 accuracy = 49.67
+Epoch  7 time 184.723 lr = 0.013045 avg loss = 0.003660 accuracy = 55.77
+Epoch  8 time 184.821 lr = 0.014723 avg loss = 0.003526 accuracy = 54.58
+Epoch  9 time 184.652 lr = 0.016741 avg loss = 0.003415 accuracy = 56.38
+Epoch 10 time 184.522 lr = 0.019080 avg loss = 0.003302 accuracy = 57.10
+
+other model
+Epoch  0 time 162.205 lr = 0.010000 avg loss = 0.007944 accuracy = 15.30
+Epoch  1 time 163.646 lr = 0.010000 avg loss = 0.006439 accuracy = 26.30
+Epoch  2 time 163.543 lr = 0.010000 avg loss = 0.005462 accuracy = 34.81
+Epoch  3 time 163.343 lr = 0.010000 avg loss = 0.004891 accuracy = 40.99
+Epoch  4 time 163.257 lr = 0.010193 avg loss = 0.004510 accuracy = 44.36
+Epoch  5 time 163.199 lr = 0.010769 avg loss = 0.004240 accuracy = 48.13
+Epoch  6 time 163.212 lr = 0.011722 avg loss = 0.004028 accuracy = 50.61
+Epoch  7 time 163.026 lr = 0.013045 avg loss = 0.003848 accuracy = 54.36
+Epoch  8 time 163.364 lr = 0.014723 avg loss = 0.003707 accuracy = 54.38
+Epoch  9 time 162.740 lr = 0.016741 avg loss = 0.003591 accuracy = 54.28
+Epoch 10 time 163.129 lr = 0.019080 avg loss = 0.003485 accuracy = 57.01
+Epoch 11 time 163.038 lr = 0.021716 avg loss = 0.003389 accuracy = 58.59
+Epoch 12 time 163.104 lr = 0.024624 avg loss = 0.003298 accuracy = 57.66
+
+changed parameters of other model
+Epoch  0 time 93.927 lr = 0.010000 avg loss = 0.007653 accuracy = 14.76
+Epoch  1 time 93.264 lr = 0.010000 avg loss = 0.006228 accuracy = 27.32
+Epoch  2 time 93.448 lr = 0.010000 avg loss = 0.005267 accuracy = 35.37
+Epoch  3 time 93.373 lr = 0.010000 avg loss = 0.004732 accuracy = 41.15
+Epoch  4 time 93.528 lr = 0.010193 avg loss = 0.004355 accuracy = 47.09
+Epoch  5 time 93.524 lr = 0.010769 avg loss = 0.004080 accuracy = 49.63
+Epoch  6 time 93.330 lr = 0.011722 avg loss = 0.003872 accuracy = 50.26
+Epoch  7 time 93.292 lr = 0.013045 avg loss = 0.003687 accuracy = 50.17
+Epoch  8 time 93.257 lr = 0.014723 avg loss = 0.003541 accuracy = 55.23
+Epoch  9 time 93.408 lr = 0.016741 avg loss = 0.003422 accuracy = 55.23
+Epoch 10 time 93.514 lr = 0.019080 avg loss = 0.003321 accuracy = 55.90
+Epoch 11 time 93.542 lr = 0.021716 avg loss = 0.003223 accuracy = 57.10
+Epoch 12 time 93.769 lr = 0.024624 avg loss = 0.003144 accuracy = 58.36
+Epoch 13 time 93.851 lr = 0.027777 avg loss = 0.003056 accuracy = 58.03
+Epoch 14 time 93.862 lr = 0.031144 avg loss = 0.002987 accuracy = 59.48
+Epoch 15 time 93.803 lr = 0.034693 avg loss = 0.002938 accuracy = 61.63
+Epoch 16 time 94.133 lr = 0.038389 avg loss = 0.002863 accuracy = 61.18
+Epoch 17 time 94.186 lr = 0.042196 avg loss = 0.002807 accuracy = 60.26
+Epoch 18 time 93.989 lr = 0.046079 avg loss = 0.002758 accuracy = 60.22
+Epoch 19 time 94.187 lr = 0.050000 avg loss = 0.002706 accuracy = 63.00
+
+Original with more epochs, residual channels removed in later part of blocks in layer
+Epoch  0 time 93.060 lr = 0.006000 avg loss = 0.007253 accuracy = 18.27
+Epoch  1 time 93.070 lr = 0.016800 avg loss = 0.005941 accuracy = 34.46
+Epoch  2 time 92.905 lr = 0.027600 avg loss = 0.005153 accuracy = 35.22
+Epoch  3 time 92.718 lr = 0.038400 avg loss = 0.004721 accuracy = 39.87
+Epoch  4 time 92.574 lr = 0.049200 avg loss = 0.004449 accuracy = 41.60
+Epoch  5 time 92.377 lr = 0.060000 avg loss = 0.004260 accuracy = 44.42
+Epoch  6 time 92.554 lr = 0.059936 avg loss = 0.004035 accuracy = 48.44
+Epoch  7 time 92.593 lr = 0.059743 avg loss = 0.003869 accuracy = 48.50
+Epoch  8 time 92.359 lr = 0.059424 avg loss = 0.003740 accuracy = 51.80
+Epoch  9 time 92.860 lr = 0.058978 avg loss = 0.003629 accuracy = 53.47
+Epoch 10 time 92.606 lr = 0.058408 avg loss = 0.003541 accuracy = 55.56
+Epoch 11 time 92.647 lr = 0.057716 avg loss = 0.003449 accuracy = 53.47
+Epoch 12 time 92.653 lr = 0.056906 avg loss = 0.003387 accuracy = 55.75
+
+
+More variations
+Epoch  0 time 92.326 lr = 0.003000 avg loss = 0.006977 accuracy = 21.12
+Epoch  1 time 92.497 lr = 0.008400 avg loss = 0.005846 accuracy = 32.60
+Epoch  2 time 92.537 lr = 0.013800 avg loss = 0.005131 accuracy = 36.78
+Epoch  3 time 92.598 lr = 0.019200 avg loss = 0.004695 accuracy = 40.08
+Epoch  4 time 92.547 lr = 0.024600 avg loss = 0.004388 accuracy = 45.27
+Epoch  5 time 92.464 lr = 0.030000 avg loss = 0.004177 accuracy = 46.22
+Epoch  6 time 92.391 lr = 0.029968 avg loss = 0.003915 accuracy = 49.20
+Epoch  7 time 92.437 lr = 0.029872 avg loss = 0.003690 accuracy = 52.82
+Epoch  8 time 92.266 lr = 0.029712 avg loss = 0.003559 accuracy = 50.95
+Epoch  9 time 92.260 lr = 0.029489 avg loss = 0.003426 accuracy = 55.36
+Epoch 10 time 92.490 lr = 0.029204 avg loss = 0.003325 accuracy = 57.40
+Epoch 11 time 92.384 lr = 0.028858 avg loss = 0.003226 accuracy = 58.27
+Epoch 12 time 92.675 lr = 0.028453 avg loss = 0.003144 accuracy = 58.59
+Epoch 13 time 92.325 lr = 0.027990 avg loss = 0.003073 accuracy = 56.81
+Epoch 14 time 92.414 lr = 0.027472 avg loss = 0.002980 accuracy = 61.50
+Epoch 15 time 92.081 lr = 0.026900 avg loss = 0.002923 accuracy = 60.55
+Epoch 16 time 92.447 lr = 0.026278 avg loss = 0.002857 accuracy = 58.96
+
+TRAINING_LR_MAX          = 0.01
+TRAINING_LR_INIT_SCALE   = 0.1
+TRAINING_LR_INIT_EPOCHS = 5
+TRAINING_LR_FINAL_SCALE = 0.3
+TRAINING_LR_FINAL_EPOCHS = 25
+optimizer = optim.Adam(model.parameters(), lr=TRAINING_LR_INIT, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+
+Incoming more
+Epoch  0 time 92.568 lr = 0.001000 avg loss = 0.006977 accuracy = 22.29
+Epoch  1 time 92.693 lr = 0.002800 avg loss = 0.005949 accuracy = 27.76
+Epoch  2 time 92.658 lr = 0.004600 avg loss = 0.005303 accuracy = 33.44
+Epoch  3 time 92.455 lr = 0.006400 avg loss = 0.004840 accuracy = 40.80
+Epoch  4 time 92.608 lr = 0.008200 avg loss = 0.004493 accuracy = 45.36
+Epoch  5 time 92.638 lr = 0.010000 avg loss = 0.004239 accuracy = 45.42
+Epoch  6 time 92.550 lr = 0.009985 avg loss = 0.003935 accuracy = 48.00
+Epoch  7 time 92.475 lr = 0.009940 avg loss = 0.003716 accuracy = 51.78
+Epoch  8 time 92.403 lr = 0.009865 avg loss = 0.003551 accuracy = 53.95
+Epoch  9 time 92.583 lr = 0.009761 avg loss = 0.003403 accuracy = 55.27
+Epoch 10 time 92.361 lr = 0.009629 avg loss = 0.003277 accuracy = 57.23
+Epoch 11 time 92.300 lr = 0.009467 avg loss = 0.003175 accuracy = 60.96
+Epoch 12 time 92.440 lr = 0.009278 avg loss = 0.003077 accuracy = 60.24
+Epoch 13 time 92.603 lr = 0.009062 avg loss = 0.002991 accuracy = 59.81
+Epoch 14 time 92.445 lr = 0.008820 avg loss = 0.002916 accuracy = 60.35
+Epoch 15 time 92.324 lr = 0.008553 avg loss = 0.002826 accuracy = 62.96
+Epoch 16 time 92.441 lr = 0.008263 avg loss = 0.002757 accuracy = 60.13
+Epoch 17 time 92.341 lr = 0.007950 avg loss = 0.002673 accuracy = 62.80
+Epoch 18 time 92.508 lr = 0.007615 avg loss = 0.002617 accuracy = 63.24
+Epoch 19 time 92.647 lr = 0.007261 avg loss = 0.002547 accuracy = 66.21
+Epoch 20 time 92.371 lr = 0.006889 avg loss = 0.002491 accuracy = 63.26
+Epoch 21 time 92.463 lr = 0.006500 avg loss = 0.002422 accuracy = 65.08
+Epoch 22 time 92.672 lr = 0.006096 avg loss = 0.002354 accuracy = 65.82
+Epoch 23 time 92.414 lr = 0.005679 avg loss = 0.002290 accuracy = 65.86
+Epoch 24 time 92.406 lr = 0.005250 avg loss = 0.002215 accuracy = 66.51
+Epoch 25 time 92.447 lr = 0.004812 avg loss = 0.002173 accuracy = 68.14
+Epoch 26 time 92.289 lr = 0.004366 avg loss = 0.002092 accuracy = 67.04
+Epoch 27 time 92.484 lr = 0.003914 avg loss = 0.002020 accuracy = 67.84
+Epoch 28 time 92.609 lr = 0.003458 avg loss = 0.001966 accuracy = 66.99
+Epoch 29 time 92.732 lr = 0.003000 avg loss = 0.001900 accuracy = 68.40
+
+# training (linear warm up with cosine decay learning rate)
+TRAINING_LR_MAX          = 0.01
+TRAINING_LR_INIT_SCALE   = 0.1
+TRAINING_LR_INIT_EPOCHS = 3
+TRAINING_LR_FINAL_SCALE = 0.3
+TRAINING_LR_FINAL_EPOCHS = 17
+optimizer = optim.Adam(model.parameters(), lr=TRAINING_LR_INIT, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+Epoch  0 time 187.420 lr = 0.001000 avg loss = 0.013588 accuracy = 26.30
+Epoch  1 time 186.949 lr = 0.004000 avg loss = 0.011694 accuracy = 34.60
+Epoch  2 time 186.853 lr = 0.007000 avg loss = 0.010338 accuracy = 39.76
+Epoch  3 time 186.767 lr = 0.010000 avg loss = 0.009439 accuracy = 46.13
+Epoch  4 time 186.619 lr = 0.009966 avg loss = 0.008584 accuracy = 46.48
+Epoch  5 time 186.731 lr = 0.009865 avg loss = 0.007970 accuracy = 52.12
+Epoch  6 time 186.567 lr = 0.009699 avg loss = 0.007543 accuracy = 54.98
+Epoch  7 time 186.738 lr = 0.009467 avg loss = 0.007186 accuracy = 57.11
+Epoch  8 time 186.464 lr = 0.009173 avg loss = 0.006858 accuracy = 57.24
+Epoch  9 time 186.542 lr = 0.008820 avg loss = 0.006598 accuracy = 60.92
+Epoch 10 time 186.559 lr = 0.008411 avg loss = 0.006337 accuracy = 60.90
+Epoch 11 time 186.761 lr = 0.007950 avg loss = 0.006107 accuracy = 60.75
+Epoch 12 time 186.432 lr = 0.007441 avg loss = 0.005881 accuracy = 63.65
+Epoch 13 time 186.365 lr = 0.006889 avg loss = 0.005673 accuracy = 64.04
+Epoch 14 time 186.245 lr = 0.006300 avg loss = 0.005456 accuracy = 66.22
+Epoch 15 time 186.315 lr = 0.005679 avg loss = 0.005270 accuracy = 64.68
+Epoch 16 time 186.597 lr = 0.005032 avg loss = 0.005077 accuracy = 64.88
+Epoch 17 time 186.461 lr = 0.004366 avg loss = 0.004879 accuracy = 67.78
+Epoch 18 time 186.780 lr = 0.003686 avg loss = 0.004646 accuracy = 67.95
+Epoch 19 time 186.452 lr = 0.003000 avg loss = 0.004475 accuracy = 67.80
+
+optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9)
+Epoch  0 time 186.156 lr = 0.001000 avg loss = 0.009734 accuracy = 42.39
+Epoch  1 time 186.311 lr = 0.004000 avg loss = 0.009166 accuracy = 46.07
+Epoch  2 time 185.988 lr = 0.007000 avg loss = 0.008802 accuracy = 46.44
+Epoch  3 time 186.494 lr = 0.010000 avg loss = 0.008502 accuracy = 47.94
+Epoch  4 time 186.338 lr = 0.009957 avg loss = 0.008257 accuracy = 49.20
+Epoch  5 time 186.344 lr = 0.009827 avg loss = 0.008006 accuracy = 51.52
+Epoch  6 time 186.251 lr = 0.009612 avg loss = 0.007802 accuracy = 51.83
+Epoch  7 time 186.141 lr = 0.009315 avg loss = 0.007617 accuracy = 53.10
+Epoch  8 time 186.269 lr = 0.008937 avg loss = 0.007434 accuracy = 55.18
+Epoch  9 time 186.245 lr = 0.008483 avg loss = 0.007259 accuracy = 56.25
+
+optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=0.00005, nesterov=True)
+Epoch  0 time 197.553 lr = 0.001000 avg loss = 0.013367 accuracy = 27.90
+Epoch  1 time 197.044 lr = 0.004000 avg loss = 0.010522 accuracy = 35.44
+Epoch  2 time 197.367 lr = 0.007000 avg loss = 0.009404 accuracy = 41.74
+Epoch  3 time 197.134 lr = 0.010000 avg loss = 0.008708 accuracy = 47.20
+Epoch  4 time 197.227 lr = 0.009957 avg loss = 0.008185 accuracy = 50.49
+Epoch  5 time 197.282 lr = 0.009827 avg loss = 0.007765 accuracy = 52.84
+Epoch  6 time 197.172 lr = 0.009612 avg loss = 0.007451 accuracy = 53.62
+Epoch  7 time 197.080 lr = 0.009315 avg loss = 0.007162 accuracy = 55.26
+Epoch  8 time 196.900 lr = 0.008937 avg loss = 0.006904 accuracy = 55.76
+Epoch  9 time 197.192 lr = 0.008483 avg loss = 0.006717 accuracy = 56.33
+Epoch 10 time 197.139 lr = 0.007957 avg loss = 0.006524 accuracy = 59.13
+Epoch 11 time 197.280 lr = 0.007364 avg loss = 0.006363 accuracy = 58.84
+Epoch 12 time 196.972 lr = 0.006710 avg loss = 0.006221 accuracy = 60.55
+Epoch 13 time 196.978 lr = 0.006000 avg loss = 0.006080 accuracy = 60.36
+Epoch 14 time 196.750 lr = 0.005243 avg loss = 0.005960 accuracy = 62.64
+Epoch 15 time 196.539 lr = 0.004444 avg loss = 0.005863 accuracy = 64.17
+Epoch 16 time 196.721 lr = 0.003613 avg loss = 0.005780 accuracy = 62.56
+Epoch 17 time 196.598 lr = 0.002756 avg loss = 0.005684 accuracy = 63.71
+Epoch 18 time 196.297 lr = 0.001882 avg loss = 0.005577 accuracy = 62.07
+Epoch 19 time 196.944 lr = 0.001000 avg loss = 0.005513 accuracy = 64.51
+
+
+optimizer = optim.Adam(model.parameters(), lr=TRAINING_LR_INIT, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+TRAINING_LR_MAX          = 0.01
+TRAINING_LR_INIT_SCALE   = 0.1
+TRAINING_LR_INIT_EPOCHS = 3
+TRAINING_LR_FINAL_SCALE = 0.1
+TRAINING_LR_FINAL_EPOCHS = 17
+Epoch  0 time 155.468 lr = 0.001000 avg loss = 0.007015 accuracy = 19.99
+Epoch  1 time 153.921 lr = 0.004000 avg loss = 0.006066 accuracy = 27.91
+Epoch  2 time 154.036 lr = 0.007000 avg loss = 0.005344 accuracy = 37.48
+Epoch  3 time 153.761 lr = 0.010000 avg loss = 0.004848 accuracy = 37.85
+Epoch  4 time 153.602 lr = 0.009957 avg loss = 0.004391 accuracy = 47.09
+Epoch  5 time 153.978 lr = 0.009827 avg loss = 0.004083 accuracy = 48.89
+Epoch  6 time 153.754 lr = 0.009612 avg loss = 0.003861 accuracy = 50.17
+Epoch  7 time 153.715 lr = 0.009315 avg loss = 0.003666 accuracy = 52.69
+Epoch  8 time 153.692 lr = 0.008937 avg loss = 0.003517 accuracy = 52.73
+Epoch  9 time 153.677 lr = 0.008483 avg loss = 0.003346 accuracy = 56.34
+Epoch 10 time 153.676 lr = 0.007957 avg loss = 0.003207 accuracy = 56.32
+Epoch 11 time 153.619 lr = 0.007364 avg loss = 0.003089 accuracy = 60.03
+Epoch 12 time 153.606 lr = 0.006710 avg loss = 0.002977 accuracy = 62.46
+Epoch 13 time 153.388 lr = 0.006000 avg loss = 0.002858 accuracy = 63.93
+Epoch 14 time 153.261 lr = 0.005243 avg loss = 0.002750 accuracy = 63.19
+Epoch 15 time 153.779 lr = 0.004444 avg loss = 0.002644 accuracy = 64.87
+Epoch 16 time 153.537 lr = 0.003613 avg loss = 0.002518 accuracy = 66.08
+Epoch 17 time 153.648 lr = 0.002756 avg loss = 0.002402 accuracy = 66.73
+Epoch 18 time 153.447 lr = 0.001882 avg loss = 0.002292 accuracy = 67.51
+Epoch 19 time 153.546 lr = 0.001000 avg loss = 0.002178 accuracy = 68.77
+
+optimizer = optim.Adam(model.parameters(), lr=TRAINING_LR_INIT, betas=(0.9, 0.999), eps=1e-08, weight_decay=0, amsgrad=False)
+TRAINING_LR_MAX          = 0.01
+TRAINING_LR_INIT_SCALE   = 0.1
+TRAINING_LR_INIT_EPOCHS = 3
+TRAINING_LR_FINAL_SCALE = 0.1
+TRAINING_LR_FINAL_EPOCHS = 27
+Epoch  0 time 148.864 lr = 0.001000 avg loss = 0.007044 accuracy = 19.99
+Epoch  1 time 148.953 lr = 0.004000 avg loss = 0.006044 accuracy = 28.58
+Epoch  2 time 149.014 lr = 0.007000 avg loss = 0.005324 accuracy = 34.64
+Epoch  3 time 148.931 lr = 0.010000 avg loss = 0.004839 accuracy = 33.75
+Epoch  4 time 148.884 lr = 0.009984 avg loss = 0.004393 accuracy = 46.40
+Epoch  5 time 148.845 lr = 0.009934 avg loss = 0.004083 accuracy = 47.89
+Epoch  6 time 148.910 lr = 0.009853 avg loss = 0.003819 accuracy = 54.84
+Epoch  7 time 148.899 lr = 0.009738 avg loss = 0.003628 accuracy = 54.58
+Epoch  8 time 148.798 lr = 0.009592 avg loss = 0.003474 accuracy = 55.19
+Epoch  9 time 148.912 lr = 0.009415 avg loss = 0.003353 accuracy = 57.34
+Epoch 10 time 148.792 lr = 0.009207 avg loss = 0.003231 accuracy = 58.59
+Epoch 11 time 148.789 lr = 0.008969 avg loss = 0.003111 accuracy = 58.77
+Epoch 12 time 148.685 lr = 0.008702 avg loss = 0.003023 accuracy = 61.44
+Epoch 13 time 148.862 lr = 0.008407 avg loss = 0.002938 accuracy = 61.76
+Epoch 14 time 149.041 lr = 0.008085 avg loss = 0.002857 accuracy = 59.40
+Epoch 15 time 148.996 lr = 0.007737 avg loss = 0.002775 accuracy = 61.18
+Epoch 16 time 148.880 lr = 0.007364 avg loss = 0.002694 accuracy = 64.34
+Epoch 17 time 148.848 lr = 0.006968 avg loss = 0.002625 accuracy = 66.17
+Epoch 18 time 148.874 lr = 0.006550 avg loss = 0.002556 accuracy = 65.30
+Epoch 19 time 148.854 lr = 0.006113 avg loss = 0.002485 accuracy = 65.13
+Epoch 20 time 148.919 lr = 0.005656 avg loss = 0.002394 accuracy = 67.51
+Epoch 21 time 149.136 lr = 0.005183 avg loss = 0.002340 accuracy = 65.52
+Epoch 22 time 148.935 lr = 0.004694 avg loss = 0.002272 accuracy = 65.97
+Epoch 23 time 148.792 lr = 0.004191 avg loss = 0.002185 accuracy = 67.58
+Epoch 24 time 148.847 lr = 0.003678 avg loss = 0.002121 accuracy = 67.77
+Epoch 25 time 148.849 lr = 0.003154 avg loss = 0.002048 accuracy = 68.14
+Epoch 26 time 148.812 lr = 0.002622 avg loss = 0.001974 accuracy = 69.42
+Epoch 27 time 148.834 lr = 0.002085 avg loss = 0.001900 accuracy = 69.34
+Epoch 28 time 148.800 lr = 0.001543 avg loss = 0.001829 accuracy = 69.90
+Epoch 29 time 148.721 lr = 0.001000 avg loss = 0.001758 accuracy = 69.60
+
+DATA_BATCH_SIZE   = 128
+Epoch  0 time 159.705 lr = 0.001000 avg loss = 0.027181 accuracy = 24.78
+Epoch  1 time 159.568 lr = 0.004000 avg loss = 0.023295 accuracy = 35.52
+Epoch  2 time 159.251 lr = 0.007000 avg loss = 0.020469 accuracy = 41.79
+Epoch  3 time 159.098 lr = 0.010000 avg loss = 0.018780 accuracy = 45.75
+Epoch  4 time 158.973 lr = 0.009957 avg loss = 0.017040 accuracy = 48.28
+Epoch  5 time 158.811 lr = 0.009827 avg loss = 0.015953 accuracy = 52.16
+Epoch  6 time 158.641 lr = 0.009612 avg loss = 0.015071 accuracy = 54.45
+Epoch  7 time 158.592 lr = 0.009315 avg loss = 0.014319 accuracy = 57.19
+Epoch  8 time 158.518 lr = 0.008937 avg loss = 0.013718 accuracy = 58.43
+Epoch  9 time 158.510 lr = 0.008483 avg loss = 0.013133 accuracy = 58.55
+Epoch 10 time 158.264 lr = 0.007957 avg loss = 0.012606 accuracy = 61.02
+Epoch 11 time 158.350 lr = 0.007364 avg loss = 0.012172 accuracy = 62.18
+Epoch 12 time 158.393 lr = 0.006710 avg loss = 0.011700 accuracy = 64.60
+Epoch 13 time 158.363 lr = 0.006000 avg loss = 0.011223 accuracy = 64.08
+Epoch 14 time 158.566 lr = 0.005243 avg loss = 0.010796 accuracy = 64.80
+Epoch 15 time 158.579 lr = 0.004444 avg loss = 0.010331 accuracy = 65.04
+Epoch 16 time 158.654 lr = 0.003613 avg loss = 0.009919 accuracy = 65.85
+Epoch 17 time 158.420 lr = 0.002756 avg loss = 0.009478 accuracy = 67.33
+Epoch 18 time 158.712 lr = 0.001882 avg loss = 0.009082 accuracy = 67.77
+Epoch 19 time 158.544 lr = 0.001000 avg loss = 0.008694 accuracy = 68.73
+
+DATA_BATCH_SIZE   = 32
+Epoch  0 time 224.326 lr = 0.001000 avg loss = 0.110472 accuracy = 28.93
+Epoch  1 time 222.664 lr = 0.004000 avg loss = 0.092456 accuracy = 37.20
+Epoch  2 time 224.323 lr = 0.007000 avg loss = 0.082327 accuracy = 43.01
+Epoch  3 time 224.911 lr = 0.010000 avg loss = 0.076920 accuracy = 46.67
+Epoch  4 time 222.458 lr = 0.009957 avg loss = 0.070794 accuracy = 49.32
+Epoch  5 time 222.969 lr = 0.009827 avg loss = 0.066310 accuracy = 53.15
+
+
+SGD 0.1, BAtch 32
+
+SGD 0.1, BAtch 32, weight_decay = 0.00005
