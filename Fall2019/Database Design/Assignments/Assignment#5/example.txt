@@ -1,0 +1,8 @@
+AAAATest data 1
+ABABAnother Test data
+AADETest data 1
+ACACThis gets interesting
+ZZZZAnother test record
+AABCTest data 1
+MMMMYet another record
+CCCCThird test record

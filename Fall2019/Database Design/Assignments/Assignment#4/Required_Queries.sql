@@ -1,0 +1,43 @@
+show databases;
+use library;
+show tables;
+select * from user;
+select * from itemCatalog;
+select * from itemLocation;
+select * from nonFiction;
+select * from fiction;
+select * from author;
+select * from authoredItem;
+select * from publishedItem;
+select * from publisher;
+-- alter table itemCatalog drop literatureTypeId;
+alter table itemCatalog add fiction boolean;
+insert into itemCatalog (isbn,titleHeadline,fiction) values ("lkfjal","kfhajhfjkh",true);
+alter table itemCatalog alter edition set default 1;
+insert into library.itemCatalog (isbn,titleHeadline,fiction) values ("lkjljlkj","lkjaflj",true);
+alter table author auto_increment = 1;
+alter table author drop authorId;
+insert into author (authoredIsbn,authorName) values ("kjhkjh","lkkljlj");
+insert into publisher(pName,pEmail,pcountryCode) values("Penguin Random House","randomhouse@penguin.com","US");
+insert into publisher(pName,pEmail,pcountryCode) values("Hachette Livre","livre@hachette.com","US");
+insert into publisher(pName,pEmail,pcountryCode) values("HarperCollins","harpercollins@gmail.com","RU");
+insert into publisher(pName,pEmail,pcountryCode) values("Macmillan Publishers","macmillanpublishers@gmail.com","US");
+insert into publisher(pName,pEmail,pcountryCode) values("Simon & Schuster","SimonandSchuster@gmail.com","UK");
+insert into publisher(pName,pEmail,pcountryCode) values("McGraw-Hill Education","mcgrawhillpublications@outlook.com","US");
+insert into publisher(pName,pEmail,pcountryCode) values("Houghton Mifflin Harcourt","mifflinharcourt@houghton.com","UK");
+alter table itemCatalog modify titleHeadline varchar(500);
+alter table itemCatalog modify titleSubHeadline char(250);
+alter table itemCatalog modify description varchar(1000);
+alter table author modify authorName char(255);
+
+insert into author (authoredIsbn,authorName) values ("kapilgautam1","navathe");
+select isbn,titleHeadline,authorName from itemCatalog join author on authoredIsbn=isbn;
+select isbn,titleHeadline,authorName from itemCatalog join author on authoredIsbn=isbn where authorName like "%john%";
+delete from publishedItem where publishedItemIsbn = "kapilgautam";
+-- atack sql on author
+-- " union select isbn,titleHeadline,authorName from itemCatalog join author; -- 
+select isbn,titleHeadline,authorName from itemCatalog join author on authoredIsbn=isbn join nonFiction on isbn=itemIsbn where ddsn like "%new%";
+update author set authorName="kapil" where authoredIsbn = "hjagsfjasg";
+update itemCatalog set titleHeadline = "title of the book is" where isbn = "jkhfask";
+alter table author drop column authoredIsbn;
+select isbn,titleHeadline,authorId,ddsn,publisherId from itemCatalog join authoredItem on isbn=authoredIsbn left join nonFiction on isbn=itemIsbn join publishedItem on isbn=publishedItemIsbn where authorId in (select authorId from author where authorName like "%na%");

@@ -1,0 +1,8 @@
+./INDEX -create CS6360Asg5TestData.txt index.indx 15
+./INDEX -find index.idx 45526813100142A
+./INDEX -find index.indx 111111111111
+./INDEX -find index.indx 93288157045562A
+./INDEX -insert index.indx "12222222222222C test data I added"
+./INDEX -find index.indx 12222222222222C
+./INDEX -list index.indx 38417813544394A 12
+./INDEX -create CS6360Asg5TestData.txt index.idx 21

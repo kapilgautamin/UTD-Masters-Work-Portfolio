@@ -1,0 +1,4 @@
+AAAAThis is the first record.  Key length is 4
+ZZZZThis is the last record, but second in the input file
+CCCCThis should list second, but is third in the input
+MMMMYet another record
