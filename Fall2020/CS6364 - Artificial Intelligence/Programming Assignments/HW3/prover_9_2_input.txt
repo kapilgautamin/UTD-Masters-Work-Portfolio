@@ -1,0 +1,32 @@
+assign(report_stderr, 2).
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(max_seconds, 60).
+end_if.
+
+formulas(assumptions).
+
+all x (-dance(x) | -buns(x) -> old(x)).
+all x (pigs(x) & giddiness(x) -> respect(x)).
+all x exists y (wise(x) & balloonist(x) -> umbrella(x,y)).
+all x (ridiculous(x) & buns(x) -> -lunch(x)).
+all x (young(x) & up(x) -> giddiness(x)).
+all x (fat(x) & ridiculous(x) & -dance(x) -> lunch(x)).
+all x (wise(x) & giddiness(x) -> -dance(x)).
+all x all y (pigs(x) & umbrella(x,y) -> ridiculous(x)).
+all x (-dance(x) & respect(x) -> fat(x)).
+all x (young(x) <-> -old(x)).
+
+end_of_list.
+
+formulas(goals).
+
+all x (wise(x) & young(x) & pigs(x) -> -up(x)).
+
+end_of_list.
+

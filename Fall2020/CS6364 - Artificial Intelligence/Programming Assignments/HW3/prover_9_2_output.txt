@@ -1,0 +1,240 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 15164 was started by Kapil Gautam on kapilgautamIN,
+Mon Nov  9 00:56:51 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+assign(report_stderr,2).
+set(ignore_option_dependencies).
+if(Prover9).
+% Conditional input included.
+assign(max_seconds,60).
+end_if.
+if(Mace4).
+% Conditional input omitted.
+end_if.
+
+formulas(assumptions).
+(all x (-dance(x) | -buns(x) -> old(x))).
+(all x (pigs(x) & giddiness(x) -> respect(x))).
+(all x exists y (wise(x) & balloonist(x) -> umbrella(x,y))).
+(all x (ridiculous(x) & buns(x) -> -lunch(x))).
+(all x (young(x) & up(x) -> giddiness(x))).
+(all x (fat(x) & ridiculous(x) & -dance(x) -> lunch(x))).
+(all x (wise(x) & giddiness(x) -> -dance(x))).
+(all x all y (pigs(x) & umbrella(x,y) -> ridiculous(x))).
+(all x (-dance(x) & respect(x) -> fat(x))).
+(all x (young(x) <-> -old(x))).
+end_of_list.
+
+formulas(goals).
+(all x (wise(x) & young(x) & pigs(x) -> -up(x))).
+end_of_list.
+
+============================== end of input ==========================
+
+% Enabling option dependencies (ignore applies only on input).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x (-dance(x) | -buns(x) -> old(x))) # label(non_clause).  [assumption].
+2 (all x (pigs(x) & giddiness(x) -> respect(x))) # label(non_clause).  [assumption].
+3 (all x exists y (wise(x) & balloonist(x) -> umbrella(x,y))) # label(non_clause).  [assumption].
+4 (all x (ridiculous(x) & buns(x) -> -lunch(x))) # label(non_clause).  [assumption].
+5 (all x (young(x) & up(x) -> giddiness(x))) # label(non_clause).  [assumption].
+6 (all x (fat(x) & ridiculous(x) & -dance(x) -> lunch(x))) # label(non_clause).  [assumption].
+7 (all x (wise(x) & giddiness(x) -> -dance(x))) # label(non_clause).  [assumption].
+8 (all x all y (pigs(x) & umbrella(x,y) -> ridiculous(x))) # label(non_clause).  [assumption].
+9 (all x (-dance(x) & respect(x) -> fat(x))) # label(non_clause).  [assumption].
+10 (all x (young(x) <-> -old(x))) # label(non_clause).  [assumption].
+11 (all x (wise(x) & young(x) & pigs(x) -> -up(x))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+dance(x) | old(x).  [clausify(1)].
+buns(x) | old(x).  [clausify(1)].
+-pigs(x) | -giddiness(x) | respect(x).  [clausify(2)].
+-wise(x) | -balloonist(x) | umbrella(x,f1(x)).  [clausify(3)].
+-ridiculous(x) | -buns(x) | -lunch(x).  [clausify(4)].
+-young(x) | -up(x) | giddiness(x).  [clausify(5)].
+-fat(x) | -ridiculous(x) | dance(x) | lunch(x).  [clausify(6)].
+-wise(x) | -giddiness(x) | -dance(x).  [clausify(7)].
+-pigs(x) | -umbrella(x,y) | ridiculous(x).  [clausify(8)].
+dance(x) | -respect(x) | fat(x).  [clausify(9)].
+-young(x) | -old(x).  [clausify(10)].
+young(x) | old(x).  [clausify(10)].
+wise(c1).  [deny(11)].
+young(c1).  [deny(11)].
+pigs(c1).  [deny(11)].
+up(c1).  [deny(11)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating dance/1
+12 -wise(x) | -giddiness(x) | -dance(x).  [clausify(7)].
+13 dance(x) | old(x).  [clausify(1)].
+14 -fat(x) | -ridiculous(x) | dance(x) | lunch(x).  [clausify(6)].
+Derived: -wise(x) | -giddiness(x) | old(x).  [resolve(12,c,13,a)].
+Derived: -wise(x) | -giddiness(x) | -fat(x) | -ridiculous(x) | lunch(x).  [resolve(12,c,14,c)].
+15 dance(x) | -respect(x) | fat(x).  [clausify(9)].
+Derived: -respect(x) | fat(x) | -wise(x) | -giddiness(x).  [resolve(15,a,12,c)].
+
+Eliminating buns/1
+16 -ridiculous(x) | -buns(x) | -lunch(x).  [clausify(4)].
+17 buns(x) | old(x).  [clausify(1)].
+Derived: -ridiculous(x) | -lunch(x) | old(x).  [resolve(16,b,17,a)].
+
+Eliminating pigs/1
+18 pigs(c1).  [deny(11)].
+19 -pigs(x) | -giddiness(x) | respect(x).  [clausify(2)].
+20 -pigs(x) | -umbrella(x,y) | ridiculous(x).  [clausify(8)].
+Derived: -giddiness(c1) | respect(c1).  [resolve(18,a,19,a)].
+Derived: -umbrella(c1,x) | ridiculous(c1).  [resolve(18,a,20,a)].
+
+Eliminating wise/1
+21 wise(c1).  [deny(11)].
+22 -wise(x) | -balloonist(x) | umbrella(x,f1(x)).  [clausify(3)].
+Derived: -balloonist(c1) | umbrella(c1,f1(c1)).  [resolve(21,a,22,a)].
+23 -wise(x) | -giddiness(x) | old(x).  [resolve(12,c,13,a)].
+Derived: -giddiness(c1) | old(c1).  [resolve(23,a,21,a)].
+24 -wise(x) | -giddiness(x) | -fat(x) | -ridiculous(x) | lunch(x).  [resolve(12,c,14,c)].
+Derived: -giddiness(c1) | -fat(c1) | -ridiculous(c1) | lunch(c1).  [resolve(24,a,21,a)].
+25 -respect(x) | fat(x) | -wise(x) | -giddiness(x).  [resolve(15,a,12,c)].
+Derived: -respect(c1) | fat(c1) | -giddiness(c1).  [resolve(25,c,21,a)].
+
+Eliminating young/1
+26 young(x) | old(x).  [clausify(10)].
+27 -young(x) | -up(x) | giddiness(x).  [clausify(5)].
+28 -young(x) | -old(x).  [clausify(10)].
+Derived: old(x) | -up(x) | giddiness(x).  [resolve(26,a,27,a)].
+29 young(c1).  [deny(11)].
+Derived: -up(c1) | giddiness(c1).  [resolve(29,a,27,a)].
+Derived: -old(c1).  [resolve(29,a,28,a)].
+
+Eliminating up/1
+30 old(x) | -up(x) | giddiness(x).  [resolve(26,a,27,a)].
+31 up(c1).  [deny(11)].
+Derived: old(c1) | giddiness(c1).  [resolve(30,b,31,a)].
+32 -up(c1) | giddiness(c1).  [resolve(29,a,27,a)].
+Derived: giddiness(c1).  [resolve(32,a,31,a)].
+
+Eliminating ridiculous/1
+33 -umbrella(c1,x) | ridiculous(c1).  [resolve(18,a,20,a)].
+34 -ridiculous(x) | -lunch(x) | old(x).  [resolve(16,b,17,a)].
+Derived: -umbrella(c1,x) | -lunch(c1) | old(c1).  [resolve(33,b,34,a)].
+35 -giddiness(c1) | -fat(c1) | -ridiculous(c1) | lunch(c1).  [resolve(24,a,21,a)].
+Derived: -giddiness(c1) | -fat(c1) | lunch(c1) | -umbrella(c1,x).  [resolve(35,c,33,b)].
+
+Eliminating giddiness/1
+36 old(c1) | giddiness(c1).  [resolve(30,b,31,a)].
+37 -giddiness(c1) | respect(c1).  [resolve(18,a,19,a)].
+38 -giddiness(c1) | old(c1).  [resolve(23,a,21,a)].
+39 -respect(c1) | fat(c1) | -giddiness(c1).  [resolve(25,c,21,a)].
+Derived: old(c1) | respect(c1).  [resolve(36,b,37,a)].
+Derived: old(c1) | old(c1).  [resolve(36,b,38,a)].
+40 giddiness(c1).  [resolve(32,a,31,a)].
+Derived: respect(c1).  [resolve(40,a,37,a)].
+Derived: -respect(c1) | fat(c1).  [resolve(40,a,39,c)].
+41 -giddiness(c1) | -fat(c1) | lunch(c1) | -umbrella(c1,x).  [resolve(35,c,33,b)].
+Derived: -fat(c1) | lunch(c1) | -umbrella(c1,x).  [resolve(41,a,40,a)].
+
+Eliminating balloonist/1
+
+Eliminating umbrella/2
+
+Eliminating respect/1
+42 -respect(c1) | fat(c1).  [resolve(40,a,39,c)].
+43 old(c1) | respect(c1).  [resolve(36,b,37,a)].
+44 respect(c1).  [resolve(40,a,37,a)].
+Derived: fat(c1) | old(c1).  [resolve(42,a,43,b)].
+Derived: fat(c1).  [resolve(42,a,44,a)].
+
+Eliminating fat/1
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ old ]).
+Function symbol precedence:  function_order([ c1 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+============================== PROOF =================================
+
+% Proof 1 at 0.03 (+ 0.00) seconds.
+% Length of proof is 20.
+% Level of proof is 5.
+% Maximum clause weight is 2.
+% Given clauses 0.
+
+1 (all x (-dance(x) | -buns(x) -> old(x))) # label(non_clause).  [assumption].
+5 (all x (young(x) & up(x) -> giddiness(x))) # label(non_clause).  [assumption].
+7 (all x (wise(x) & giddiness(x) -> -dance(x))) # label(non_clause).  [assumption].
+10 (all x (young(x) <-> -old(x))) # label(non_clause).  [assumption].
+11 (all x (wise(x) & young(x) & pigs(x) -> -up(x))) # label(non_clause) # label(goal).  [goal].
+12 -wise(x) | -giddiness(x) | -dance(x).  [clausify(7)].
+13 dance(x) | old(x).  [clausify(1)].
+21 wise(c1).  [deny(11)].
+23 -wise(x) | -giddiness(x) | old(x).  [resolve(12,c,13,a)].
+26 young(x) | old(x).  [clausify(10)].
+27 -young(x) | -up(x) | giddiness(x).  [clausify(5)].
+28 -young(x) | -old(x).  [clausify(10)].
+29 young(c1).  [deny(11)].
+30 old(x) | -up(x) | giddiness(x).  [resolve(26,a,27,a)].
+31 up(c1).  [deny(11)].
+36 old(c1) | giddiness(c1).  [resolve(30,b,31,a)].
+38 -giddiness(c1) | old(c1).  [resolve(23,a,21,a)].
+45 -old(c1).  [resolve(29,a,28,a)].
+46 old(c1) | old(c1).  [resolve(36,b,38,a)].
+47 $F.  [copy(46),merge(b),unit_del(a,45)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=2. Kept=1. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=1, Disabled=40. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
+User_CPU=0.03, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 15164 exit (max_proofs) Mon Nov  9 00:56:52 2020

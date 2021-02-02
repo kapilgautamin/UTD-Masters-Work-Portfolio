@@ -1,0 +1,196 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 8948 was started by Kapil Gautam on kapilgautamIN,
+Sun Nov  8 23:41:48 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+assign(report_stderr,2).
+set(ignore_option_dependencies).
+if(Prover9).
+% Conditional input included.
+assign(max_seconds,60).
+end_if.
+if(Mace4).
+% Conditional input omitted.
+end_if.
+
+formulas(assumptions).
+(all x all y (Harley(y) & Rides(x,y) -> Rough(x))).
+(all x exists y (Biker(x) -> Rides(x,y) & (Harley(y) | BMW(y)))).
+(all x all y (BMW(y) & Rides(x,y) -> Yuppie(x))).
+(all x (Yuppie(x) -> Lawyer(x))).
+(all y all x (Rough(x) & Nice(y) -> -Date(y,x))).
+Nice(Mary) & Biker(John).
+end_of_list.
+
+formulas(goals).
+-Lawyer(John) -> -Date(Mary,John).
+end_of_list.
+
+============================== end of input ==========================
+
+% Enabling option dependencies (ignore applies only on input).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x all y (Harley(y) & Rides(x,y) -> Rough(x))) # label(non_clause).  [assumption].
+2 (all x exists y (Biker(x) -> Rides(x,y) & (Harley(y) | BMW(y)))) # label(non_clause).  [assumption].
+3 (all x all y (BMW(y) & Rides(x,y) -> Yuppie(x))) # label(non_clause).  [assumption].
+4 (all x (Yuppie(x) -> Lawyer(x))) # label(non_clause).  [assumption].
+5 (all y all x (Rough(x) & Nice(y) -> -Date(y,x))) # label(non_clause).  [assumption].
+6 Nice(Mary) & Biker(John) # label(non_clause).  [assumption].
+7 -Lawyer(John) -> -Date(Mary,John) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-Harley(x) | -Rides(y,x) | Rough(y).  [clausify(1)].
+-Biker(x) | Rides(x,f1(x)).  [clausify(2)].
+-Biker(x) | Harley(f1(x)) | BMW(f1(x)).  [clausify(2)].
+-BMW(x) | -Rides(y,x) | Yuppie(y).  [clausify(3)].
+-Yuppie(x) | Lawyer(x).  [clausify(4)].
+-Rough(x) | -Nice(y) | -Date(y,x).  [clausify(5)].
+Nice(Mary).  [clausify(6)].
+Biker(John).  [clausify(6)].
+-Lawyer(John).  [deny(7)].
+Date(Mary,John).  [deny(7)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating Harley/1
+8 -Biker(x) | Harley(f1(x)) | BMW(f1(x)).  [clausify(2)].
+9 -Harley(x) | -Rides(y,x) | Rough(y).  [clausify(1)].
+Derived: -Biker(x) | BMW(f1(x)) | -Rides(y,f1(x)) | Rough(y).  [resolve(8,b,9,a)].
+
+Eliminating Biker/1
+10 Biker(John).  [clausify(6)].
+11 -Biker(x) | Rides(x,f1(x)).  [clausify(2)].
+Derived: Rides(John,f1(John)).  [resolve(10,a,11,a)].
+12 -Biker(x) | BMW(f1(x)) | -Rides(y,f1(x)) | Rough(y).  [resolve(8,b,9,a)].
+Derived: BMW(f1(John)) | -Rides(x,f1(John)) | Rough(x).  [resolve(12,a,10,a)].
+
+Eliminating BMW/1
+13 BMW(f1(John)) | -Rides(x,f1(John)) | Rough(x).  [resolve(12,a,10,a)].
+14 -BMW(x) | -Rides(y,x) | Yuppie(y).  [clausify(3)].
+Derived: -Rides(x,f1(John)) | Rough(x) | -Rides(y,f1(John)) | Yuppie(y).  [resolve(13,a,14,a)].
+
+Eliminating Yuppie/1
+15 -Rides(x,f1(John)) | Rough(x) | -Rides(y,f1(John)) | Yuppie(y).  [resolve(13,a,14,a)].
+16 -Yuppie(x) | Lawyer(x).  [clausify(4)].
+Derived: -Rides(x,f1(John)) | Rough(x) | -Rides(y,f1(John)) | Lawyer(y).  [resolve(15,d,16,a)].
+
+Eliminating Rough/1
+17 -Rides(x,f1(John)) | Rough(x) | -Rides(y,f1(John)) | Lawyer(y).  [resolve(15,d,16,a)].
+18 -Rough(x) | -Nice(y) | -Date(y,x).  [clausify(5)].
+Derived: -Rides(x,f1(John)) | -Rides(y,f1(John)) | Lawyer(y) | -Nice(z) | -Date(z,x).  [resolve(17,b,18,a)].
+
+Eliminating Nice/1
+19 -Rides(x,f1(John)) | -Rides(y,f1(John)) | Lawyer(y) | -Nice(z) | -Date(z,x).  [resolve(17,b,18,a)].
+20 Nice(Mary).  [clausify(6)].
+Derived: -Rides(x,f1(John)) | -Rides(y,f1(John)) | Lawyer(y) | -Date(Mary,x).  [resolve(19,d,20,a)].
+
+Eliminating Lawyer/1
+21 -Rides(x,f1(John)) | -Rides(y,f1(John)) | Lawyer(y) | -Date(Mary,x).  [resolve(19,d,20,a)].
+22 -Lawyer(John).  [deny(7)].
+Derived: -Rides(x,f1(John)) | -Rides(John,f1(John)) | -Date(Mary,x).  [resolve(21,c,22,a)].
+
+Eliminating Date/2
+23 -Rides(x,f1(John)) | -Rides(John,f1(John)) | -Date(Mary,x).  [resolve(21,c,22,a)].
+24 Date(Mary,John).  [deny(7)].
+Derived: -Rides(John,f1(John)) | -Rides(John,f1(John)).  [resolve(23,c,24,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ Rides ]).
+Function symbol precedence:  function_order([ John, f1 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.01) seconds.
+% Length of proof is 27.
+% Level of proof is 10.
+% Maximum clause weight is 4.
+% Given clauses 0.
+
+1 (all x all y (Harley(y) & Rides(x,y) -> Rough(x))) # label(non_clause).  [assumption].
+2 (all x exists y (Biker(x) -> Rides(x,y) & (Harley(y) | BMW(y)))) # label(non_clause).  [assumption].
+3 (all x all y (BMW(y) & Rides(x,y) -> Yuppie(x))) # label(non_clause).  [assumption].
+4 (all x (Yuppie(x) -> Lawyer(x))) # label(non_clause).  [assumption].
+5 (all y all x (Rough(x) & Nice(y) -> -Date(y,x))) # label(non_clause).  [assumption].
+6 Nice(Mary) & Biker(John) # label(non_clause).  [assumption].
+7 -Lawyer(John) -> -Date(Mary,John) # label(non_clause) # label(goal).  [goal].
+8 -Biker(x) | Harley(f1(x)) | BMW(f1(x)).  [clausify(2)].
+9 -Harley(x) | -Rides(y,x) | Rough(y).  [clausify(1)].
+10 Biker(John).  [clausify(6)].
+11 -Biker(x) | Rides(x,f1(x)).  [clausify(2)].
+12 -Biker(x) | BMW(f1(x)) | -Rides(y,f1(x)) | Rough(y).  [resolve(8,b,9,a)].
+13 BMW(f1(John)) | -Rides(x,f1(John)) | Rough(x).  [resolve(12,a,10,a)].
+14 -BMW(x) | -Rides(y,x) | Yuppie(y).  [clausify(3)].
+15 -Rides(x,f1(John)) | Rough(x) | -Rides(y,f1(John)) | Yuppie(y).  [resolve(13,a,14,a)].
+16 -Yuppie(x) | Lawyer(x).  [clausify(4)].
+17 -Rides(x,f1(John)) | Rough(x) | -Rides(y,f1(John)) | Lawyer(y).  [resolve(15,d,16,a)].
+18 -Rough(x) | -Nice(y) | -Date(y,x).  [clausify(5)].
+19 -Rides(x,f1(John)) | -Rides(y,f1(John)) | Lawyer(y) | -Nice(z) | -Date(z,x).  [resolve(17,b,18,a)].
+20 Nice(Mary).  [clausify(6)].
+21 -Rides(x,f1(John)) | -Rides(y,f1(John)) | Lawyer(y) | -Date(Mary,x).  [resolve(19,d,20,a)].
+22 -Lawyer(John).  [deny(7)].
+23 -Rides(x,f1(John)) | -Rides(John,f1(John)) | -Date(Mary,x).  [resolve(21,c,22,a)].
+24 Date(Mary,John).  [deny(7)].
+25 Rides(John,f1(John)).  [resolve(10,a,11,a)].
+26 -Rides(John,f1(John)) | -Rides(John,f1(John)).  [resolve(23,c,24,a)].
+27 $F.  [copy(26),merge(b),unit_del(a,25)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=2. Kept=1. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=1, Disabled=19. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.02.
+User_CPU=0.01, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 8948 exit (max_proofs) Sun Nov  8 23:41:48 2020

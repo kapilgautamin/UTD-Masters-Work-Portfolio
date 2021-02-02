@@ -1,0 +1,1537 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Translating Sentences</title>
+<script> 
+function showhide(id) {
+    if (document.getElementById) {
+        obj = document.getElementById(id); 
+        if (obj.style.display == "none") {
+            obj.style.display = ""; 
+        } else { 
+            obj.style.display = "none"; 
+        } 
+    } 
+} 
+</script> 
+</head>
+<body align="JUSTIFY">
+<hr> <!----------------------------------------------------------------------->
+<h1>Translating Sentences</h1>
+
+References to Irving Copi, <em>Symbolic Logic</em>, are to the fifth
+edition, Macmillan, 1979.
+
+<h3>Translations at pp. 69-70</h3>
+
+<ol>
+<li> Snakes are reptiles.
+     <a href="#" onclick="showhide('answer001'); return(false);">Answer</a>
+     <div style="display: none;" id="answer001">
+     <ul>
+     <li> &#8704;X (s(X) &#8658; r(X))
+     </li></ul>
+     </div>
+</li><li> Snakes are not all poisonous.
+     <a href="#" onclick="showhide('answer002'); return(false);">Answer</a>
+     <div style="display: none;" id="answer002">
+     <ul>
+     <li> &#8707;X (s(X) &amp; ~p(X))
+     </li><li> This says there is at least one snake that is not poisonous; this 
+          commits us to the existence of snakes, which the author seems to 
+          want.
+     </li><li> Don't write &#8707;X ~(s(X) &amp; p(X)), or ~&#8704;X (s(X) &#8658; 
+          p(X)), which say instead that there is at least one thing that is 
+          not a poisonous snake --a claim satisfied by my chalk.
+     </li></ul>
+     </div>
+</li><li> Children are present.
+     <a href="#" onclick="showhide('answer003'); return(false);">Answer</a>
+     <div style="display: none;" id="answer003">
+     <ul>
+     <li> &#8707;X (c(X) &amp; p(X))
+     </li><li> My translation says that at least one child is present, which seems 
+          more accurate than &#8704;X (c(X) &#8658; p(X)), all children in the 
+          universe (of discourse) are present.
+     </li></ul>
+     </div>
+</li><li> Executives all have secretaries.
+     <a href="#" onclick="showhide('answer004'); return(false);">Answer</a>
+     <div style="" id="answer004">
+     <ul>
+     <li> &#8704;X (e(X) &#8658; s(X))
+     </li></ul>
+     </div>
+</li><li> Only executives have secretaries.
+     <a href="#" onclick="showhide('answer005'); return(false);">Answer</a>
+     <div style="" id="answer005">
+     <ul>
+     <li> &#8704;X (s(X) &#8658; e(X))
+     </li><li> Compare the answers to 4 and 5; note how the 'all' and 'only' 
+          propositions are the converse of one another.
+     </li></ul>
+     </div>
+</li><li> Only property owners may vote in special municipal elections.
+     <a href="#" onclick="showhide('answer006'); return(false);">Answer</a>
+     <div style="display: none;" id="answer006">
+     <ul>
+     <li> &#8704;X (v(X) &#8658; p(X))
+     </li><li> If you wrote &#8704;X (p(X) &#8658; v(X)), then you'd be saying that 
+          <em>all</em> (not <em>only</em>) property owners may vote.
+     </li></ul>
+     </div>
+</li><li> Employees may use only the service elevator.
+     <a href="#" onclick="showhide('answer007'); return(false);">Answer</a>
+     <div style="display: none;" id="answer007">
+     <ul>
+     <li> &#8704;X (u(X) &#8658; s(X))
+     </li><li> Paraphrase: All elevators which employees may use are service 
+          elevators.
+     </li></ul>
+     </div>
+</li><li> Only employees may use the service elevator.
+     <a href="#" onclick="showhide('answer008'); return(false);">Answer</a>
+     <div style="display: none;" id="answer008">
+     <ul>
+     <li> &#8704;X (u(X) &#8658; e(X))
+     </li><li> Paraphrase: All those who may use service elevators are employees.
+     </li><li> Note that in problem #7, u(X) referred to elevators, and in problem 
+          #8, u(X) refers to employees.
+     </li></ul>
+     </div>
+</li><li> All that glitters is not gold.
+     <a href="#" onclick="showhide('answer009'); return(false);">Answer</a>
+     <div style="display: none;" id="answer009">
+     <ul>
+     <li> &#8704;X (g(X) &#8658; ~a(X))
+     </li><li> My translation, like the English original, says quite literally that 
+          all that glitters is not gold.  It implies that gold, if it 
+          glitters, is not gold, which is false.
+     </li><li> The speaker of this proverb undoubtedly meant that we should not be 
+          misled by glitter to think that we have found gold.  This truth 
+          requires a 'not all' rather than an 'all not', and should be 
+          translated ~&#8704;X (g(X) &#8658; a(X)) or &#8707;X (g(X) &amp; ~a(X)).
+     </li><li> There are two natural but non-equivalent ways to translate 'all not' 
+          sentences, such as 'All that glitters is not gold': &#8704;X ~(g(X) 
+          &#8658; a(X)) and &#8704;X (g(X) &#8658; ~a(X)).  The former asserts 
+          the absurdity that everything whatsoever glitters and everything 
+          whatsoever is not gold.  The latter is the true 'all not' sentence: 
+          for all things, if they glitter, then they are not gold. Remember 
+          that "All A's are not B's" means "No A's are B's".
+     </li></ul>
+     </div>
+</li><li> None but the brave deserve the fair.
+     <a href="#" onclick="showhide('answer010'); return(false);">Answer</a>
+     <div style="display: none;" id="answer010">
+     <ul>
+     <li> &#8704;X (d(X) &#8658; b(X))
+     </li><li> This means: <em>only</em> the brave deserve the fair, which is the 
+          converse of <em>all</em> the brave deserve the fair.  It is 
+          equivalent to saying: All those who deserve the fair are 
+          brave.
+     </li></ul>
+     </div>
+</li><li> Not every visitor stayed for dinner.
+     <a href="#" onclick="showhide('answer011'); return(false);">Answer</a>
+     <div style="display: none;" id="answer011">
+     <ul>
+     <li> &#8707;X (v(X) &amp; ~s(X))
+     </li><li> My translation says there is a visitor who did not stay; this seems 
+          more accurate to me than &#8707;X ~(v(X) &amp; s(X)), or ~&#8704;X 
+          (v(X) &#8658; s(X)): there is something that is not a visitor who 
+          stayed, for example, my chalk.
+     </li></ul>
+     </div>
+</li><li> Not any visitor stayed for dinner.
+     <a href="#" onclick="showhide('answer012'); return(false);">Answer</a>
+     <div style="display: none;" id="answer012">
+     <ul>
+     <li> &#8704;X (v(X) &#8658; ~s(X)), or ~&#8707;X (v(X) &amp; s(X))
+     </li><li> 'Not any' = none = all did not = false that at least one did.
+     </li></ul>
+     </div>
+</li><li> Nothing in the house escaped destruction.
+     <a href="#" onclick="showhide('answer013'); return(false);">Answer</a>
+     <div style="display: none;" id="answer013">
+     <ul>
+     <li> &#8704;X ~(h(X) &#8658; e(X)) and &#8704;X (h(X) &#8658; ~e(X)) are 
+          both natural; but they are non-equivalent (see note to exercise 9).  
+          The former says that being in the house didn't necessarily mean 
+          destruction, clearly not the speaker's meaning.  The latter says 
+          that everying in the house was destroyed.
+     </li></ul>
+     </div>
+</li><li> Some students are both intelligent and hard workers.
+     <a href="#" onclick="showhide('answer014'); return(false);">Answer</a>
+     <div style="display: none;" id="answer014">
+     <ul>
+     <li> &#8707;X (s(X) &amp; i(X) &amp; h(X))
+     </li><li> There is at least one thing possessing these three properties: being 
+          a student, being intelligent, being a hard worker.  (This notation 
+          is a natural for poetry!)
+     </li></ul>
+     </div>
+</li><li> No coat is waterproof unless it has been specially treated.
+     <a href="#" onclick="showhide('answer015'); return(false);">Answer</a>
+     <div style="display: none;" id="answer015">
+     <ul>
+     <li> &#8704;X (c(X) &#8658; (~w(X) | s(X)))
+     </li><li> If something is a coat, then it's either not waterproof or specially 
+          treated.  This is an accurate translation; you'll have to get used 
+          to turning sentences inside out like this on occasion.
+     </li><li> Here I translated "unless" as inclusive disjunction.  If you want to 
+          use exclusive disjunction, then say this: &#8704;X (c(X) &#8658; 
+          (~w(X) &lt;~&gt; s(X)))
+     </li></ul>
+     </div>
+</li><li> Some medicines are dangerous only if taken in excessive amounts.
+     <a href="#" onclick="showhide('answer016'); return(false);">Answer</a>
+     <div style="display: none;" id="answer016">
+     <ul>
+     <li> &#8707;X (m(X) &amp; (d(X) &#8658; e(X)))
+     </li><li> This way of translating it commits us absolutely to the existence of 
+          medicines, but only conditionally to their dangerousness, which is 
+          what the speaker seems to want.
+     </li><li> We avoid &#8707;X ((m(X) &amp; d(X)) &#8658; e(X)) because it is an 
+          existentially quantified conditional.  It is equivalent to &#8707;X 
+          (~(m(X) &amp; d(X)) | e(X)) which asserts that there is something that 
+          is either not a dangerous medicine (like my chalk) or that is taken 
+          in excessive amounts (like logic courses).
+     </li></ul>
+     </div>
+</li><li> All fruits and vegetables are wholesome and delicious.
+     <a href="#" onclick="showhide('answer017'); return(false);">Answer</a>
+     <div style="display: none;" id="answer017">
+     <ul>
+     <li> &#8704;X ((f(X) | v(X)) &#8658; (w(X) &amp; d(X)))
+     </li><li> Note how the "and" between fruits and vegetables is translated as a 
+          disjunction.
+     </li></ul>
+     </div>
+</li><li> Everything enjoyable is either immoral, illegal, or fattening.
+     <a href="#" onclick="showhide('answer018'); return(false);">Answer</a>
+     <div style="display: none;" id="answer018">
+     <ul>
+     <li> &#8704;X (e(X) &#8658; (~m(X) | ~l(X) | f(X)))
+     </li></ul>
+     </div>
+</li><li> A professor is a good lecturer if and only if he is both well-informed 
+     and entertaining.
+     <a href="#" onclick="showhide('answer019'); return(false);">Answer</a>
+     <div style="display: none;" id="answer019">
+     <ul>
+     <li> &#8704;X (p(X) &#8658; (g(X) &#8660; (w(X) &amp; e(X))))
+     </li><li> My translation is not equivalent to this attractive possibility: 
+          &#8704;X ((p(X) &amp; g(X)) &#8660; (w(X) &amp; e(X))).  Mine says that all 
+          professors are good iff they are well-informed and entertaining.  
+          The equivalence is only asserted to hold for professors.  The latter 
+          says that something is a good professor iff it is well-informed and 
+          entertaining; the equivalence is asserted to hold in general, 
+          implying that the puerile weather person on the local news is a 
+          'good professor'.
+     </li></ul>
+     </div>
+</li><li> Only policemen and firemen are both indispensable and underpaid.
+     <a href="#" onclick="showhide('answer020'); return(false);">Answer</a>
+     <div style="display: none;" id="answer020">
+     <ul>
+     <li> &#8704;X ((i(X) &amp; u(X)) &#8658; (p(X) | f(X)))
+     </li><li> Paraphrase: All who are indispensable and underpaid are either 
+          policemen or firemen.  Note how the "and" between policemen and 
+          firemen is translated as a disjunction.
+     </li></ul>
+     </div>
+</li><li> Not every actor is talented who is famous.
+     <a href="#" onclick="showhide('answer021'); return(false);">Answer</a>
+     <div style="display: none;" id="answer021">
+     <ul>
+     <li> &#8707;X (a(X) &amp; f(X) &amp; ~t(X))
+     </li><li> At least one actor who is famous is not talented.
+     </li></ul>
+     </div>
+</li><li> Any girl is healthy if she is well nourished and exercises regularly.
+     <a href="#" onclick="showhide('answer022'); return(false);">Answer</a>
+     <div style="display: none;" id="answer022">
+     <ul>
+     <li> &#8704;X (g(X) &#8658; ((w(X) &amp; e(X)) &#8658; h(X))
+     </li><li> This is equivalent to &#8704;X ((g(X) &amp; w(X) &amp; e(X)) &#8658; h(X)) 
+          by exportation.
+     </li></ul>
+     </div>
+</li><li> It is not true that every watch will keep good time if and only if it is wound regularly and not abused.
+     <a href="#" onclick="showhide('answer023'); return(false);">Answer</a>
+     <div style="display: none;" id="answer023">
+     <ul>
+     <li> ~&#8704;X (w(X) &#8658; ((r(X) &amp; ~a(X)) &#8660; k(X))) or &#8707;X 
+          ~(w(X) &#8658; ((r(X) &amp; ~a(X)) &#8660; k(X)))
+     </li><li> See comment to exercise 19.
+     </li><li> Note that this is not an existentially quantified conditional, but 
+          an existentially quantified negation of a conditional.
+     </li></ul>
+     </div>
+</li><li> Not every person who talks a great deal has a great deal to say.
+     <a href="#" onclick="showhide('answer024'); return(false);">Answer</a>
+     <div style="display: none;" id="answer024">
+     <ul>
+     <li> &#8707;X (p(X) &amp; t(X) &amp; ~h(X))
+     </li><li> At least one person who talks a great deal does not have a great 
+          deal to say.
+     </li></ul>
+     </div>
+</li><li> No automobile that is over ten years old will be repaired if it is 
+     severely damaged.
+     <a href="#" onclick="showhide('answer025'); return(false);">Answer</a>
+     <div style="display: none;" id="answer025">
+     <ul>
+     <li> &#8704;X ((a(X) &amp; o(X)) &#8658; (d(X) &#8658; ~r(X)))
+     </li><li> This is equivalent to &#8704;X ((a(X) &amp; o(X) &amp; d(X)) &#8658; ~r(X)) 
+          by exportation.
+     </li><li> It is <em>not</em> equivalent to &#8704;X ~((a(X) &amp; o(X) &amp; d(X)) 
+          &#8658; r(X)).
+     </li></ul>
+     </div>
+
+<p>
+</p><h3>Translations at p. 70</h3>
+<p>
+
+</p></li><li> Some horses are gentle and have been well trained.
+     <a href="#" onclick="showhide('answer026'); return(false);">Answer</a>
+     <div style="display: none;" id="answer026">
+     <ul>
+     <li> &#8707;X (h(X) &amp; g(X) &amp; t(X))
+     </li></ul>
+     </div>
+</li><li> Some horses are gentle only if they have been well trained.
+     <a href="#" onclick="showhide('answer027'); return(false);">Answer</a>
+     <div style="display: none;" id="answer027">
+     <ul>
+     <li> &#8707;X (h(X) &amp; (g(X) &#8658; t(X)))
+     </li><li> Don't forget that "p &#8658; q" translates "p only if q".
+     </li></ul>
+     </div>
+</li><li> Some horses are gentle if they have been well trained.
+     <a href="#" onclick="showhide('answer028'); return(false);">Answer</a>
+     <div style="display: none;" id="answer028">
+     <ul>
+     <li> &#8707;X (h(X) &amp; (t(X) &#8658; g(X)))
+     </li></ul>
+     </div>
+</li><li> Any horse is gentle that has been well trained.
+     <a href="#" onclick="showhide('answer029'); return(false);">Answer</a>
+     <div style="display: none;" id="answer029">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (t(X) &#8658; g(X)))
+     </li><li> Paraphrase: All well trained horses are gentle.
+     </li><li> This is equivalent to &#8704;X ((h(X) &amp; t(X)) &#8658; g(X)) by exportation
+     </li></ul>
+     </div>
+</li><li> Any horse that is gentle has been well trained.
+     <a href="#" onclick="showhide('answer030'); return(false);">Answer</a>
+     <div style="display: none;" id="answer030">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (g(X) &#8658; t(X)))
+     </li><li> Paraphrase: All gentle horses are well trained.
+     </li><li> This is equivalent to &#8704;X ((h(X) &amp; g(X)) &#8658; t(X))
+     </li></ul>
+     </div>
+</li><li> No horse is gentle unless it has been well trained.
+     <a href="#" onclick="showhide('answer031'); return(false);">Answer</a>
+     <div style="display: none;" id="answer031">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (g(X) &#8658; t(X)))
+     </li><li> Paraphrase: All horses are ungentle unless well trained.  All horses 
+          are ungentle or (else) well trained.
+     </li><li> Note that this is the same formula used in exercise 30.  The trick 
+          is to see that the statement in 31 asserts that being well trained 
+          is the necessary condition of being gentle.  Recall that necessary 
+          conditions are translated as the consequents of ordinary 
+          conditionals; that which they condition becomes the antecedent.  You 
+          may find this translation more intuitive if you transform it into 
+          one or more of its equivalents, e. g. &#8704;X (h(X) &#8658; (~t(X) 
+          &#8658; ~g(X))) or &#8704;X (h(X) &#8658; (t(X) | ~g(X))) or 
+          &#8704;X ((h(X) &amp; ~t(X)) &#8658; ~g(X)).
+     </li></ul>
+     </div>
+</li><li> Any horse is gentle if it has been well trained.
+     <a href="#" onclick="showhide('answer032'); return(false);">Answer</a>
+     <div style="display: none;" id="answer032">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (t(X) &#8658; g(X)))
+     </li><li> Or by exportation: &#8704;X ((h(X) &amp; t(X)) &#8658; g(X)).
+     </li></ul>
+     </div>
+</li><li> Any horse has been well trained if it is gentle.
+     <a href="#" onclick="showhide('answer033'); return(false);">Answer</a>
+     <div style="display: none;" id="answer033">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (g(X) &#8658; t(X)))
+     </li><li> Or by exportation: &#8704;X ((h(X) &amp; g(X)) &#8658; t(X)).
+     </li></ul>
+     </div>
+</li><li> Any horse is gentle if an only if it has been well trained.
+     <a href="#" onclick="showhide('answer034'); return(false);">Answer</a>
+     <div style="display: none;" id="answer034">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (g(X) &#8660; t(X)))
+     </li></ul>
+     </div>
+</li><li> Gentle horses have all been well trained.
+     <a href="#" onclick="showhide('answer035'); return(false);">Answer</a>
+     <div style="display: none;" id="answer035">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (g(X) &#8658; t(X)))
+     </li><li> Or by exportation: &#8704;X ((h(X) &amp; g(X)) &#8658; t(X)).
+     </li><li> Note that this is the same formula used in exercise 33.
+     </li></ul>
+     </div>
+</li><li> Only well trained horses are gentle.
+     <a href="#" onclick="showhide('answer036'); return(false);">Answer</a>
+     <div style="display: none;" id="answer036">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (g(X) &#8658; t(X)))
+     </li><li> Or by exportation: &#8704;X ((h(X) &amp; g(X)) &#8658; t(X)).
+     </li><li> Note that this is the same formula used in exercises 33 and 35.
+     </li></ul>
+     </div>
+</li><li> Only gentle horses have been well trained.
+     <a href="#" onclick="showhide('answer037'); return(false);">Answer</a>
+     <div style="display: none;" id="answer037">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (t(X) &#8658; g(X)))
+     </li><li> Or by exportation: &#8704;X ((h(X) &amp; t(X)) &#8658; g(X)).
+     </li><li> Note that this is the same formula used in exercise 32.
+     </li></ul>
+     </div>
+</li><li> Only horses are gentle if they have been well trained.
+     <a href="#" onclick="showhide('answer038'); return(false);">Answer</a>
+     <div style="display: none;" id="answer038">
+     <ul>
+     <li> I don't know what this means.  If it means "horses are the only 
+          things that can be made gentle by training," then translate it thus: 
+          &#8704;X ((t(X) &#8658; g(X)) &#8658; h(X)) (if something became 
+          gentle from training, then it's a horse).
+     </li></ul>
+     </div>
+</li><li> Some horses are gentle even though they have not been well trained.
+     <a href="#" onclick="showhide('answer039'); return(false);">Answer</a>
+     <div style="display: none;" id="answer039">
+     <ul>
+     <li> &#8707;X (h(X) &amp; g(X) &amp; ~t(X))
+     </li></ul>
+     </div>
+</li><li> If something is a well trained horse, then it must be gentle.
+     <a href="#" onclick="showhide('answer040'); return(false);">Answer</a>
+     <div style="display: none;" id="answer040">
+     <ul>
+     <li> &#8704;X ((h(X) &amp; t(X)) &#8658; g(X))
+     </li><li> Despite the 'some' in 'something', we need the universal quantifier 
+          here.  The speaker clearly means that every well trained horse is 
+          gentle, not that at least one well trained horse is gentle.
+     </li><li> Note that this is the same formula used in exercises 32 and 37.
+     </li></ul>
+     </div>
+</li><li> Some horses that are well trained are not gentle.
+     <a href="#" onclick="showhide('answer041'); return(false);">Answer</a>
+     <div style="display: none;" id="answer041">
+     <ul>
+     <li> &#8707;X (h(X) &amp; t(X) &amp; ~g(X))
+     </li></ul>
+     </div>
+</li><li> Some horses are neither gentle nor well trained.
+     <a href="#" onclick="showhide('answer042'); return(false);">Answer</a>
+     <div style="display: none;" id="answer042">
+     <ul>
+     <li> &#8707;X (h(X) &amp; ~g(X) &amp; ~t(X))
+     </li></ul>
+     </div>
+</li><li> No horse that is well trained fails to be gentle.
+     <a href="#" onclick="showhide('answer043'); return(false);">Answer</a>
+     <div style="display: none;" id="answer043">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (t(X) &#8658; g(X)))
+     </li><li> Paraphrase: All well trained horses are gentle.
+     </li><li> Or by exportation: &#8704;X ((h(X) &amp; t(X)) &#8658; g(X)).
+     </li><li> Note that this is the same formula used in exercises 32, 37, and 40.
+     </li></ul>
+     </div>
+</li><li> A horse is gentle only if it has been well trained.
+     <a href="#" onclick="showhide('answer044'); return(false);">Answer</a>
+     <div style="display: none;" id="answer044">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (g(X) &#8658; t(X)))
+     </li><li> On 'only if', see comment to exercise 27.
+     </li><li> Note that the indefinite article takes the universal quantifier here.
+     </li><li> Or by exportation: &#8704;X ((h(X) &amp; g(X)) &#8658; t(X)).
+     </li><li> Note that this is the same formula used in exercises 33, 35, and 36.
+     </li></ul>
+     </div>
+</li><li> If anything is a gentle horse, then it has been well trained.
+     <a href="#" onclick="showhide('answer045'); return(false);">Answer</a>
+     <div style="display: none;" id="answer045">
+     <ul>
+     <li> &#8704;X ((h(X) &amp; g(X)) &#8658; t(X))
+     </li><li> Note that this is the same formula used in exercises 33, 35, 36, and 
+          44.
+     </li></ul>
+     </div>
+</li><li> If any horse is well trained, then it is gentle.
+     <a href="#" onclick="showhide('answer046'); return(false);">Answer</a>
+     <div style="display: none;" id="answer046">
+     <ul>
+     <li> &#8704;X ((h(X) &amp; t(X)) &#8658; g(X))
+     </li><li> Note that this is the same formula used in exercises 32, 37, 40, and 
+          43.
+     </li></ul>
+     </div>
+
+<p>
+</p><h3>Translations at p. 71</h3>
+<p>
+
+</p></li><li> Blessed is he that considereth the poor.
+     <a href="#" onclick="showhide('answer047'); return(false);">Answer</a>
+     <div style="display: none;" id="answer047">
+     <ul>
+     <li> &#8704;X (c(X) &#8658; b(X))
+     </li><li> Paraphrase: All who considereth the poor are blessed.
+     </li><li> Note how the singular 'he' triggers the universal quantifier; the 
+          speaker clearly means "blessed is <em>whoever</em> that considereth. 
+          . . ".  This is true in many of the following exercises as well.
+     </li><li> Copi assumes that the universe of discourse is limited to persons, 
+          otherwise he'd have to indicate this limitation in the formula: 
+          &#8704;X (p(X) &#8658; (c(X) &#8658; b(X))).  This is true in many of 
+          the following exercises as well.
+     </li></ul>
+     </div>
+</li><li> He that hath knowledge spareth his words.
+     <a href="#" onclick="showhide('answer048'); return(false);">Answer</a>
+     <div style="display: none;" id="answer048">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; s(X))
+     </li><li> Paraphrase: All who hath, spareth.
+     </li></ul>
+     </div>
+</li><li> Whoso findeth a wife findeth a good thing.
+     <a href="#" onclick="showhide('answer049'); return(false);">Answer</a>
+     <div style="display: none;" id="answer049">
+     <ul>
+     <li> &#8704;X (w(X) &#8658; g(X))
+     </li><li> Paraphrase: All who find wives, find good things.
+     </li></ul>
+     </div>
+</li><li> He that maketh haste to be rich shall not be innocent.
+     <a href="#" onclick="showhide('answer050'); return(false);">Answer</a>
+     <div style="display: none;" id="answer050">
+     <ul>
+     <li> &#8704;X (r(X) &#8658; ~i(X))
+     </li><li> Paraphrase: None who make haste to be rich are innocent.
+     </li></ul>
+     </div>
+</li><li> They shall sit every man under his vine and under his fig-tree.
+     <a href="#" onclick="showhide('answer051'); return(false);">Answer</a>
+     <div style="display: none;" id="answer051">
+     <ul>
+     <li> &#8704;X (m(X) &#8658; (v(X) &amp; f(X)))
+     </li><li> Paraphrase: If one is a man, they shall sit one under one's vine and 
+          they shall sit one under one's fig-tree.
+     </li><li> It doesn't matter who 'they' are; that can be built into the V and F 
+          predicates.  v(X) = 'they' shall sit x under his/her vine; f(X) = 
+          'they' shall sit x under his/her fig-tree.  If it looks like 'they' 
+          are the subjects of these sentences, whereas x ought to represent 
+          the subject, then we restate: v(X) = x shall be sat under his/her 
+          vine by them; f(X) = x shall be sat under his/her fig-tree by them.
+     </li></ul>
+     </div>
+</li><li> He that increaseth knowledge increaseth sorrow.
+     <a href="#" onclick="showhide('answer052'); return(false);">Answer</a>
+     <div style="display: none;" id="answer052">
+     <ul>
+     <li> &#8704;X (k(X) &#8658; s(X))
+     </li><li> Paraphrase: All who increase knowledge, increase sorrow.
+     </li></ul>
+     </div>
+</li><li> Nothing is secret which shall not be made manifest.
+     <a href="#" onclick="showhide('answer053'); return(false);">Answer</a>
+     <div style="display: none;" id="answer053">
+     <ul>
+     <li> &#8704;X (s(X) &#8658; m(X))
+     </li><li> Paraphrase: All that is secret shall be made manifest.
+     </li></ul>
+     </div>
+</li><li> Whom The Lord loveth He chasteneth.
+     <a href="#" onclick="showhide('answer054'); return(false);">Answer</a>
+     <div style="display: none;" id="answer054">
+     <ul>
+     <li> &#8704;X (l(X) &#8658; c(X))
+     </li><li> Paraphrase: All who are loved by the lord are chastened by the lord.
+     </li></ul>
+     </div>
+</li><li> If a man desire the office of a bishop, he desireth a good work.
+     <a href="#" onclick="showhide('answer055'); return(false);">Answer</a>
+     <div style="display: none;" id="answer055">
+     <ul>
+     <li> &#8704;X (o(X) &#8658; w(X))
+     </li><li> Paraphrase: All who desire the office of a bishop desire a good work.
+     </li></ul>
+     </div>
+</li><li> He that hateth dissembleth with his lips, and layeth up deceit within him.
+     <a href="#" onclick="showhide('answer056'); return(false);">Answer</a>
+     <div style="display: none;" id="answer056">
+     <ul>
+     <li> &#8704;X (h(X) &#8658; (d(X) &amp; l(X)))
+     </li><li> Paraphrase: All who hate dissemble and lay up deceit.
+     </li></ul>
+     </div>
+
+<p>
+</p><h3>Translations at pp. 88-89</h3>
+<p>
+
+</p></li><li> If anything is damaged, someone will be blamed.
+     <a href="#" onclick="showhide('answer057'); return(false);">Answer</a>
+     <div style="display: none;" id="answer057">
+     <ul>
+     <li> &#8704;X (d(X) &#8658; &#8707;Y (p(Y) &amp; b(Y)))
+     </li><li> These variations seem acceptable but are not:  &#8707;X (d(X) &#8658; 
+          &#8707;Y (p(Y) &amp; b(Y))), and &#8707;X &#8707;Y (d(X) &#8658; (p(Y) &amp; 
+          b(Y))).  The reason is that they are <em>existentially quantified 
+          conditionals</em>.  (To see why existentially quantified 
+          conditionals are usually undesirable, see comments to exercise 2, 
+          below.)  The same is true for analogous variations on the exercises 
+          below.
+     </li><li> However, if we take the first of these unacceptable translations and 
+          limit the scope of the first quantifier, then we no longer have an 
+          existentially quantified conditional:  &#8707;X d(X) &#8658; &#8707;Y 
+          (p(Y) &amp; b(Y)).  Is this acceptable now?  This says:  if at least one 
+          thing is damaged (but not necessarily for all damaged things), some 
+          one will be blamed.  This is close but not as close as my 
+          translation above, which says:  for all things that are damaged (if 
+          any, but with no exceptions), some one will be blamed.
+     </li></ul>
+     </div>
+</li><li> If anything is damaged, the tenant will be charged for it.
+     <a href="#" onclick="showhide('answer058'); return(false);">Answer</a>
+     <div style="display: none;" id="answer058">
+     <ul>
+     <li> &#8704;X (d(X) &#8658; c(X))
+     </li><li> Paraphrase:  All things that are damaged are charged to the tenant.
+     </li><li> Note that this proposition is not multiply general; it has only one 
+          quantifier.
+     </li><li> Copi wanted an existential quantifier in exercise 1; by analogy one 
+          might want one here.  But like most existentially quantified 
+          conditionals, &#8707;X (d(X) &#8658; c(X)) does not mean what we want 
+          it to.  It is equivalent to &#8707;X (~d(X) | c(X)), which says that 
+          there is something that is either not damaged or charged to the 
+          tenant.  It commits us to the existence of that something; the 
+          English does not.  Moreover, it is satisfied (made true) by my 
+          chalk, since it is undamaged; and this is certainly not intended by 
+          the speaker.
+     </li><li> But &#8707;X (d(X) &amp; c(X)) is clearly worse, for it asserts that 
+          there is something that is damaged that has been charged to the 
+          tenant.  Hence I prefer the universal quantifier here.
+     </li></ul>
+     </div>
+</li><li> If nothing is damaged, nobody will be blamed.
+     <a href="#" onclick="showhide('answer059'); return(false);">Answer</a>
+     <div style="display: none;" id="answer059">
+     <ul>
+     <li> &#8704;X ~d(X) &#8658; &#8704;Y (p(Y) &#8658; ~b(Y))
+     </li><li> This is equivalent to ~&#8707;X d(X) &#8658; &#8704;Y (p(Y) &#8658; 
+          ~b(Y)).
+     </li></ul>
+     </div>
+</li><li> If something is damaged, but nobody is blamed, the tenant will not be charged for it.
+     <a href="#" onclick="showhide('answer060'); return(false);">Answer</a>
+     <div style="display: none;" id="answer060">
+     <ul>
+     <li> &#8704;X ((d(X) &amp; &#8704;Y (p(Y) &#8658; ~b(Y))) &#8658; ~c(X))
+     </li><li> See comment to exercise 2, above.  Here the "if something" initially 
+          pushes us to use an existentially quantified conditional; but since 
+          such expressions don't mean what we want them to, we retreat to a 
+          universal quantifier.  Hence the paraphrase underlying our 
+          translation is:  All things that are damaged when nobody is blamed 
+          will not be charged to the tenant.  Or:  Nothing which is damaged 
+          when nobody is blamed will be charged to the tenant.
+     </li></ul>
+     </div>
+</li><li> If any bananas are yellow, they are ripe.
+     <a href="#" onclick="showhide('answer061'); return(false);">Answer</a>
+     <div style="display: none;" id="answer061">
+     <ul>
+     <li> &#8704;X ((b(X) &amp; y(X)) &#8658; r(X))
+     </li><li> Paraphrase:  All yellow bananas are ripe.
+     </li><li> See comments to exercises 2 and 4, above.
+     </li></ul>
+     </div>
+</li><li> If any bananas are yellow, then some bananas are ripe.
+     <a href="#" onclick="showhide('answer062'); return(false);">Answer</a>
+     <div style="display: none;" id="answer062">
+     <ul>
+     <li> &#8707;X (b(X) &amp; y(X)) &#8658; &#8707;Y (b(Y) &amp; r(Y))
+     </li><li> Note this is <em>not</em> an existentially quantified conditional.  
+          It is an unquantified conditional with an existentially quantified 
+          antecedent and consequent.
+     </li></ul>
+     </div>
+</li><li> If any bananas are yellow, then if all yellow bananas are ripe, they are 
+     ripe.
+     <a href="#" onclick="showhide('answer063'); return(false);">Answer</a>
+     <div style="display: none;" id="answer063">
+     <ul>
+     <li> &#8704;X ((b(X) &amp; y(X)) &#8658; (&#8704;Y ((b(Y) &amp; y(Y)) &#8658; r(Y))  &#8658;  r(X)))
+     </li><li> Paraphrase:  All yellow bananas if all yellow bananas are ripe are 
+          ripe.
+     </li><li> See comments to exercises 2 and 4, above.  Making the x quantifier 
+          existential is tempting, but then we'd have an existentially 
+          quantified conditional.
+     </li></ul>
+     </div>
+</li><li> If all ripe bananas are yellow, some yellow things are ripe.
+     <a href="#" onclick="showhide('answer064'); return(false);">Answer</a>
+     <div style="display: none;" id="answer064">
+     <ul>
+     <li> &#8704;X ((b(X) &amp; r(X)) &#8658; y(X)) &#8658; &#8707;Y (y(Y) &amp; r(Y))
+     </li></ul>
+     </div>
+</li><li> If all officers present are either captains or majors, then either some 
+     captains are present or some majors are present.
+     <a href="#" onclick="showhide('answer065'); return(false);">Answer</a>
+     <div style="display: none;" id="answer065">
+     <ul>
+     <li> &#8704;X ((o(X) &amp; p(X)) &#8658; (&#8704;Y (m(Y) &#8658; ~p(Y)) | m(X)))
+     </li></ul>
+     </div>
+</li><li> If any officer is present, then either no majors are present or he is a 
+     major.
+     <a href="#" onclick="showhide('answer066'); return(false);">Answer</a>
+     <div style="display: none;" id="answer066">
+     <ul>
+     <li> &#8704;X ((o(X) &amp; p(X)) &#8658; (c(X) | m(X))) &#8658; (&#8707;Y (c(Y) &amp; p(Y)) | &#8707;Z (m(Z) &amp; p(Z)))
+     </li><li> Paraphrase:  For all present officers, either none are majors or 
+          that one is a major.
+     </li><li> See comments to exercises 2 and 4, above.  The x quantifier cannot 
+          be existential, for then we'd have an existentially quantified 
+          conditional.
+     </li></ul>
+     </div>
+</li><li> If some officers are present, then if all officers present are captains, 
+     then some captains are present.
+     <a href="#" onclick="showhide('answer067'); return(false);">Answer</a>
+     <div style="display: none;" id="answer067">
+     <ul>
+     <li> &#8707;X (o(X) &amp; p(X)) &#8658; (&#8704;Y ((o(Y) &amp; p(Y)) &#8658; c(Y)) &#8658; &#8707;Z (c(Z) &amp; p(Z)))
+     </li><li> Note that this is <em>not</em> an existentially quantified 
+          conditional; it is an unquantified conditional with an existentially 
+          quantified antecedent.
+     </li><li> If we wanted to say "c(X)" at the end of this formula, instead of 
+          introducing the new quantifier on "z", then we'd have to extend the 
+          scope of the first &#8707;X  quantifier to the end of the formula.  
+          <em>That</em> would turn the whole thing into an existentially 
+          quantified conditional, which is a good reason not to do it.
+     </li><li> If we make the x quantifier universal, then we could put the rest of 
+          the formula within its scope, drop the z quantifier, and change c(Z) 
+          and p(Z) at the end to c(X) and p(X).  The only problem with this 
+          approach is a slight clash with the English meaning.  It wouldn't 
+          say that all officers were present, but it would say that, for all 
+          officers that are present, then (if all officers present are 
+          captains) they are captains.
+     </li></ul>
+     </div>
+</li><li> If some officers are present, then if all officers present are captains, 
+     then they are captains.
+     <a href="#" onclick="showhide('answer068'); return(false);">Answer</a>
+     <div style="display: none;" id="answer068">
+     <ul>
+     <li> &#8704;X ((o(X) &amp; p(X)) &#8658; (&#8704;Y ((o(Y) &amp; p(Y)) &#8658; c(Y)) &#8658; c(X)))
+     </li><li> Paraphrase:  All present officers if all present officers are 
+          captains are captains.
+     </li><li> The syntax of this sentence, hence its translation, is identical to 
+          that in exercise 7.
+     </li><li> Here we sorely want to use an existential quantifier:  &#8707;X 
+          ((o(X) &amp; p(X)) &#8658; (&#8704;Y ((o(Y) &amp; p(Y)) &#8658; c(Y)) &#8658; 
+          c(X))).  The trouble with this, however, is that creates an 
+          existentially quantified conditional.  This is not one of the rare 
+          cases where we really mean what an existentially quantified 
+          conditional would say, however.  It would say (after a few 
+          transformations that preserve equivalence) that there is something 
+          that is either not a present officer or that has the property of 
+          being a captain if all present officers are captains.  But this 
+          sentence is satisfied by my chalk, since my chalk is not a present 
+          officer.
+     </li><li> Another tempting solution would be to retain the existential 
+          quantifier but let its scope stop after the antecedent, and not 
+          envelope the whole conditional:  &#8707;X (o(X) &amp; p(X)) &#8658; 
+          (&#8704;Y ((o(Y) &amp; p(Y)) &#8658; c(Y)) &#8658; c(X))).  The problem 
+          with this is that the "x" in the final c(X) is free; hence we will 
+          have produced a propositional function (lacking a truth-value), 
+          while the English sentence was a proposition (bearing a truth-value).
+     </li><li> Notice that both my translation and the English sentence are 
+          non-committal on the existence of present officers.  This supports 
+          the decision to use a universal quantifier.
+     </li><li> Also notice how the particular-seeming "they" does not compel an 
+          existential quantifier.  This is true even of the "he" in exercise 
+          20, below.  Recall this usage in other, more familiar English 
+          sentences.  "The horse is a noble animal; <em>she</em> swats flies 
+          with her tail. "  This is clearly a statement about all horses that 
+          would take a universal quantifier.
+     </li></ul>
+     </div>
+</li><li> If all survivors are fortunate and only women were survivors, then if 
+     there are any survivors, then some women are fortunate.
+     <a href="#" onclick="showhide('answer069'); return(false);">Answer</a>
+     <div style="display: none;" id="answer069">
+     <ul>
+     <li> &#8704;X ((s(X) &#8658; f(X)) &amp; (s(X) &#8658; w(X))) &#8658; (&#8707;Y (s(Y)) &#8658; &#8707;Z (w(Z) &amp; f(Z)))
+     </li><li> We could just as legitimately use, say, &#8704;Z (s(Z) &#8658; w(Z)) 
+          in place of s(X) &#8658; w(X).
+     </li></ul>
+     </div>
+</li><li> If any survivors are women, then if all women are fortunate, they are 
+     fortunate.
+     <a href="#" onclick="showhide('answer070'); return(false);">Answer</a>
+     <div style="display: none;" id="answer070">
+     <ul>
+     <li> &#8704;X ((s(X) &amp; w(X)) &#8658; (&#8704;Y (w(Y) &#8658; f(Y)) &#8658; f(X)))
+     </li><li> Paraphrase:  All women survivors if all women are fortunate are 
+          fortunate.
+     </li><li> See comment to exercise 12, above.
+     </li></ul>
+     </div>
+</li><li> If there are any survivors and only women are survivors, then they are 
+     women.
+     <a href="#" onclick="showhide('answer071'); return(false);">Answer</a>
+     <div style="display: none;" id="answer071">
+     <ul>
+     <li> &#8704;X (((s(X)) &amp; &#8704;Y (s(Y) &#8658; w(Y))) &#8658; w(X))
+     </li><li> Paraphrase:  All survivors if all survivors are women are women.
+     </li><li> See comment to exercise 12, above.
+     </li></ul>
+     </div>
+</li><li> If every position has a future and no employees are lazy, then some 
+     employees will be successful.
+     <a href="#" onclick="showhide('answer072'); return(false);">Answer</a>
+     <div style="display: none;" id="answer072">
+     <ul>
+     <li> (&#8704;X (p(X) &#8658; f(X)) &amp; &#8704;Y (e(Y) &#8658; ~l(Y))) &#8658; &#8707;Z (e(Z) &amp; s(Z))
+     </li></ul>
+     </div>
+</li><li> If any employees are lazy, then if some positions have no future, then 
+     they will not be successful.
+     <a href="#" onclick="showhide('answer073'); return(false);">Answer</a>
+     <div style="display: none;" id="answer073">
+     <ul>
+     <li> &#8704;X ((e(X) &amp; l(X)) &#8658; (&#8707;Y (p(Y) &amp; ~f(Y)) &#8658; ~s(X)))
+     </li><li> Paraphrase:  All lazy employees if some positions have no future 
+          will be unsuccessful.
+     </li><li> See comment to exercise 12, above.
+     </li></ul>
+     </div>
+</li><li> If any employees are lazy and some positions have no future, then some 
+     employees will not be successful.
+     <a href="#" onclick="showhide('answer074'); return(false);">Answer</a>
+     <div style="display: none;" id="answer074">
+     <ul>
+     <li> (&#8707;X (e(X) &amp; l(X)) &amp; &#8707;Y (p(Y) &amp; ~f(Y))) &#8658; &#8707;Z (e(Z) &amp; ~s(Z))
+     </li><li> Note that this is <em>not</em> an existentially quantified 
+          conditional.  It is an unquantified conditional.  Not even the 
+          antecedent is quantified; rather it is an unquantified conjunction 
+          whose conjuncts are existentially quantified.
+     </li></ul>
+     </div>
+</li><li> If any husband is unsuccessful, then if all wives are ambitious, then 
+     some wives will be disappointed.
+     <a href="#" onclick="showhide('answer075'); return(false);">Answer</a>
+     <div style="display: none;" id="answer075">
+     <ul>
+     <li> &#8707;X (h(X) &amp; ~s(X)) &#8658; (&#8704;Y (w(Y) &#8658; a(Y)) &#8658; &#8707;Z (w(Z) &amp; d(Z)))
+     </li><li> Note that this is <em>not</em> an existentially quantified 
+          conditional; it is an unquantified conditional whose antecedent is 
+          existentially quantified.
+     </li></ul>
+     </div>
+</li><li> If any husband is unsuccessful, then if some wives are ambitious, he will 
+     be unhappy.
+     <a href="#" onclick="showhide('answer076'); return(false);">Answer</a>
+     <div style="display: none;" id="answer076">
+     <ul>
+     <li> &#8704;X ((h(X) &amp; ~s(X)) &#8658; (&#8707;Y (w(Y) &amp; a(Y)) &#8658; u(X)))
+     </li><li> Paraphrase:  All unsuccessful husbands if some wives are ambitious 
+          will be unhappy.
+     </li><li> See comment to exercise 12, above.
+     </li></ul>
+     </div>
+
+<p>
+</p><h3>Translations at pp.  128-29</h3>
+<p>
+
+</p></li><li> Dead men tell no tales.
+     <a href="#" onclick="showhide('answer084'); return(false);">Answer</a>
+     <div style="" id="answer084">
+     <ul>
+     <li> &#8704;X ((d(X) &amp; m(X)) &#8658; &#8704;Y (t(Y) &#8658; ~t(X,Y)))
+     </li><li> This is Copi's answer.   It is equivalent to &#8704;X &#8704;Y 
+          ((m(X) &amp; d(X) &amp; t(Y)) &#8658; ~t(X,Y)), which is in a format I find 
+          more natural.   (I'll use this format rather than Copi's in the 
+          following translations. )
+     </li><li> Technical aside:  the format I prefer is called "prenex normal 
+          form".   In prenex normal form, all the quantifiers in a formula are 
+          stacked at the left end, none is negated, and the scope of each 
+          extends to the end of the whole formula.
+     </li></ul>
+     </div>
+</li><li> A lawyer who pleads his own case has a fool for a client.
+     <a href="#" onclick="showhide('answer085'); return(false);">Answer</a>
+     <div style="display: none;" id="answer085">
+     <ul>
+     <li> &#8704;X &#8704;Y ((l(X) &amp; p(X,X)) &#8658; (c(Y,X) &amp; f(Y)))
+     </li><li> Paraphrase:  All lawyers who plead their own cases have fools for 
+          clients.
+     </li><li> Like the English sentence, my translation does not explicitly say 
+          that this lawyer is his own client, or that this lawyer is a fool.   
+          These propositions follow, of course, but the wit of the original 
+          lies in leaving them implicit.   At first we think the lawyer and 
+          client differ; then we infer that they are the same, and we thereby 
+          know who the fool is.   We can make these implicit meanings explicit 
+          thus:  &#8704;X ((l(X) &amp; p(X,X)) &#8658; (c(X,X) &amp; f(X))).
+     </li><li> An existential quantifier on 'y' would say:  for all lawyers, and at 
+          least one client. . . ".   It may be true that all lawyers who plead 
+          their own cases have at least one foolish client, but this wouldn't 
+          guarantee the inference that one of the foolish clients is the 
+          lawyer him/herself.   This paraphrase of the original shows why the 
+          universal quantifier is appropriate:  all clients of lawyers who are 
+          pleading their own cases are fools.
+     </li><li> My answer above is <em>not</em> equivalent to &#8704;X &#8704;Y 
+          ((l(X) &amp; p(X,X) &amp; c(Y,X)) &#8658; f(Y)), but this translation is 
+          arguably just as close to the English.
+     </li></ul>
+     </div>
+</li><li> A dead lion is more dangerous than a live dog.
+     <a href="#" onclick="showhide('answer086'); return(false);">Answer</a>
+     <div style="display: none;" id="answer086">
+     <ul>
+     <li> &#8704;X &#8704;Y ((~a(X) &amp; l(X) &amp; a(Y) &amp; d(Y)) &#8658; d(X,Y))
+     </li><li> Paraphrase:  All dead lions are more dangerous than all dead dogs.
+     </li></ul>
+     </div>
+</li><li> Uneasy lies the head that wears the crown.
+     <a href="#" onclick="showhide('answer087'); return(false);">Answer</a>
+     <div style="display: none;" id="answer087">
+     <ul>
+     <li> &#8704;X &#8707;Y ((h(X) &amp; c(Y) &amp; w(X,Y)) &#8658; u(X))
+     </li><li> Paraphrase:  All heads that wear at least one crown lie uneasy.
+     </li><li> We use an existential quantifier on crowns ('y') because it is not 
+          the first quantifier and we mean "some crown or other" rather than 
+          "some crown in particular".   (See my translation tips on the order 
+          of quantifiers, and on "something" for more details. )
+     </li></ul>
+     </div>
+</li><li> If a boy tells only lies, none of them will be believed.
+     <a href="#" onclick="showhide('answer088'); return(false);">Answer</a>
+     <div style="display: none;" id="answer088">
+     <ul>
+     <li> &#8704;X ((b(X) &amp; &#8704;Y (t(X,Y) &#8658; l(Y))) &#8658; &#8704;Z (t(X,Y) &#8658; &#8704;U ~b(U,Z)))
+     </li><li> Paraphrase:  For all boys who tell only lies (all boys such that all 
+          that they tell are lies), all that they tell is not believed by 
+          anybody.
+     </li><li> I've given Copi's answer above.   I prefer the first of the two 
+          below, which is equivalent to Copi's.   The second is not equivalent 
+          to his, but is arguably just as close to the English.
+     </li><li> &#8704;X &#8704;Y &#8704;Z &#8704;U ((b(X) &amp; (t(X,Y) &#8658; l(Y))) &#8658; (t(X,Y) &#8658; ~b(U,Z)))
+     </li><li> &#8704;X &#8704;Y &#8704;Z &#8704;U (((b(X) &amp; t(X,Y)) &#8658; l(Y)) &#8658; (t(X,Y) &#8658; ~b(U,Z))))
+     </li><li> Remember that "only A's are B's" is equivalent to "all B's are 
+          A's".   This is true in polyadic predicate logic, just as in 
+          monadic.   Massage the English until you can translate it.   In this 
+          case:  ". . . x tells only lies" = "only lies are told by x" = "all 
+          that x tells are lies".
+     </li></ul>
+     </div>
+</li><li> Anyone who consults a psychiatrist ought to have his head examined.
+     <a href="#" onclick="showhide('answer089'); return(false);">Answer</a>
+     <div style="display: none;" id="answer089">
+     <ul>
+     <li> &#8704;X &#8707;Y ((p(X) &amp; s(Y) &amp; c(X,Y)) &#8658; o(X))
+     </li><li> Paraphrase:  All persons who consult at least one psychiatrist ought 
+          to have their head examined.
+     </li><li> The quantifier on psychiatrists ('y') is existential because we mean 
+          "some psychiatrist or other" rather than "some psychiatrist in 
+          particular".   See comment to problem 4 above.
+     </li><li> Copi has made this easy for us by defining o(X) as a jumbo predicate 
+          with much internal structure.   If we want to make this internal 
+          structure explicit, we could define new predicates, h(X), "x is a 
+          head", and e(X,Y), "x ought to be examined by y".   Replacing o(X) 
+          with these finer-grained predicates gives us: &#8704;X &#8704;Y 
+          &#8707;Z ((p(X) &amp; s(Y) &amp; c(X,Y) &amp; h(Z)) &#8658; e(Z,Y)).
+     </li></ul>
+     </div>
+</li><li> No one ever learns anything unless he teaches it to himself.
+     <a href="#" onclick="showhide('answer090'); return(false);">Answer</a>
+     <div style="display: none;" id="answer090">
+     <ul>
+     <li> &#8704;X &#8707;Y ((p(X) &#8658; ~l(X,Y)) &lt;~&gt; t(X,Y,X))
+     </li><li> Copi prefers to translate "unless" as inclusive disjunction:  
+          &#8704;X &#8704;Y ((p(X) &#8658; ~l(X,Y)) | t(X,Y,X)).   I prefer 
+          exclusive disjunction (the negation of material equivalence) because 
+          we seem to mean that the two propositions cannot both be true.   If 
+          we learn that the second is true, we will retract our affirmation of 
+          the first.
+     </li><li> The existential quantifier on what is learned ('y') means that we 
+          are saying:  no one ever learns something or another (at least one 
+          thing) unless. . . .   If it were universal, we'd be sdaying:  no 
+          one every learns all things unless. . . .
+     </li><li> One of the central meanings of this English sentence can be 
+          expressed quite simply without the troublesome "unless":  &#8704;X 
+          &#8707;Y ((p(X) &amp; l(X,Y)) &#8658; t(X,Y,X)).   This says:  All people 
+          who know (have learned) at least one thing taught it to themselves.
+     </li><li> None of these translations captures the "ever" in the English 
+          (because Copi didn't give us a predicate to cover it).   Let t(X) 
+          mean "x is a time".   Change l(X,Y) from "x learns y" to l(X,Y,Z), 
+          "x learns y at z".   Here is how to insert the "ever" into my first 
+          translation above:  &#8704;X &#8704;Y &#8704;Z (((p(X) &amp; t(Z)) 
+          &#8658; ~l(X,Y,Z))   t(X,Y,X))
+     </li></ul>
+     </div>
+</li><li> Delilah wore a ring on every finger and had a finger in every pie.
+     <a href="#" onclick="showhide('answer091'); return(false);">Answer</a>
+     <div style="display: none;" id="answer091">
+     <ul>
+     <li> &#8704;X &#8707;Y ((f(X,d) &amp; r(Y)) &#8658; (o(Y,X)) &amp; &#8707;X &#8704;Y ((f(X,d) &amp; p(Y)) &#8658; i(X,Y))
+     </li><li> Paraphrase:  For all of Delilah's fingers, and all pies, there is at 
+          least one ring on the fingers and at least one finger in the pies.
+     </li><li> This is a conjunction of two quantified statements; no quantifier's 
+          scope extends over the main conjunction.   If we didn't respect this 
+          fact, we might try &#8704;X &#8707;Y &#8704;Z ((f(X,d) &amp; r(Y) &amp; 
+          p(Z)) &#8658; (o(Y,X) &amp; i(X,Z))).   But this says that Delilah had a 
+          ring on every finger and <em>every finger</em> (not at least one 
+          finger) in every pie.   The number of fingers must be requantified 
+          from the first clause to the second:  in re rings, it is universally 
+          quantified, in re pies existentially.   We could let the scopes of 
+          the ring and pie quantifiers extend over the whole formula provided 
+          we requantified on fingers in the middle:  &#8704;X &#8707;Y 
+          &#8704;Z ((f(X,d) &amp; r(Y) &amp; p(Z)) &#8658; &#8707;X (o(Y,X) &amp; i(X,Z))).
+     </li></ul>
+     </div>
+</li><li> Any man who hates children and dogs cannot be all bad.
+     <a href="#" onclick="showhide('answer092'); return(false);">Answer</a>
+     <div style="display: none;" id="answer092">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8704;Z ((m(X) &amp; c(Y) &amp; d(Z) &amp; h(X,Y) &amp; h(X,Z)) &#8658; ~b(X))
+     </li><li> Paraphrase:  No men who hate all children and who hate all dogs are 
+          all bad.
+     </li><li> "All bad" is built into the predicate b(X), so we need not quantify 
+          badness.
+     </li></ul>
+     </div>
+</li><li> Anyone who accomplishes anything will be envied by everyone.
+     <a href="#" onclick="showhide('answer093'); return(false);">Answer</a>
+     <div style="display: none;" id="answer093">
+     <ul>
+     <li> &#8704;X (p(X) &#8658; (&#8707;Y a(X,Y) &#8658; &#8704;Z (p(Z) &#8658; e(Z,X))))
+     </li><li> Paraphrase:  All people who accomplish at least one thing will be 
+          envied by all people.   (Note that it follows that they will envy 
+          themselves. )
+     </li><li> I've given Copi's answer above.   Again, I prefer this format:  
+          &#8704;X &#8707;Y &#8704;Z ((p(X) &amp; p(Z) &amp; a(X,Y))  &#8658; e(Z,X))).
+     </li></ul>
+     </div>
+</li><li> To catch a fish, one must have some bait.
+     <a href="#" onclick="showhide('answer094'); return(false);">Answer</a>
+     <div style="display: none;" id="answer094">
+     <ul>
+     <li> &#8704;X &#8707;Y &#8707;Z ((p(X) &amp; f(Y) &amp; b(Z) &amp; c(X,Y)) &#8658; h(X,Z))
+     </li><li> Paraphrase:  All persons who catch at least one fish use at least 
+          some bait.
+     </li><li> Note how the "must" in "must have" is translated by use of the "all. 
+          . . do" construction.
+     </li></ul>
+     </div>
+</li><li> Every student does some problems, but no student does all of them.
+     <a href="#" onclick="showhide('answer095'); return(false);">Answer</a>
+     <div style="display: none;" id="answer095">
+     <ul>
+     <li> &#8704;X &#8707;Y ((s(X) &amp; p(Y)) &#8658; d(X,Y)) &amp; ~&#8707;X &#8704;Y (s(X) &amp; p(Y) &amp; d(X,Y))
+     </li><li> The second conjunct could also be translated this way:  &#8704;X 
+          &#8704;Y ((s(X) &amp; p(Y)) &#8658; ~d(X,Y))
+     </li><li> Paraphrase:  All students do at least one problem (some problem or 
+          other), but it is false that there is a student who does all problems.
+     </li></ul>
+     </div>
+</li><li> Any contestant who answers all the questions put to him will win any 
+     prize he chooses.
+     <a href="#" onclick="showhide('answer096'); return(false);">Answer</a>
+     <div style="display: none;" id="answer096">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8704;Z (((c(X) &amp; q(Y) &amp; p(Z) &amp; p(Y,X)) &#8658; a(X,Y)) &#8658; (c(X,Z) &#8658; w(X,Z)))
+     </li><li> Paraphrase:  For all contestants, if all questions put to them are 
+          answered, then if they choose a prize, they win that prize.
+     </li><li> If we existentially quantified the prize ('z'), we'd be saying that 
+          the winner wins some prize or other, at least one prize, not 
+          necessarily the one he chooses.
+     </li></ul>
+     </div>
+</li><li> Every son has a father, but not every father has a son.
+     <a href="#" onclick="showhide('answer097'); return(false);">Answer</a>
+     <div style="display: none;" id="answer097">
+     <ul>
+     <li> &#8704;X &#8707;Y ((p(X) &amp; m(X) &amp; p(Y) &amp; m(Y)) &#8658; p(Y,X)) &amp; &#8707;X &#8704;Y (p(X) &amp; m(X) &amp; p(Y) &amp; m(Y) &amp; ~p(X,Y))
+     </li><li> Paraphrase:  For all sons, there is a person who is his father, and 
+          there is a father who does not have any sons.
+     </li><li> Copi makes this difficult by giving us an austere dictionary.   We 
+          have no predicate s(X,Y), "x is the son of y", and no predicate 
+          f(X,Y), "x is the father of y".   Instead we have predicates for 
+          maleness, personhood, and parenthood.   We must describe sons as 
+          male persons with parents.   We must describe fathers as male 
+          persons with children.
+     </li></ul>
+     </div>
+</li><li> A person is maintaining a nuisance if he has a dog that barks at everyone 
+     who visits its owner.
+     <a href="#" onclick="showhide('answer098'); return(false);">Answer</a>
+     <div style="display: none;" id="answer098">
+     <ul>
+     <li> &#8704;X (p(X) &#8658; (&#8707;Y (d(Y) &amp; h(X,Y) &amp; &#8704;Z ((p(Z) &amp; v(Z,X)) &#8658; b(Y,Z))) &#8658; &#8707;U (n(U) &amp; m(X,U)))))
+     </li><li> Paraphrase:  All people who have at least one dog that barks at all 
+          people who visit its owner maintain a nuisance.
+     </li><li> I've given Copi's answer above.   Again, I prefer this format:  
+          &#8704;X &#8707;Y &#8704;Z &#8707;U ((p(X) &amp; d(Y) &amp; h(X,Y) &amp; p(Z) &amp; v(Z,X) &amp; b(Y,Z)) &#8658; (n(U) &amp; m(X,U)))
+     </li></ul>
+     </div>
+</li><li> A doctor has no scruples who treats a patient who has no ailment.
+     <a href="#" onclick="showhide('answer099'); return(false);">Answer</a>
+     <div style="display: none;" id="answer099">
+     <ul>
+     <li> &#8704;X &#8707;Y &#8707;Z &#8704;W ((d(X) &amp; s(Y) &amp; p(Z) &amp; a(W) &amp; t(X,Z) &amp; ~h(Z,W)) &#8658; ~h(X,Y))
+     </li><li> Paraphrase:  No doctors who treat at least one patient who does not 
+          have at least one ailment have any scruples.
+     </li></ul>
+     </div>
+</li><li> A doctor who treats a person who has every ailment has a job for which no 
+     one would envy him.
+     <a href="#" onclick="showhide('answer100'); return(false);">Answer</a>
+     <div style="display: none;" id="answer100">
+     <ul>
+     <li> &#8704;X &#8707;Y &#8704;Z &#8707;W &#8704;U ((d(X) &amp; p(Y) &amp; t(X,Y) &amp; a(Z) &amp; h(Y,Z) &amp; j(W) &amp; p(U)) &#8658; (h(X,W) &amp; ~e(U,X,W)))
+     </li><li> Paraphrase:  All doctors who treat at least one person who has every 
+          ailment have at least one job such that no person envies those 
+          doctors that job.
+     </li></ul>
+     </div>
+</li><li> If a farmer keeps only hens, none of them will lay eggs that are worth 
+     setting.
+     <a href="#" onclick="showhide('answer101'); return(false);">Answer</a>
+     <div style="display: none;" id="answer101">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8704;Z ((f(X) &amp; h(Y) &amp; k(X,Y) &amp; e(Z)) &#8658; (l(Y,Z) &amp; ~w(Z)))
+     </li><li> Paraphrase:  All farmers who keep only hens, keep hens that lay eggs 
+          that are not worth setting.
+     </li><li> ". . . x keeps only hens" = "only hens are kept by x" = "all that x 
+          keeps are hens".
+     </li><li> "no y's will lay eggs with property W" = "all y's will lay eggs 
+          without property W".
+     </li></ul>
+     </div>
+
+<p>
+</p><h3>Translations at p. 129</h3>
+<p>
+
+</p></li><li> Everyone buys something from some store (or other).
+     <a href="#" onclick="showhide('answer102'); return(false);">Answer</a>
+     <div style="display: none;" id="answer102">
+     <ul>
+     <li> &#8704;X &#8707;Y &#8707;Z ((p(X) &amp; s(Y)) &#8658; b(X,Z,Y)).
+     </li></ul>
+     </div>
+</li><li> There is a store from which everyone buys something (or other).
+     <a href="#" onclick="showhide('answer103'); return(false);">Answer</a>
+     <div style="display: none;" id="answer103">
+     <ul>
+     <li> &#8707;X &#8704;Y &#8707;Z ((s(X) &amp; p(Y)) &#8658; b(Y,Z,X)).
+     </li></ul>
+     </div>
+</li><li> Some people make all their purchases from a single store.
+     <a href="#" onclick="showhide('answer104'); return(false);">Answer</a>
+     <div style="display: none;" id="answer104">
+     <ul>
+     <li> &#8707;X &#8704;Y &#8707;Z ((p(X) &amp; s(Z)) &#8658; b(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> No one buys everything it (sic) sells from any store.
+     <a href="#" onclick="showhide('answer105'); return(false);">Answer</a>
+     <div style="display: none;" id="answer105">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8704;Z ((p(X) &amp; s(Y)) &#8658; ~b(X,Z,Y)).
+     </li><li> Paraphrase:  No person buys everything whatsoever from any store.    
+          This claim is not limited to what a store sells, but refers to 
+          everything whatsoever.   The English is more particular, but I don't 
+          think it can be translated satisfactorily without adding the 
+          two-place predicate, s(X,Y), x sells y.   With this predicate, I 
+          would translate the sentence thus:  &#8704;X &#8704;Y &#8704;Z 
+          ((p(X) &amp; s(Y) &amp; s(Z,Y)) &#8658; ~b(X,Z,Y)).   This translation 
+          interprets the English to be saying:  No person buys everything a 
+          store sells from any store.
+     </li></ul>
+     </div>
+</li><li> No one buys things from every store.
+     <a href="#" onclick="showhide('answer106'); return(false);">Answer</a>
+     <div style="display: none;" id="answer106">
+     <ul>
+     <li> &#8704;X &#8707;Y &#8704;Z ((p(X) &amp; s(Y)) &#8658; ~b(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> No store has everyone for a customer.
+     <a href="#" onclick="showhide('answer107'); return(false);">Answer</a>
+     <div style="display: none;" id="answer107">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((s(X) &amp; p(Y)) &#8658; ~b(Y,Z,X)).
+     </li><li> We have no customer predicate, so we describe a customer as a person 
+          who buys at least one thing from a store.
+     </li></ul>
+     </div>
+</li><li> No store makes all its sales to a single person.
+     <a href="#" onclick="showhide('answer108'); return(false);">Answer</a>
+     <div style="display: none;" id="answer108">
+     <ul>
+     <li> &#8704;X (s(X) &#8658; &#8704;Y (p(Y) &#8658; &#8707;Z (&#8707;W b(W,Z,X) &amp; ~b(Y,Z,X))))
+     </li><li> I've printed Copi's answer above; in prenex normal form it is:  
+          &#8704;X &#8704;Y &#8707;Z &#8707;W ((s(X) &amp; p(Y)) &#8658; 
+          (b(W,Z,X) &amp; ~b(Y,Z,X)))).
+     </li><li> I think Copi is wrong here.   His notation asserts:  At least one 
+          person buys at least one thing from all stores but not everyone buys 
+          at least one thing from all stores.   Or:  All stores have at least 
+          one customer but none has all people as customers.
+     </li><li> My translation:  &#8704;X &#8704;Y &#8707;Z ((s(X) &amp; p(Z)) &#8658; 
+          ~b(Z,Y,X)).
+     </li></ul>
+     </div>
+
+<p>
+</p><h3>Translations at pp. 129-30</h3>
+<p>
+
+</p></li><li> Nobody donates to every charity.
+     <a href="#" onclick="showhide('answer109'); return(false);">Answer</a>
+     <div style="display: none;" id="answer109">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((p(X) &amp; c(Y)) &#8658; ~d(X,Z,Y)).
+     </li><li> Paraphrase:  all people do not donate even one thing to every charity.
+     </li></ul>
+     </div>
+</li><li> Nobody donates money to every charity.
+     <a href="#" onclick="showhide('answer110'); return(false);">Answer</a>
+     <div style="display: none;" id="answer110">
+     <ul>
+     <li> &#8704;X &#8707;Y &#8704;Z ((p(X) &amp; m(Y) &amp; c(Z)) &#8658; ~d(X,Y,Z)).
+     </li><li> The quantifier on money ('y') is existential, because we mean:  
+          nobody donates some money or other. . . .   If it were universal, 
+          we'd be saying:  noboty donates all money. . .
+     </li></ul>
+     </div>
+</li><li> Nobody donates all of his money to charity.
+     <a href="#" onclick="showhide('answer111'); return(false);">Answer</a>
+     <div style="display: none;" id="answer111">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8704;Z ((p(X) &amp; m(Y) &amp; b(Y,X) &amp; c(Z)) &#8658; ~d(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> Nobody donates all of his money to any single charity.
+     <a href="#" onclick="showhide('answer112'); return(false);">Answer</a>
+     <div style="display: none;" id="answer112">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((p(X) &amp; m(Y) &amp; b(Y,X) &amp; c(Z)) &#8658; ~d(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> Nobody donates all of his belongings to any single charity.
+     <a href="#" onclick="showhide('answer113'); return(false);">Answer</a>
+     <div style="display: none;" id="answer113">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((p(X) &amp; b(Y,X) &amp; c(Z)) &#8658; ~d(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> Nobody gives all of his donations to any single charity.
+     <a href="#" onclick="showhide('answer114'); return(false);">Answer</a>
+     <div style="display: none;" id="answer114">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((p(X) &amp; c(Z)) &#8658; ~d(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> No charity receives all of its money from any single person.
+     <a href="#" onclick="showhide('answer115'); return(false);">Answer</a>
+     <div style="display: none;" id="answer115">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((c(X) &amp; m(Y) &amp; p(Z) &amp; b(Y,X)) &#8658; ~d(Z,Y,X)).
+     </li></ul>
+     </div>
+</li><li> No charity receives all of his (sic) money from any single person.
+     <a href="#" onclick="showhide('answer116'); return(false);">Answer</a>
+     <div style="display: none;" id="answer116">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((c(X) &amp; m(Y) &amp; p(Z) &amp; b(Y,Z)) &#8658; ~d(Z,Y,X)).
+     </li><li> Insofar as this (horrible) sentence is supposed to differ from that 
+          in problem 32, I suppose it means this:  no charity receives all the 
+          money belonging to any single person.   That is the sentence I 
+          translated above.
+     </li></ul>
+     </div>
+</li><li> No charity receives all of his (sic) donations from any single person.
+     <a href="#" onclick="showhide('answer117'); return(false);">Answer</a>
+     <div style="display: none;" id="answer117">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z ((c(X) &amp; p(Z)) &#8658; ~d(Z,Y,X)).
+     </li><li> Paraphrase:  no charity receives all the donations which any single 
+          person donates.   No charity is the only recipient to which any 
+          single person donates.
+     </li></ul>
+     </div>
+</li><li> No charity receives all of his (sic) donations from any one donor.
+     <a href="#" onclick="showhide('answer118'); return(false);">Answer</a>
+     <div style="display: none;" id="answer118">
+     <ul>
+     <li> &#8704;X &#8704;Y &#8707;Z (c(X) &#8658; ~d(Z,Y,X)).
+     </li><li> Insofar as this (atrocious) sentence differs from that in problem 
+          34, I suppose it means what 34 means but without the qualification 
+          that the donor is a person.   No charity receives all the donations 
+          which any single donor (who might be a non-person) donates.   
+          (Ugh!)  That is the sentence I translated above.
+     </li></ul>
+     </div>
+</li><li> No charity receives only money as donations.
+     <a href="#" onclick="showhide('answer119'); return(false);">Answer</a>
+     <div style="display: none;" id="answer119">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8704;Z (c(Z) &amp; ~m(X) &amp; d(Y,X,Z)).
+     </li><li> Paraphrase:  Not all that is donated to any charity is money.   
+          Something which is donated to every charity is not money.
+     </li><li> Donors are not mentioned in the English, but must be included in the 
+          d(X,Y,Z) predicate.   The English clearly means that something which 
+          is donated by someone or another. . . , rather than something which 
+          is donated by everyone. . . .   So the donors are existentially 
+          quantified.
+     </li></ul>
+     </div>
+</li><li> Somebody gives money to charity.
+     <a href="#" onclick="showhide('answer120'); return(false);">Answer</a>
+     <div style="display: none;" id="answer120">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8707;Z (p(X) &amp; m(Y) &amp; c(Z) &amp; d(X,Y,Z)).
+     </li><li> All quantifiers are existential.   The first one means "some person 
+          in particular".   The second and third mean, respectively, "some 
+          money or other" and "some charity or other".   See my translation 
+          tips on quantifier order and on "something".
+     </li></ul>
+     </div>
+</li><li> Somebody donates all of his money to charity.
+     <a href="#" onclick="showhide('answer121'); return(false);">Answer</a>
+     <div style="display: none;" id="answer121">
+     <ul>
+     <li> &#8707;X &#8704;Y &#8707;Z (p(X) &amp; m(Y) &amp; b(Y,X) &amp; c(Z) &amp; d(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> At least one person donates all of his belongings to a single charity.
+     <a href="#" onclick="showhide('answer122'); return(false);">Answer</a>
+     <div style="display: none;" id="answer122">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8707;Z (p(X) &amp; b(Y,X) &amp; c(Z) &amp; d(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> At least one person gives all of his donations to a single charity.
+     <a href="#" onclick="showhide('answer123'); return(false);">Answer</a>
+     <div style="display: none;" id="answer123">
+     <ul>
+     <li> &#8707;X &#8704;Y &#8707;Z (p(X) &amp; c(Z) &amp; d(X,Y,Z)).
+     </li></ul>
+     </div>
+</li><li> Some charities receive donations from everybody.
+     <a href="#" onclick="showhide('answer124'); return(false);">Answer</a>
+     <div style="display: none;" id="answer124">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8704;Z (c(X) &amp; p(Z) &amp; d(Z,Y,X)).
+     </li><li> The English is saying that some charities receive some donation or 
+          other from everybody, so the donations ('y') are existentially 
+          quantified.
+     </li></ul>
+     </div>
+</li><li> Some charities receive donations from every donor.
+     <a href="#" onclick="showhide('answer125'); return(false);">Answer</a>
+     <div style="display: none;" id="answer125">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8704;Z (c(X) &amp; d(Z,Y,X)).
+     </li><li> This is the same as problem 41 except that the donors are not 
+          restricted to persons.
+     </li></ul>
+     </div>
+</li><li> Some donations are not given to a charity.
+     <a href="#" onclick="showhide('answer126'); return(false);">Answer</a>
+     <div style="display: none;" id="answer126">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8707;Z (~c(Z) &amp; d(Y,X,Z)).
+     </li><li> Paraphrase:  There is something which is not a charity which 
+          receives some donation or other from some donor or other.
+     </li></ul>
+     </div>
+</li><li> Some donors donate to every charity.
+     <a href="#" onclick="showhide('answer127'); return(false);">Answer</a>
+     <div style="display: none;" id="answer127">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8704;Z (c(Z) &amp; d(X,Y,Z)).
+     </li><li> Paraphrase:  At least one donor donates something or other to every 
+          charity.
+     </li></ul>
+     </div>
+</li><li> Every charity receives donations from at least one donor.
+     <a href="#" onclick="showhide('answer128'); return(false);">Answer</a>
+     <div style="display: none;" id="answer128">
+     <ul>
+     <li> &#8704;X &#8707;Y &#8707;Z (c(X) &#8658; d(Z,Y,X)).
+     </li><li> Paraphrase:  every charity receives some donation or other from some 
+          donor or other.
+     </li></ul>
+     </div>
+
+<p>
+</p><h3>Translations at p. 130</h3>
+<p>
+
+</p></li><li> Whoso sheddeth man's blood, by man shall his blood be shed.
+     <a href="#" onclick="showhide('answer129'); return(false);">Answer</a>
+     <div style="display: none;" id="answer129">
+     <ul>
+     <li> &#8704;X ((p(X) &amp; &#8707;Y (m(Y) &amp; &#8707;Z (b(Z) &amp; b(Z,Y) &amp; s(X,Z)))) &#8658; &#8707;U (m(U) &amp; &#8707;W (b(W) &amp; b(W,X) &amp; s(U,W))))
+     </li><li> This is Copi's answer.   I prefer this format:  &#8704;X &#8707;Y 
+          &#8707;Z &#8707;U &#8707;W ((p(X) &amp; m(Y) &amp; b(Z) &amp; b(Z,Y) &amp; s(X,Z)) 
+          &#8658; (m(U) &amp; b(W) &amp; b(W,X) &amp; s(U,W)))
+     </li><li> m(X) = x is a man; p(X) = x is a person; b(X) = x is blood; s(X,Y) = 
+          x sheds y; b(X,Y) = x belongs to y
+     </li><li> Paraphrase:  For every person who sheds at least some blood 
+          belonging to at least one man, there is at least one man who will 
+          shed the blood of the (blood-shedding) person.   (Technically, the 
+          avenging man may be the same as the blood-shedding person, but need 
+          not be. )
+     </li></ul>
+     </div>
+</li><li> His hand will be against every man, and every man's hand against him.
+     <a href="#" onclick="showhide('answer130'); return(false);">Answer</a>
+     <div style="display: none;" id="answer130">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8704;Z ((p(X) &amp; h(Y) &amp; m(Z) &amp; b(Y,X)) &#8658; a(Y,Z)) &amp; ((p(X) &amp; h(Y) &amp; m(Z) &amp; b(Y,Z)) &#8658; a(Y,X))
+     </li><li> p(X) = x is a person; h(X) = x is a hand; b(X,Y) = x belongs to y; 
+          m(X) = x is a man; a(X,Y) = x is against y
+     </li><li> Paraphrase:  There is a person at least one of whose hands is 
+          against every man, and at least one hand of every man is against 
+          that person.
+     </li></ul>
+     </div>
+</li><li> The sun shall not smite thee by day, nor the moon by night.
+     <a href="#" onclick="showhide('answer131'); return(false);">Answer</a>
+     <div style="display: none;" id="answer131">
+     <ul>
+     <li> ~s(s,t,d) &amp; ~s(m,t,n)
+     </li><li> s = the sun; m = the moon; t = thee; d = day; n = night; s(X,Y) = x smites y by z
+     </li><li> We could avoid 's' as a constant for the sun, and introduce the 
+          predicate s(X) = "x is the sun", and so on for m, t, d, and n.   We 
+          can always replace individuals with suitable predicates because to 
+          be a particular individual (e. g.  the sun) is equivalent to being 
+          an arbitrary individual, x, with the attribute of being that 
+          particualr individual (e. g.  the attribute of being the sun).   But 
+          to treat individuals in that way would add complexity to the 
+          translation without improving its accuracy.
+     </li></ul>
+     </div>
+</li><li> A wise son maketh a glad father.
+     <a href="#" onclick="showhide('answer132'); return(false);">Answer</a>
+     <div style="display: none;" id="answer132">
+     <ul>
+     <li> &#8704;X &#8704;Y ((m(X) &amp; w(X)) &#8658; (m(X,Y) &amp; f(Y,X) &amp; g(Y)))
+     </li><li> m(X) = x is male; f(X,Y) = x is y's father; w(X) = x is wise; g(X) = 
+          x is glad; m(X,Y) = x maketh y
+     </li><li> Paraphrase:  All wise males make their fathers glad.
+     </li></ul>
+     </div>
+</li><li> He that spareth his rod hateth his son.
+     <a href="#" onclick="showhide('answer133'); return(false);">Answer</a>
+     <div style="display: none;" id="answer133">
+     <ul>
+     <li> &#8704;X ((m(X) &amp; &#8704;Y ((r(Y) &amp; b(Y,X)) &#8658; s(X,Y))) &#8658; &#8704;Z ((m(Z) &amp; p(X,Z)) &#8658; h(X,Z)))
+     </li><li> This is Copi's answer.   I prefer this format:  &#8704;X &#8704;Y 
+          &#8704;Z ((m(X) &amp; r(Y) &amp; b(Y,X) &amp; s(X,Y) &amp; m(Z) &amp; p(X,Z)) &#8658;  
+          h(X,Z))
+     </li><li> m(X) = x is male; r(X) = x is a rod; b(X,Y) = x belongs to y; s(X,Y) 
+          = x spareth y; h(X,Y) = x hateth y; p(X,Y) = x is the parent of y
+     </li><li> Paraphrase:  All men who spare their rods hate their sons.
+     </li></ul>
+     </div>
+</li><li> The borrower is servant to the lender.
+     <a href="#" onclick="showhide('answer134'); return(false);">Answer</a>
+     <div style="display: none;" id="answer134">
+     <ul>
+     <li> &#8704;X &#8704;Y (b(X,Y) &#8658; s(X,Y))
+     </li><li> b(X,Y) = x borrows from y; s(X,Y) = x is servant to y
+     </li><li> Paraphrase:  All who borrow are servants to those from whom they 
+          borrow.   (I tightened up the original, which is vague on the 
+          question whether borrowers are servants to their own lenders or to 
+          any old lenders. )
+     </li></ul>
+     </div>
+</li><li> Whose diggeth a pit shall fall therein:  and he that rolleth a stone, it 
+     will return upon him.
+     <a href="#" onclick="showhide('answer135'); return(false);">Answer</a>
+     <div style="display: none;" id="answer135">
+     <ul>
+     <li> &#8704;X &#8707;Y ((p(X) &amp; h(Y) &amp; d(X,Y)) &#8658; f(X,Y)) &amp; (&#8704;X &#8707;Y (p(X) &amp; s(Y) &amp; r(X,Y)) &#8658; b(Y,X))
+     </li><li> p(X) = x is a person; h(X) = x is a hole (pit); d(X,Y) = x diggeth 
+          y; f(X,Y) = x falls into y; s(X) = x is a stone; r(X,Y) = x rolleth 
+          y; b(X,Y) = x returns (back) upon y.
+     </li><li> Paraphrase:  All persons who dig at least one pit will fall into 
+          that pit, and all persons who roll at least one stone will have that 
+          stone return (back) upon them.
+     </li></ul>
+     </div>
+</li><li> The fathers have eaten sour grapes, and the children's teeth are set on 
+     edge.
+     <a href="#" onclick="showhide('answer136'); return(false);">Answer</a>
+     <div style="display: none;" id="answer136">
+     <ul>
+     <li> &#8707;X &#8707;Y &#8707;Z &#8704;W ((f(X,Y) &amp; g(Z) &amp; s(Z) &amp; e(X,Z) &amp; t(W)) &#8658; (b(W,Y) &amp; e(W)))
+     </li><li> f(X,Y) = x is the father of y; g(X) = x is a grape; s(X) = x is 
+          sour; e(X,Y) = x eats y; t(X) = x is a tooth; b(X,Y) = x belongs to 
+          y; e(X) = x is set on edge
+     </li><li> Paraphrase:  At least some fathers have eaten at least some sour 
+          grapes, and all the teeth of the children of those fathers are set 
+          on edge.
+     </li></ul>
+     </div>
+</li><li> The foxes have holes, and the birds of the air have nests; but the Son of man hath not where to lay his head.
+     <a href="#" onclick="showhide('answer137'); return(false);">Answer</a>
+     <div style="display: none;" id="answer137">
+     <ul>
+     <li> &#8704;X &#8707;Y ((f(X) &amp; h(Y)) &#8658; h(X,Y))  &amp;  &#8704;X &#8707;Y ((b(X) &amp; 
+n(Y)) &#8658; h(X,Y))  &amp;   &#8704;X &#8707;Y &#8704;Z ((s(X) &amp; c(Y) &amp; b(Y,X)) &#8658; 
+~p(Z,X,Y))
+     </li><li> f(X) = x is a fox; h(X) = x is a hole; h(X,Y) = x has y; b(X) = x is 
+          a bird of the air; n(X) = x is a nest; s(X) = x is a son of man; 
+          c(X) = x is a cranium (head); b(X,Y) = x belongs to y; p(X,Y,Z) = x 
+          is a place for y to lay z
+     </li><li> Paraphrase:  All foxes have at least one hole, and all birds of the 
+          air have at least one nest, and all the sons of man lack even one 
+          place to lay their craniums.
+     </li><li> We could have packed some of this detail into jumbo predicates, e. 
+          g.  p(X,Y) = x is a place for y to lay its head.
+     </li></ul>
+     </div>
+</li><li> the good that I would, I do not; but the evil which I would not, that I do.
+     <a href="#" onclick="showhide('answer138'); return(false);">Answer</a>
+     <div style="display: none;" id="answer138">
+     <ul>
+     <li> &#8704;X ((g(X) &amp; w(i,X)) &#8658; ~d(i,X))  &amp;  &#8704;Y ((e(Y) &amp; ~w(i,Y)) &#8658; d(i,Y))
+     </li><li> g(X) = x is a good thing; e(X) = x is an evil thing; i = I; w(X,Y) = 
+          x would (wish to) do y; d(X,Y) = x does y
+     </li><li> Paraphrase:  All good things I would wish to do, I do not do, and 
+          all evil things I would not wish to do, I do.
+     </li></ul>
+     </div>
+</li></ol>
+<p>
+</p><hr> <!----------------------------------------------------------------------->
+
+
+</body></html>

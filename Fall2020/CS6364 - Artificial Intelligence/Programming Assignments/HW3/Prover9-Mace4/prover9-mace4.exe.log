@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "prover9-mace4.py", line 26, in <module>
+  File "wx\__init__.pyc", line 45, in <module>
+  File "wx\_core.pyc", line 4, in <module>
+  File "wx\_core_.pyc", line 12, in <module>
+  File "wx\_core_.pyc", line 10, in __load
+ImportError: DLL load failed: The specified module could not be found.
+Traceback (most recent call last):
+  File "prover9-mace4.py", line 26, in <module>
+  File "wx\__init__.pyc", line 45, in <module>
+  File "wx\_core.pyc", line 4, in <module>
+  File "wx\_core_.pyc", line 12, in <module>
+  File "wx\_core_.pyc", line 10, in __load
+ImportError: DLL load failed: The specified module could not be found.
+Traceback (most recent call last):
+  File "prover9-mace4.py", line 26, in <module>
+  File "wx\__init__.pyc", line 45, in <module>
+  File "wx\_core.pyc", line 4, in <module>
+  File "wx\_core_.pyc", line 12, in <module>
+  File "wx\_core_.pyc", line 10, in __load
+ImportError: DLL load failed: The specified module could not be found.

@@ -1,0 +1,28 @@
+assign(report_stderr, 2).
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(max_seconds, 60).
+end_if.
+
+formulas(assumptions).
+
+all x all y (Harley(y) & Rides(x,y) -> Rough(x)).
+all x exists y (Biker(x) -> Rides(x,y) & (Harley(y) | BMW(y))).
+all x all y (BMW(y) & Rides(x,y) -> Yuppie(x)).
+all x (Yuppie(x) -> Lawyer(x)).
+all y all x (Rough(x) & Nice(y) -> -Date(y,x)).
+Nice(Mary) & Biker(John).
+
+end_of_list.
+
+formulas(goals).
+
+-Lawyer(John) -> -Date(Mary,John).
+
+end_of_list.
+

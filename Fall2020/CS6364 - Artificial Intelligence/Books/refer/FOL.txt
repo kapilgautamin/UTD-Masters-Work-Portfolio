@@ -1,0 +1,29 @@
+Every sentence of propositional logic is logically equivalent to a conjunction of disjunctions of literals
+Resolution applies only to disjunctions of literals
+Contraposition (α => β) Ξ (⌐β => ⌐α)
+Modus-Ponens Given α and α => β Then β can be inferred.
+Resolution Given α ˅ β, ⌐β ˅ γ 
+Inferred α ˅ γ
+Conversion to CNF
+•	Eliminate  by replacing α  β with (α => β) ˄ (β => α)
+•	Eliminate => by replacing α => β with ⌐α ˅ β
+•	CNF requires ⌐ to appear only in literals; we move ⌐ inwards by repeated application
+•	Apply the distributivity law (α˅(β˄γ)) Ξ ((α ˅ β) ˄ (α ˅ γ))
+
+Propositional logic 
+•	Q1: {p, q, r} and Q2:{r, ¬s, ¬t} 
+•	There are no resolvents.
+•	Q1: {¬p, q, r} and Q2:{p, ¬q, ¬r}
+•	Only one resolution at a time {q, r, ¬q, ¬r}, {¬p, r, p, ¬r}, {¬p, q, p, ¬q}
+
+Horn clause
+•	A Horn clause is a disjunction of literals of which at most one is positive. Example-> 
+(⌐L11 ˅ ⌐Breeze ˅ B11)
+
+
+•	Every Horn clause can also be written as an implication whose premise is a conjunction of positive literals and whose conclusion is a simple positive literal. Example-> (L11 ˄ Breeze => B11)
+
+Logical Entailment
+•	“KB logically entails S” if all the models that evaluate KB to True also evaluate S to True.
+•	Denoted by: KB |= S
+•	Note: We do not care about those models that evaluate KB to False. The result of evaluating S for these models is irrelevant.

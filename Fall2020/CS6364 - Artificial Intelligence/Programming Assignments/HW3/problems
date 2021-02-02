@@ -1,0 +1,3239 @@
+#!/bin/sh
+# This is a shell archive, meaning:
+# 1. Remove everything above the #!/bin/sh line.
+# 2. Save the resulting text in a file.
+# 3. Execute the file with /bin/sh (not csh) to create the files:
+#	README
+#	animals.desc
+#	animals.ver1.clauses
+#	animals.ver1.in
+#	animals.ver1.out
+#	boys.desc
+#	boys.ver1.clauses
+#	boys.ver1.in
+#	boys.ver1.out
+#	ggson.desc
+#	ggson.ver1.clauses
+#	ggson.ver1.in
+#	ggson.ver1.out
+#	letters.desc
+#	letters.ver1.clauses
+#	letters.ver1.in
+#	letters.ver1.out
+#	lizard.desc
+#	lizard.ver1.clauses
+#	lizard.ver1.in
+#	lizard.ver1.out
+#	pigs.desc
+#	pigs.ver1.clauses
+#	pigs.ver1.in
+#	pigs.ver1.out
+#	winds.desc
+#	winds.ver1.clauses
+#	winds.ver1.in
+#	winds.ver1.out
+# This archive created: Tue Aug 16 11:21:36 1988
+export PATH; PATH=/bin:$PATH
+if test -f 'README'
+then
+	echo shar: over-writing existing file "'README'"
+fi
+cat << \SHAR_EOF > 'README'
+problem-set/puzzles/carroll/README
+created: 07/26/88
+revised: 07/26/88
+
+Contents of 'carroll' :
+-----------------------
+
+Main File Headings
+----------------------------------------------------------------------
+
+README : You are currently here; a description of all the files in
+	the directory problem-set/puzzles/carroll.
+
+animals : To solve "The Animals" by Lewis Carroll.
+
+boys : To solve "The School Boys" by Lewis Carroll.
+
+ggson : To solve "The Great-grandson Problem" by Lewis Carroll.
+
+letters : To solve "The Letters Puzzle" by Lewis Carroll
+
+lizard : To solve "The Animals" by Lewis Carroll
+
+pigs : To solve "The Pigs and Balloons Puzzle" by Lewis Carroll
+
+winds : To solve "The Winds and the Windows" by Lewis Carroll
+
+----------------------------------------------------------------------
+
+For each problem, there are several standard files, which include one
+probname.desc file and at least one of each of probname.ver#.in,
+probname.ver#.clauses, and probname.ver#.out.  These contain the
+following: 
+
+probname.desc : contains the Natural Language Description of the
+	problem, where available, as well as complete details on each 
+	formulation and each version.  
+
+probname.ver#.in : contains the problem specification, input clauses, and
+	strategy for OTTER; this file is ready to run.
+
+probname.ver#.clauses : contains the description, commentary, and the
+	actual clauses (including the denial of the conclusion) used for
+	probname.ver#.in, without any strategy; note that comments always are 
+	on lines beginning with a % and that clauses terminate with periods.
+
+probname.ver#.out : contains the output from running probname.ver#.in
+	through OTTER, with proof if one is found, and with statistics on 
+	the clauses generated and CPU time used.
+
+
+HOW TO RUN :
+----------------------------------------------------------------------
+
+Invoke OTTER by using the following command :
+
+	otter < probname.ver#.in    [ > outfile ]   [ & ]
+
+NOTE : '> outfile' may be used to send all output to a file named outfile;
+	'&' may be used to run the program in the background.
+
+SHAR_EOF
+if test -f 'animals.desc'
+then
+	echo shar: over-writing existing file "'animals.desc'"
+fi
+cat << \SHAR_EOF > 'animals.desc'
+problem-set/puzzles/carroll/animals.desc
+created : 07/09/86
+revised : 07/05/88
+
+Natural Language Description:
+
+                        The Animals
+
+     (1)  The only animals in this house are cats.
+     (2)  Every animal is suitable for a pet, that loves  to
+          gaze at the moon.
+     (3)  When I detest an animal, I avoid it.
+     (4)  No animals are carnivorous, unless they  prowl  at
+          night.
+     (5)  No cat fails to kill mice.
+     (6)  No animals ever take to me,  except  what  are  in
+          this house.
+     (7)  Kangaroos are not suitable for pets.
+     (8)  None but carnivora kill mice.
+     (9)  I detest animals that do not take to me.
+     (10) Animals that prowl at night always love to gaze at
+          the moon.
+     The problem is to prove that "I  always  avoid  a  kan-
+     garoo".
+                                         - Lewis Carroll
+
+
+Versions:
+
+animals.ver1.in : declarative representation.
+
+			created by : E. Lusk 
+			verified for ITP : 07/09/86
+			translated for OTTER by : K.R. 
+			verified for OTTER : 07/14/88
+SHAR_EOF
+if test -f 'animals.ver1.clauses'
+then
+	echo shar: over-writing existing file "'animals.ver1.clauses'"
+fi
+cat << \SHAR_EOF > 'animals.ver1.clauses'
+% problem-set/puzzles/carroll/animals.ver1.clauses
+% created : 07/14/88
+% revised : 07/14/88
+
+% description:
+%
+% This run solves a puzzle called "The Animals" by Lewis Carroll
+% using UR-resolution.
+%
+%                       The Animals
+%
+%    (1)  The only animals in this house are cats.
+%    (2)  Every animal is suitable for a pet, that loves  to
+%         gaze at the moon.
+%    (3)  When I detest an animal, I avoid it.
+%    (4)  No animals are carnivorous, unless they  prowl  at
+%         night.
+%    (5)  No cat fails to kill mice.
+%    (6)  No animals ever take to me,  except  what  are  in
+%         this house.
+%    (7)  Kangaroos are not suitable for pets.
+%    (8)  None but carnivora kill mice.
+%    (9)  I detest animals that do not take to me.
+%    (10) Animals that prowl at night always love to gaze at
+%         the moon.
+%    The problem is to prove that "I  always  avoid  a  kan-
+%    garoo".
+%                                        - Lewis Carroll
+
+% representation:
+% 
+% declare_predicates(1,[INHOUSE,CAT,GAZER,SUITABLEPET,DETESTED,AVOIDED])
+% declare_predicates(1,[CARNIVORE,PROWLER,MOUSEKILLER,TAKESTOME,KANGAROO])
+% declare_constant(f1).   
+% declare_variable(x1).
+%
+% PREDICATES : CAT(x) = x is a cat.
+%    INHOUSE(x) = x is an animal in the house.
+%    SUITABLEPET= an animal suitable for a pet.
+%    PROWLER= animals who prowl at night.
+
+-INHOUSE(x1) | CAT(x1).
+-GAZER(x1) | SUITABLEPET(x1).
+-DETESTED(x1) | AVOIDED(x1). 
+-CARNIVORE(x1) | PROWLER(x1).
+-CAT(x1) | MOUSEKILLER(x1).
+-TAKESTOME(x1) | INHOUSE(x1).
+-KANGAROO(x1) | -SUITABLEPET(x1). 
+-MOUSEKILLER(x1) | CARNIVORE(x1).
+TAKESTOME(x1) | DETESTED(x1).
+-PROWLER(x1) | GAZER(x1). 
+KANGAROO(x1).
+-AVOIDED(f1).
+SHAR_EOF
+if test -f 'animals.ver1.in'
+then
+	echo shar: over-writing existing file "'animals.ver1.in'"
+fi
+cat << \SHAR_EOF > 'animals.ver1.in'
+% problem-set/puzzles/carroll/animals.ver1.in
+% created : 07/09/86
+% revised : 07/05/88 
+
+% description:
+%
+% This run solves a puzzle called "The Animals" by Lewis Carroll
+% using UR-resolution.
+%
+%                       The Animals
+%
+%    (1)  The only animals in this house are cats.
+%    (2)  Every animal is suitable for a pet, that loves  to
+%         gaze at the moon.
+%    (3)  When I detest an animal, I avoid it.
+%    (4)  No animals are carnivorous, unless they  prowl  at
+%         night.
+%    (5)  No cat fails to kill mice.
+%    (6)  No animals ever take to me,  except  what  are  in
+%         this house.
+%    (7)  Kangaroos are not suitable for pets.
+%    (8)  None but carnivora kill mice.
+%    (9)  I detest animals that do not take to me.
+%    (10) Animals that prowl at night always love to gaze at
+%         the moon.
+%    The problem is to prove that "I  always  avoid  a  kan-
+%    garoo".
+%                                        - Lewis Carroll
+%
+
+% representation:
+% 
+% declare_predicates(1,[INHOUSE,CAT,GAZER,SUITABLEPET,DETESTED,AVOIDED])
+% declare_predicates(1,[CARNIVORE,PROWLER,MOUSEKILLER,TAKESTOME,KANGAROO])
+% declare_constant(f1).   
+% declare_variable(x1).
+% 
+% Declarative version,  created by E. Lusk    
+% PREDICATES : CAT(x) = x is a cat.
+%    INHOUSE(x) = x is an animal in the house.
+%    SUITABLEPET= an animal suitable for a pet.
+%    PROWLER= animals who prowl at night.
+                  
+set(UR_res).
+
+
+list(axioms).
+
+-INHOUSE(x1) | CAT(x1).
+-GAZER(x1) | SUITABLEPET(x1).
+-DETESTED(x1) | AVOIDED(x1). 
+-CARNIVORE(x1) | PROWLER(x1).
+-CAT(x1) | MOUSEKILLER(x1).
+-TAKESTOME(x1) | INHOUSE(x1).
+-KANGAROO(x1) | -SUITABLEPET(x1). 
+-MOUSEKILLER(x1) | CARNIVORE(x1).
+TAKESTOME(x1) | DETESTED(x1).
+-PROWLER(x1) | GAZER(x1). 
+
+end_of_list.
+
+
+list(sos).
+
+KANGAROO(x1).
+-AVOIDED(f1).
+ 
+end_of_list.
+SHAR_EOF
+if test -f 'animals.ver1.out'
+then
+	echo shar: over-writing existing file "'animals.ver1.out'"
+fi
+cat << \SHAR_EOF > 'animals.ver1.out'
+problem-set/puzzles/carroll/animals.ver1.out
+created : 07/05/88
+revised : 07/14/88
+
+OTTER release 0.9, 19 May 1988
+
+set(UR_res).
+
+list(axioms).
+1 -INHOUSE(x1) | CAT(x1).
+2 -GAZER(x1) | SUITABLEPET(x1).
+3 -DETESTED(x1) | AVOIDED(x1).
+4 -CARNIVORE(x1) | PROWLER(x1).
+5 -CAT(x1) | MOUSEKILLER(x1).
+6 -TAKESTOME(x1) | INHOUSE(x1).
+7 -KANGAROO(x1) | -SUITABLEPET(x1).
+8 -MOUSEKILLER(x1) | CARNIVORE(x1).
+9 TAKESTOME(x1) | DETESTED(x1).
+10 -PROWLER(x1) | GAZER(x1).
+end_of_list.
+
+list(sos).
+11 KANGAROO(x1).
+12 -AVOIDED(f1).
+end_of_list.
+
+---------------- PROOF ----------------
+
+1 -INHOUSE(x1) | CAT(x1).
+2 -GAZER(x1) | SUITABLEPET(x1).
+3 -DETESTED(x1) | AVOIDED(x1).
+4 -CARNIVORE(x1) | PROWLER(x1).
+5 -CAT(x1) | MOUSEKILLER(x1).
+6 -TAKESTOME(x1) | INHOUSE(x1).
+7 -KANGAROO(x1) | -SUITABLEPET(x1).
+8 -MOUSEKILLER(x1) | CARNIVORE(x1).
+9 TAKESTOME(x1) | DETESTED(x1).
+10 -PROWLER(x1) | GAZER(x1).
+11 KANGAROO(x1).
+12 -AVOIDED(f1).
+13 (11,7) -SUITABLEPET(x).
+14 (12,3) -DETESTED(f1).
+15 (13,2) -GAZER(x).
+16 (14,9) TAKESTOME(f1).
+17 (15,10) -PROWLER(x).
+18 (16,6) INHOUSE(f1).
+19 (17,4) -CARNIVORE(x).
+20 (18,1) CAT(f1).
+21 (19,8) -MOUSEKILLER(x).
+22 (20,5) MOUSEKILLER(f1).
+23 (22,21) .
+
+--------------- options ---------------
+set(UR_res).
+set(demod_hist).
+set(for_sub).
+set(print_kept).
+set(back_sub).
+set(print_back_sub).
+set(print_given).
+set(check_arity).
+
+clear(binary_res).
+clear(hyper_res).
+clear(para_from).
+clear(para_into).
+clear(demod_inf).
+clear(para_from_left).
+clear(para_from_right).
+clear(para_into_vars).
+clear(para_from_vars).
+clear(para_all).
+clear(para_ones_rule).
+clear(no_para_into_left).
+clear(no_para_into_right).
+clear(demod_linear).
+clear(print_gen).
+clear(sort_literals).
+clear(Unit_deletion).
+clear(factor).
+clear(print_weight).
+clear(sos_fifo).
+clear(bird_print).
+clear(atom_wt_max_args).
+clear(print_lists_at_end).
+clear(free_all_mem).
+clear(for_sub_fpa).
+clear(no_fapl).
+clear(no_fanl).
+
+assign(report, 0).
+assign(max_seconds, 0).
+assign(max_given, 0).
+assign(max_kept, 0).
+assign(max_gen, 0).
+assign(max_mem, 0).
+assign(max_weight, 0).
+assign(max_literals, 0).
+assign(fpa_literals, 4).
+assign(fpa_terms, 4).
+assign(demod_limit, 100).
+assign(max_proofs, 1).
+assign(neg_weight, 0).
+
+-------------- statistics -------------
+clauses input                 12
+clauses given                 10
+clauses generated             11
+demodulation rewrites          0
+clauses wt or lit delete       0
+tautologies deleted            0
+clauses forward subsumed       0
+(clauses subsumed by sos)      0
+unit deletions                 0
+clauses kept                  11
+empty clauses                  1
+factors generated              0
+clauses back subsumed          5
+clauses not processed          2
+
+----------- times (seconds) -----------
+run time             0.35
+input time           0.12
+binary_res time      0.00
+hyper_res time       0.00
+UR_res time          0.01
+para_into time       0.00
+para_from time       0.00
+pre_process time     0.04
+  demod time         0.00
+  weigh time         0.00
+  for_sub time       0.00
+  unit_del time      0.00
+post_process time    0.03
+  back_sub time      0.00
+  conflict time      0.01
+  factor time        0.00
+FPA build time       0.02
+IS build time        0.01
+print_cl time        0.09
+cl integrate time    0.01
+window time          0.00
+SHAR_EOF
+if test -f 'boys.desc'
+then
+	echo shar: over-writing existing file "'boys.desc'"
+fi
+cat << \SHAR_EOF > 'boys.desc'
+problem-set/puzzles/carroll/boys.desc
+created : 07/09/86
+revised : 07/12/88
+ 
+Natural Language Description:
+
+                              The School Boys
+        
+        "All the boys, in a certain  school,  sit  together  in  one
+        large  room  every  evening.   They are of no less than five
+        nationalities - English, Scotch, Welsh, Irish,  and  German.
+        One  of  the  Monitors (who is a great reader of Wilkie Col-
+        lins' novels) is very  observant  and  takes  MS.  notes  of
+        almost  everything  that  happens,  with the view of being a
+        good sensational witness, in case any conspiracy to commit a
+        murder  should  be  afoot.   The  following  are some of his
+        notes:
+        
+        (1)  Whenever some of the English boys  are  singing  "Rule,
+             Britannia," and some not, some of the Monitors are wide
+             awake;
+        
+        (2)  Whenever some of the Scotch are dancing reels, and some
+             of  the  Irish  fighting,  some of the Welsh are eating
+             toasted cheese;
+        
+        (3)  Whenever all the Germans are playing chess, some of the
+             Eleven are not oiling their bats;
+        
+        (4)  Whenever some of the Monitors are asleep, and some not,
+             some of the Irish are fighting.
+        
+        (5)  Whenever some of the Germans  are  playing  chess,  and
+             none of the Scotch are dancing reels, some of the Welsh
+             are not eating toasted cheese.
+        
+        (6)  Whenever some of the Scotch are not dancing reels,  and
+             some of the Irish are not fighting, some of the Germans
+             are playing chess;
+        
+        (7)  Whenever some of the Monitors are awake,  and  some  of
+             the Welsh are eating toasted cheese, none of the Scotch
+             are dancing reels;
+        
+        (8)  Whenever some of the Germans are not playing chess, and
+             some  of  the Welsh are not eating toasted cheese, none
+             of the Irish are fighting;
+        
+        (9)  Whenever all of the English are singing "Rule,  Britan-
+             nia,"  and  some  of  the Scotch are not dancing reels,
+             none of the Germans are playing chess;
+        
+        (10) Whenever some of the English are singing "Rule, Britan-
+             nia,", and some of the Monitors are asleep, some of the
+             Irish are not fighting;
+        
+        (11) Whenever some of the Monitors are awake,  and  some  of
+             the  Eleven  are  not  oiling  their  bats, some of the
+             Scotch are dancing reels;
+        
+        (12) Whenever some of the English are singing "Rule, Britan-
+             nia," and some of the Scotch are not dancing reels, ...
+        
+        Here the MS. breaks off suddenly.  The problem  is  to  com-
+        plete the sentence, if possible."
+                                - Lewis Carroll
+
+Versions:
+
+boys.ver1.in : Declarative representation. The solution is clause
+	114 of the output file, -Some_monitors_are_not_awake.
+
+		created by : E. Lusk
+		verified for ITP : 07/09/86
+		translated for OTTER by : K.R.
+		verified for OTTER : 07/12/88
+SHAR_EOF
+if test -f 'boys.ver1.clauses'
+then
+	echo shar: over-writing existing file "'boys.ver1.clauses'"
+fi
+cat << \SHAR_EOF > 'boys.ver1.clauses'
+% problem-set/puzzles/carroll/boys.ver1.clauses
+% created : 07/12/88
+% revised : 07/12/88
+ 
+% description:
+%
+% This run solves a puzzle called "The School Boys" using binary and UR-
+% resolution.
+% 
+%                               The School Boys
+%         
+%         "All the boys, in a certain  school,  sit  together  in  one
+%         large  room  every  evening.   They are of no less than five
+%         nationalities - English, Scotch, Welsh, Irish,  and  German.
+%         One  of  the  Monitors (who is a great reader of Wilkie Col-
+%         lins' novels) is very  observant  and  takes  MS.  notes  of
+%         almost  everything  that  happens,  with the view of being a
+%         good sensational witness, in case any conspiracy to commit a
+%         murder  should  be  afoot.   The  following  are some of his
+%         notes:
+%         
+%         (1)  Whenever some of the English boys  are  singing  "Rule,
+%              Britannia," and some not, some of the Monitors are wide
+%              awake;
+%         
+%         (2)  Whenever some of the Scotch are dancing reels, and some
+%              of  the  Irish  fighting,  some of the Welsh are eating
+%              toasted cheese;
+%         
+%         (3)  Whenever all the Germans are playing chess, some of the
+%              Eleven are not oiling their bats;
+%         
+%         (4)  Whenever some of the Monitors are asleep, and some not,
+%              some of the Irish are fighting.
+%         
+%         (5)  Whenever some of the Germans  are  playing  chess,  and
+%              none of the Scotch are dancing reels, some of the Welsh
+%              are not eating toasted cheese.
+%         
+%         (6)  Whenever some of the Scotch are not dancing reels,  and
+%              some of the Irish are not fighting, some of the Germans
+%              are playing chess;
+%         
+%         (7)  Whenever some of the Monitors are awake,  and  some  of
+%              the Welsh are eating toasted cheese, none of the Scotch
+%              are dancing reels;
+%         
+%         (8)  Whenever some of the Germans are not playing chess, and
+%              some  of  the Welsh are not eating toasted cheese, none
+%              of the Irish are fighting;
+%         
+%         (9)  Whenever all of the English are singing "Rule,  Britan-
+%              nia,"  and  some  of  the Scotch are not dancing reels,
+%              none of the Germans are playing chess;
+%         
+%         (10) Whenever some of the English are singing "Rule, Britan-
+%              nia,", and some of the Monitors are asleep, some of the
+%              Irish are not fighting;
+%         
+%         (11) Whenever some of the Monitors are awake,  and  some  of
+%              the  Eleven  are  not  oiling  their  bats, some of the
+%              Scotch are dancing reels;
+%         
+%         (12) Whenever some of the English are singing "Rule, Britan-
+%              nia," and some of the Scotch are not dancing reels, ...
+%         
+%         Here the MS. breaks off suddenly.  The problem  is  to  com-
+%         plete the sentence, if possible."
+%                                                     - Lewis Carroll
+
+% representation:
+%
+% Declarative version. Originally created by E. Lusk, and used hyper-
+% resolution and weights. The solution is clause 114 of the output
+% file, "-Some_monitors_are_not_awake"
+
+-Some_English_sing | -Some_English_sing_not | 
+    Some_monitors_are_awake.
+-Some_Scotch_dance | -Some_Irish_fight |
+    Some_Welsh_eat.
+-Some_Germans_play | Some_Germans_play_not |
+    Some_of_the_eleven_are_not_oiling.
+-Some_monitors_are_awake | -Some_monitors_are_not_awake |
+    Some_Irish_fight.
+-Some_Germans_play | Some_Scotch_dance |
+    Some_Welsh_eat_not.
+-Some_Scotch_dance_not | -Some_Irish_fight_not |
+    Some_Germans_play.
+-Some_monitors_are_awake | -Some_Welsh_eat |
+   -Some_Scotch_dance.
+-Some_Germans_play_not | -Some_Welsh_eat_not |
+    -Some_Irish_fight.
+-Some_English_sing | Some_English_sing_not | -
+   Some_Scotch_dance_not |
+    -Some_Germans_play.
+-Some_English_sing | -Some_monitors_are_not_awake |
+    Some_Irish_fight_not.
+-Some_monitors_are_awake | -Some_of_the_eleven_are_not_oiling |
+    Some_Scotch_dance.
+Some_English_sing_not | Some_English_sing.
+Some_monitors_are_not_awake | Some_monitors_are_awake.
+Some_Scotch_dance | Some_Scotch_dance_not.
+Some_Irish_fight | Some_Irish_fight_not.
+Some_Welsh_eat | Some_Welsh_eat_not.
+Some_Germans_play | Some_Germans_play_not.
+Some_English_sing.
+Some_Scotch_dance_not.
+SHAR_EOF
+if test -f 'boys.ver1.in'
+then
+	echo shar: over-writing existing file "'boys.ver1.in'"
+fi
+cat << \SHAR_EOF > 'boys.ver1.in'
+% problem-set/puzzles/carroll/boys.ver1.in
+% created : 07/09/86
+% revised : 07/12/88
+ 
+% description:
+%
+% This run solves a puzzle called "The School Boys" using binary and UR-
+% resolution.
+% 
+%                               The School Boys
+%         
+%         "All the boys, in a certain  school,  sit  together  in  one
+%         large  room  every  evening.   They are of no less than five
+%         nationalities - English, Scotch, Welsh, Irish,  and  German.
+%         One  of  the  Monitors (who is a great reader of Wilkie Col-
+%         lins' novels) is very  observant  and  takes  MS.  notes  of
+%         almost  everything  that  happens,  with the view of being a
+%         good sensational witness, in case any conspiracy to commit a
+%         murder  should  be  afoot.   The  following  are some of his
+%         notes:
+%         
+%         (1)  Whenever some of the English boys  are  singing  "Rule,
+%              Britannia," and some not, some of the Monitors are wide
+%              awake;
+%         
+%         (2)  Whenever some of the Scotch are dancing reels, and some
+%              of  the  Irish  fighting,  some of the Welsh are eating
+%              toasted cheese;
+%         
+%         (3)  Whenever all the Germans are playing chess, some of the
+%              Eleven are not oiling their bats;
+%         
+%         (4)  Whenever some of the Monitors are asleep, and some not,
+%              some of the Irish are fighting.
+%         
+%         (5)  Whenever some of the Germans  are  playing  chess,  and
+%              none of the Scotch are dancing reels, some of the Welsh
+%              are not eating toasted cheese.
+%         
+%         (6)  Whenever some of the Scotch are not dancing reels,  and
+%              some of the Irish are not fighting, some of the Germans
+%              are playing chess;
+%         
+%         (7)  Whenever some of the Monitors are awake,  and  some  of
+%              the Welsh are eating toasted cheese, none of the Scotch
+%              are dancing reels;
+%         
+%         (8)  Whenever some of the Germans are not playing chess, and
+%              some  of  the Welsh are not eating toasted cheese, none
+%              of the Irish are fighting;
+%         
+%         (9)  Whenever all of the English are singing "Rule,  Britan-
+%              nia,"  and  some  of  the Scotch are not dancing reels,
+%              none of the Germans are playing chess;
+%         
+%         (10) Whenever some of the English are singing "Rule, Britan-
+%              nia,", and some of the Monitors are asleep, some of the
+%              Irish are not fighting;
+%         
+%         (11) Whenever some of the Monitors are awake,  and  some  of
+%              the  Eleven  are  not  oiling  their  bats, some of the
+%              Scotch are dancing reels;
+%         
+%         (12) Whenever some of the English are singing "Rule, Britan-
+%              nia," and some of the Scotch are not dancing reels, ...
+%         
+%         Here the MS. breaks off suddenly.  The problem  is  to  com-
+%         plete the sentence, if possible."
+%                                                     - Lewis Carroll
+
+% representation:
+% 
+% Declarative version. Originally created by E. Lusk, and used hyper-
+% resolution and weights. The solution is clause 114 of the output
+% file, "-Some_monitors_are_not_awake"
+
+set(binary_res).
+set(UR_res).
+
+
+list(axioms).
+
+-Some_English_sing | -Some_English_sing_not | 
+    Some_monitors_are_awake.
+-Some_Scotch_dance | -Some_Irish_fight |
+    Some_Welsh_eat.
+-Some_Germans_play | Some_Germans_play_not |
+    Some_of_the_eleven_are_not_oiling.
+-Some_monitors_are_awake | -Some_monitors_are_not_awake |
+    Some_Irish_fight.
+-Some_Germans_play | Some_Scotch_dance |
+    Some_Welsh_eat_not.
+-Some_Scotch_dance_not | -Some_Irish_fight_not |
+    Some_Germans_play.
+-Some_monitors_are_awake | -Some_Welsh_eat |
+   -Some_Scotch_dance.
+-Some_Germans_play_not | -Some_Welsh_eat_not |
+    -Some_Irish_fight.
+-Some_English_sing | Some_English_sing_not | -
+   Some_Scotch_dance_not |
+    -Some_Germans_play.
+-Some_English_sing | -Some_monitors_are_not_awake |
+    Some_Irish_fight_not.
+-Some_monitors_are_awake | -Some_of_the_eleven_are_not_oiling |
+    Some_Scotch_dance.
+
+end_of_list.
+
+
+list(sos).
+
+Some_English_sing_not | Some_English_sing.
+Some_monitors_are_not_awake | Some_monitors_are_awake.
+Some_Scotch_dance | Some_Scotch_dance_not.
+Some_Irish_fight | Some_Irish_fight_not.
+Some_Welsh_eat | Some_Welsh_eat_not.
+Some_Germans_play | Some_Germans_play_not.
+Some_English_sing.
+Some_Scotch_dance_not.
+
+end_of_list.
+SHAR_EOF
+if test -f 'boys.ver1.out'
+then
+	echo shar: over-writing existing file "'boys.ver1.out'"
+fi
+cat << \SHAR_EOF > 'boys.ver1.out'
+problem-set/puzzles/carroll/boys.ver1.out
+created : 07/09/88
+revised : 07/14/88
+
+OTTER version 0.9, 19 May 1988.
+
+set(binary_res).
+set(UR_res).
+
+list(axioms).
+1 -Some_English_sing | -Some_English_sing_not | Some_monitors_are_awake.
+2 -Some_Scotch_dance | -Some_Irish_fight | Some_Welsh_eat.
+3 -Some_Germans_play | Some_Germans_play_not | Some_of_the_eleven_are_not_oiling.
+4 -Some_monitors_are_awake | -Some_monitors_are_not_awake | Some_Irish_fight.
+5 -Some_Germans_play | Some_Scotch_dance | Some_Welsh_eat_not.
+6 -Some_Scotch_dance_not | -Some_Irish_fight_not | Some_Germans_play.
+7 -Some_monitors_are_awake | -Some_Welsh_eat | -Some_Scotch_dance.
+8 -Some_Germans_play_not | -Some_Welsh_eat_not | -Some_Irish_fight.
+9 -Some_English_sing | Some_English_sing_not | -Some_Scotch_dance_not | -Some_Germans_play.
+10 -Some_English_sing | -Some_monitors_are_not_awake | Some_Irish_fight_not.
+11 -Some_monitors_are_awake | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+end_of_list.
+
+list(sos).
+12 Some_English_sing_not | Some_English_sing.
+13 Some_monitors_are_not_awake | Some_monitors_are_awake.
+14 Some_Scotch_dance | Some_Scotch_dance_not.
+15 Some_Irish_fight | Some_Irish_fight_not.
+16 Some_Welsh_eat | Some_Welsh_eat_not.
+17 Some_Germans_play | Some_Germans_play_not.
+18 Some_English_sing.
+19 Some_Scotch_dance_not.
+end_of_list.
+
+new given clause: 18 Some_English_sing.
+** KEPT: 20 (18,10) -Some_monitors_are_not_awake | Some_Irish_fight_not.
+** KEPT: 21 (18,9) Some_English_sing_not | -Some_Scotch_dance_not | -Some_Germans_play.
+** KEPT: 22 (18,1) -Some_English_sing_not | Some_monitors_are_awake.
+20 back subsumes: 10 -Some_English_sing | -Some_monitors_are_not_awake | Some_Irish_fight_not.
+21 back subsumes: 9 -Some_English_sing | Some_English_sing_not | -Some_Scotch_dance_not | -Some_Germans_play.
+22 back subsumes: 1 -Some_English_sing | -Some_English_sing_not | Some_monitors_are_awake.
+
+new given clause: 19 Some_Scotch_dance_not.
+** KEPT: 23 (19,6) -Some_Irish_fight_not | Some_Germans_play.
+23 back subsumes: 6 -Some_Scotch_dance_not | -Some_Irish_fight_not | Some_Germans_play.
+
+new given clause: 12 Some_English_sing_not | Some_English_sing.
+
+new given clause: 13 Some_monitors_are_not_awake | Some_monitors_are_awake.
+** KEPT: 24 (13,11) Some_monitors_are_not_awake | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+** KEPT: 25 (13,7) Some_monitors_are_not_awake | -Some_Welsh_eat | -Some_Scotch_dance.
+
+new given clause: 14 Some_Scotch_dance | Some_Scotch_dance_not.
+
+new given clause: 15 Some_Irish_fight | Some_Irish_fight_not.
+** KEPT: 26 (15,8) Some_Irish_fight_not | -Some_Germans_play_not | -Some_Welsh_eat_not.
+** KEPT: 27 (15,2) Some_Irish_fight_not | -Some_Scotch_dance | Some_Welsh_eat.
+
+new given clause: 16 Some_Welsh_eat | Some_Welsh_eat_not.
+** KEPT: 28 (16,7) Some_Welsh_eat_not | -Some_monitors_are_awake | -Some_Scotch_dance.
+** KEPT: 29 (16,8) Some_Welsh_eat | -Some_Germans_play_not | -Some_Irish_fight.
+
+new given clause: 17 Some_Germans_play | Some_Germans_play_not.
+** KEPT: 30 (17,5) Some_Germans_play_not | Some_Scotch_dance | Some_Welsh_eat_not.
+** KEPT: 31 (17,3) Some_Germans_play_not | Some_of_the_eleven_are_not_oiling.
+** KEPT: 32 (17,8) Some_Germans_play | -Some_Welsh_eat_not | -Some_Irish_fight.
+31 back subsumes: 3 -Some_Germans_play | Some_Germans_play_not | Some_of_the_eleven_are_not_oiling.
+
+new given clause: 20 (18,10) -Some_monitors_are_not_awake | Some_Irish_fight_not.
+** KEPT: 33 (20,13) Some_Irish_fight_not | Some_monitors_are_awake.
+
+new given clause: 22 (18,1) -Some_English_sing_not | Some_monitors_are_awake.
+** KEPT: 34 (22,11) -Some_English_sing_not | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+** KEPT: 35 (22,7) -Some_English_sing_not | -Some_Welsh_eat | -Some_Scotch_dance.
+** KEPT: 36 (22,4) -Some_English_sing_not | -Some_monitors_are_not_awake | Some_Irish_fight.
+
+new given clause: 23 (19,6) -Some_Irish_fight_not | Some_Germans_play.
+** KEPT: 37 (23,20) Some_Germans_play | -Some_monitors_are_not_awake.
+** KEPT: 38 (23,15) Some_Germans_play | Some_Irish_fight.
+** KEPT: 39 (23,5) -Some_Irish_fight_not | Some_Scotch_dance | Some_Welsh_eat_not.
+
+new given clause: 31 (17,3) Some_Germans_play_not | Some_of_the_eleven_are_not_oiling.
+** KEPT: 40 (31,8) Some_of_the_eleven_are_not_oiling | -Some_Welsh_eat_not | -Some_Irish_fight.
+** KEPT: 41 (31,11) Some_Germans_play_not | -Some_monitors_are_awake | Some_Scotch_dance.
+
+new given clause: 33 (20,13) Some_Irish_fight_not | Some_monitors_are_awake.
+** KEPT: 42 (33,23) Some_monitors_are_awake | Some_Germans_play.
+** KEPT: 43 (33,11) Some_Irish_fight_not | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+** KEPT: 44 (33,7) Some_Irish_fight_not | -Some_Welsh_eat | -Some_Scotch_dance.
+
+new given clause: 37 (23,20) Some_Germans_play | -Some_monitors_are_not_awake.
+** KEPT: 45 (37,5) -Some_monitors_are_not_awake | Some_Scotch_dance | Some_Welsh_eat_not.
+
+new given clause: 38 (23,15) Some_Germans_play | Some_Irish_fight.
+** KEPT: 46 (38,5) Some_Irish_fight | Some_Scotch_dance | Some_Welsh_eat_not.
+** KEPT: 47 (38,8) Some_Germans_play | -Some_Germans_play_not | -Some_Welsh_eat_not.
+** KEPT: 48 (38,2) Some_Germans_play | -Some_Scotch_dance | Some_Welsh_eat.
+
+new given clause: 42 (33,23) Some_monitors_are_awake | Some_Germans_play.
+** KEPT: 49 (42,11) Some_Germans_play | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+** KEPT: 50 (42,7) Some_Germans_play | -Some_Welsh_eat | -Some_Scotch_dance.
+** KEPT: 51 (42,5) Some_monitors_are_awake | Some_Scotch_dance | Some_Welsh_eat_not.
+
+new given clause: 21 (18,9) Some_English_sing_not | -Some_Scotch_dance_not | -Some_Germans_play.
+** KEPT: 52 (21,22) -Some_Scotch_dance_not | -Some_Germans_play | Some_monitors_are_awake.
+** KEPT: 53 (21,19) Some_English_sing_not | -Some_Germans_play.
+** KEPT: 54 (21,42) Some_English_sing_not | -Some_Scotch_dance_not | Some_monitors_are_awake.
+** KEPT: 55 (21,38) Some_English_sing_not | -Some_Scotch_dance_not | Some_Irish_fight.
+** KEPT: 56 (21,37) Some_English_sing_not | -Some_Scotch_dance_not | -Some_monitors_are_not_awake.
+** KEPT: 57 (21,23) Some_English_sing_not | -Some_Scotch_dance_not | -Some_Irish_fight_not.
+** KEPT: 58 (21,17) Some_English_sing_not | -Some_Scotch_dance_not | Some_Germans_play_not.
+53 back subsumes: 21 (18,9) Some_English_sing_not | -Some_Scotch_dance_not | -Some_Germans_play.
+
+new given clause: 53 (21,19) Some_English_sing_not | -Some_Germans_play.
+** KEPT: 59 (53,22) -Some_Germans_play | Some_monitors_are_awake.
+** KEPT: 60 (53,42) Some_English_sing_not | Some_monitors_are_awake.
+** KEPT: 61 (53,38) Some_English_sing_not | Some_Irish_fight.
+** KEPT: 62 (53,37) Some_English_sing_not | -Some_monitors_are_not_awake.
+** KEPT: 63 (53,23) Some_English_sing_not | -Some_Irish_fight_not.
+** KEPT: 64 (53,17) Some_English_sing_not | Some_Germans_play_not.
+59 back subsumes: 52 (21,22) -Some_Scotch_dance_not | -Some_Germans_play | Some_monitors_are_awake.
+60 back subsumes: 54 (21,42) Some_English_sing_not | -Some_Scotch_dance_not | Some_monitors_are_awake.
+61 back subsumes: 55 (21,38) Some_English_sing_not | -Some_Scotch_dance_not | Some_Irish_fight.
+62 back subsumes: 56 (21,37) Some_English_sing_not | -Some_Scotch_dance_not | -Some_monitors_are_not_awake.
+63 back subsumes: 57 (21,23) Some_English_sing_not | -Some_Scotch_dance_not | -Some_Irish_fight_not.
+64 back subsumes: 58 (21,17) Some_English_sing_not | -Some_Scotch_dance_not | Some_Germans_play_not.
+
+new given clause: 59 (53,22) -Some_Germans_play | Some_monitors_are_awake.
+** KEPT: 65 (59,42) Some_monitors_are_awake.
+** KEPT: 66 (59,11) -Some_Germans_play | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+** KEPT: 67 (59,7) -Some_Germans_play | -Some_Welsh_eat | -Some_Scotch_dance.
+** KEPT: 68 (59,4) -Some_Germans_play | -Some_monitors_are_not_awake | Some_Irish_fight.
+65 back subsumes: 60 (53,42) Some_English_sing_not | Some_monitors_are_awake.
+65 back subsumes: 59 (53,22) -Some_Germans_play | Some_monitors_are_awake.
+65 back subsumes: 51 (42,5) Some_monitors_are_awake | Some_Scotch_dance | Some_Welsh_eat_not.
+65 back subsumes: 42 (33,23) Some_monitors_are_awake | Some_Germans_play.
+65 back subsumes: 33 (20,13) Some_Irish_fight_not | Some_monitors_are_awake.
+65 back subsumes: 22 (18,1) -Some_English_sing_not | Some_monitors_are_awake.
+65 back subsumes: 13 Some_monitors_are_not_awake | Some_monitors_are_awake.
+
+new given clause: 65 (59,42) Some_monitors_are_awake.
+** KEPT: 69 (65,11) -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+** KEPT: 70 (65,7) -Some_Welsh_eat | -Some_Scotch_dance.
+** KEPT: 71 (65,4) -Some_monitors_are_not_awake | Some_Irish_fight.
+69 back subsumes: 66 (59,11) -Some_Germans_play | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+69 back subsumes: 49 (42,11) Some_Germans_play | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+69 back subsumes: 43 (33,11) Some_Irish_fight_not | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+69 back subsumes: 34 (22,11) -Some_English_sing_not | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+69 back subsumes: 24 (13,11) Some_monitors_are_not_awake | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+69 back subsumes: 11 -Some_monitors_are_awake | -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+70 back subsumes: 67 (59,7) -Some_Germans_play | -Some_Welsh_eat | -Some_Scotch_dance.
+70 back subsumes: 50 (42,7) Some_Germans_play | -Some_Welsh_eat | -Some_Scotch_dance.
+70 back subsumes: 44 (33,7) Some_Irish_fight_not | -Some_Welsh_eat | -Some_Scotch_dance.
+70 back subsumes: 35 (22,7) -Some_English_sing_not | -Some_Welsh_eat | -Some_Scotch_dance.
+70 back subsumes: 25 (13,7) Some_monitors_are_not_awake | -Some_Welsh_eat | -Some_Scotch_dance.
+70 back subsumes: 7 -Some_monitors_are_awake | -Some_Welsh_eat | -Some_Scotch_dance.
+71 back subsumes: 68 (59,4) -Some_Germans_play | -Some_monitors_are_not_awake | Some_Irish_fight.
+71 back subsumes: 36 (22,4) -Some_English_sing_not | -Some_monitors_are_not_awake | Some_Irish_fight.
+71 back subsumes: 4 -Some_monitors_are_awake | -Some_monitors_are_not_awake | Some_Irish_fight.
+
+new given clause: 61 (53,38) Some_English_sing_not | Some_Irish_fight.
+** KEPT: 72 (61,8) Some_English_sing_not | -Some_Germans_play_not | -Some_Welsh_eat_not.
+** KEPT: 73 (61,2) Some_English_sing_not | -Some_Scotch_dance | Some_Welsh_eat.
+
+new given clause: 62 (53,37) Some_English_sing_not | -Some_monitors_are_not_awake.
+
+new given clause: 63 (53,23) Some_English_sing_not | -Some_Irish_fight_not.
+
+new given clause: 64 (53,17) Some_English_sing_not | Some_Germans_play_not.
+** KEPT: 74 (64,8) Some_English_sing_not | -Some_Welsh_eat_not | -Some_Irish_fight.
+
+new given clause: 69 (65,11) -Some_of_the_eleven_are_not_oiling | Some_Scotch_dance.
+** KEPT: 75 (69,31) Some_Scotch_dance | Some_Germans_play_not.
+** KEPT: 76 (69,2) -Some_of_the_eleven_are_not_oiling | -Some_Irish_fight | Some_Welsh_eat.
+75 back subsumes: 41 (31,11) Some_Germans_play_not | -Some_monitors_are_awake | Some_Scotch_dance.
+75 back subsumes: 30 (17,5) Some_Germans_play_not | Some_Scotch_dance | Some_Welsh_eat_not.
+
+new given clause: 70 (65,7) -Some_Welsh_eat | -Some_Scotch_dance.
+** KEPT: 77 (70,16) -Some_Scotch_dance | Some_Welsh_eat_not.
+** KEPT: 78 (70,2) -Some_Scotch_dance | -Some_Irish_fight.
+** KEPT: 79 (70,69) -Some_Welsh_eat | -Some_of_the_eleven_are_not_oiling.
+** KEPT: 80 (70,5) -Some_Welsh_eat | -Some_Germans_play | Some_Welsh_eat_not.
+77 back subsumes: 28 (16,7) Some_Welsh_eat_not | -Some_monitors_are_awake | -Some_Scotch_dance.
+78 back subsumes: 2 -Some_Scotch_dance | -Some_Irish_fight | Some_Welsh_eat.
+
+new given clause: 71 (65,4) -Some_monitors_are_not_awake | Some_Irish_fight.
+** KEPT: 81 (71,8) -Some_monitors_are_not_awake | -Some_Germans_play_not | -Some_Welsh_eat_not.
+
+new given clause: 75 (69,31) Some_Scotch_dance | Some_Germans_play_not.
+** KEPT: 82 (75,70) Some_Germans_play_not | -Some_Welsh_eat.
+** KEPT: 83 (75,8) Some_Scotch_dance | -Some_Welsh_eat_not | -Some_Irish_fight.
+
+new given clause: 77 (70,16) -Some_Scotch_dance | Some_Welsh_eat_not.
+** KEPT: 84 (77,75) Some_Welsh_eat_not | Some_Germans_play_not.
+** KEPT: 85 (77,69) Some_Welsh_eat_not | -Some_of_the_eleven_are_not_oiling.
+** KEPT: 86 (77,5) Some_Welsh_eat_not | -Some_Germans_play.
+86 back subsumes: 80 (70,5) -Some_Welsh_eat | -Some_Germans_play | Some_Welsh_eat_not.
+86 back subsumes: 5 -Some_Germans_play | Some_Scotch_dance | Some_Welsh_eat_not.
+
+new given clause: 78 (70,2) -Some_Scotch_dance | -Some_Irish_fight.
+** KEPT: 87 (78,75) -Some_Irish_fight | Some_Germans_play_not.
+** KEPT: 88 (78,69) -Some_Irish_fight | -Some_of_the_eleven_are_not_oiling.
+** KEPT: 89 (78,71) -Some_Scotch_dance | -Some_monitors_are_not_awake.
+** KEPT: 90 (78,61) -Some_Scotch_dance | Some_English_sing_not.
+** KEPT: 91 (78,38) -Some_Scotch_dance | Some_Germans_play.
+** KEPT: 92 (78,15) -Some_Scotch_dance | Some_Irish_fight_not.
+88 back subsumes: 76 (69,2) -Some_of_the_eleven_are_not_oiling | -Some_Irish_fight | Some_Welsh_eat.
+90 back subsumes: 73 (61,2) Some_English_sing_not | -Some_Scotch_dance | Some_Welsh_eat.
+91 back subsumes: 48 (38,2) Some_Germans_play | -Some_Scotch_dance | Some_Welsh_eat.
+92 back subsumes: 27 (15,2) Some_Irish_fight_not | -Some_Scotch_dance | Some_Welsh_eat.
+
+new given clause: 79 (70,69) -Some_Welsh_eat | -Some_of_the_eleven_are_not_oiling.
+
+new given clause: 82 (75,70) Some_Germans_play_not | -Some_Welsh_eat.
+** KEPT: 93 (82,8) -Some_Welsh_eat | -Some_Welsh_eat_not | -Some_Irish_fight.
+
+new given clause: 84 (77,75) Some_Welsh_eat_not | Some_Germans_play_not.
+
+new given clause: 85 (77,69) Some_Welsh_eat_not | -Some_of_the_eleven_are_not_oiling.
+
+new given clause: 86 (77,5) Some_Welsh_eat_not | -Some_Germans_play.
+** KEPT: 94 (86,8) -Some_Germans_play | -Some_Germans_play_not | -Some_Irish_fight.
+** KEPT: 95 (86,38) Some_Welsh_eat_not | Some_Irish_fight.
+** KEPT: 96 (86,37) Some_Welsh_eat_not | -Some_monitors_are_not_awake.
+** KEPT: 97 (86,23) Some_Welsh_eat_not | -Some_Irish_fight_not.
+95 back subsumes: 46 (38,5) Some_Irish_fight | Some_Scotch_dance | Some_Welsh_eat_not.
+96 back subsumes: 45 (37,5) -Some_monitors_are_not_awake | Some_Scotch_dance | Some_Welsh_eat_not.
+97 back subsumes: 39 (23,5) -Some_Irish_fight_not | Some_Scotch_dance | Some_Welsh_eat_not.
+
+new given clause: 87 (78,75) -Some_Irish_fight | Some_Germans_play_not.
+** KEPT: 98 (87,71) Some_Germans_play_not | -Some_monitors_are_not_awake.
+** KEPT: 99 (87,15) Some_Germans_play_not | Some_Irish_fight_not.
+** KEPT: 100 (87,8) -Some_Irish_fight | -Some_Welsh_eat_not.
+100 back subsumes: 93 (82,8) -Some_Welsh_eat | -Some_Welsh_eat_not | -Some_Irish_fight.
+100 back subsumes: 83 (75,8) Some_Scotch_dance | -Some_Welsh_eat_not | -Some_Irish_fight.
+100 back subsumes: 74 (64,8) Some_English_sing_not | -Some_Welsh_eat_not | -Some_Irish_fight.
+100 back subsumes: 40 (31,8) Some_of_the_eleven_are_not_oiling | -Some_Welsh_eat_not | -Some_Irish_fight.
+100 back subsumes: 32 (17,8) Some_Germans_play | -Some_Welsh_eat_not | -Some_Irish_fight.
+100 back subsumes: 8 -Some_Germans_play_not | -Some_Welsh_eat_not | -Some_Irish_fight.
+
+new given clause: 88 (78,69) -Some_Irish_fight | -Some_of_the_eleven_are_not_oiling.
+** KEPT: 101 (88,71) -Some_of_the_eleven_are_not_oiling | -Some_monitors_are_not_awake.
+** KEPT: 102 (88,61) -Some_of_the_eleven_are_not_oiling | Some_English_sing_not.
+** KEPT: 103 (88,38) -Some_of_the_eleven_are_not_oiling | Some_Germans_play.
+** KEPT: 104 (88,15) -Some_of_the_eleven_are_not_oiling | Some_Irish_fight_not.
+
+new given clause: 89 (78,71) -Some_Scotch_dance | -Some_monitors_are_not_awake.
+
+new given clause: 90 (78,61) -Some_Scotch_dance | Some_English_sing_not.
+
+new given clause: 91 (78,38) -Some_Scotch_dance | Some_Germans_play.
+
+new given clause: 92 (78,15) -Some_Scotch_dance | Some_Irish_fight_not.
+
+new given clause: 95 (86,38) Some_Welsh_eat_not | Some_Irish_fight.
+
+new given clause: 96 (86,37) Some_Welsh_eat_not | -Some_monitors_are_not_awake.
+
+new given clause: 97 (86,23) Some_Welsh_eat_not | -Some_Irish_fight_not.
+
+new given clause: 98 (87,71) Some_Germans_play_not | -Some_monitors_are_not_awake.
+
+new given clause: 99 (87,15) Some_Germans_play_not | Some_Irish_fight_not.
+
+new given clause: 100 (87,8) -Some_Irish_fight | -Some_Welsh_eat_not.
+** KEPT: 105 (100,71) -Some_Welsh_eat_not | -Some_monitors_are_not_awake.
+** KEPT: 106 (100,61) -Some_Welsh_eat_not | Some_English_sing_not.
+** KEPT: 107 (100,38) -Some_Welsh_eat_not | Some_Germans_play.
+** KEPT: 108 (100,15) -Some_Welsh_eat_not | Some_Irish_fight_not.
+** KEPT: 109 (100,97) -Some_Irish_fight | -Some_Irish_fight_not.
+** KEPT: 110 (100,96) -Some_Irish_fight | -Some_monitors_are_not_awake.
+** KEPT: 111 (100,86) -Some_Irish_fight | -Some_Germans_play.
+** KEPT: 112 (100,16) -Some_Irish_fight | Some_Welsh_eat.
+105 back subsumes: 81 (71,8) -Some_monitors_are_not_awake | -Some_Germans_play_not | -Some_Welsh_eat_not.
+106 back subsumes: 72 (61,8) Some_English_sing_not | -Some_Germans_play_not | -Some_Welsh_eat_not.
+107 back subsumes: 47 (38,8) Some_Germans_play | -Some_Germans_play_not | -Some_Welsh_eat_not.
+108 back subsumes: 26 (15,8) Some_Irish_fight_not | -Some_Germans_play_not | -Some_Welsh_eat_not.
+111 back subsumes: 94 (86,8) -Some_Germans_play | -Some_Germans_play_not | -Some_Irish_fight.
+112 back subsumes: 29 (16,8) Some_Welsh_eat | -Some_Germans_play_not | -Some_Irish_fight.
+
+new given clause: 101 (88,71) -Some_of_the_eleven_are_not_oiling | -Some_monitors_are_not_awake.
+
+new given clause: 102 (88,61) -Some_of_the_eleven_are_not_oiling | Some_English_sing_not.
+
+new given clause: 103 (88,38) -Some_of_the_eleven_are_not_oiling | Some_Germans_play.
+
+new given clause: 104 (88,15) -Some_of_the_eleven_are_not_oiling | Some_Irish_fight_not.
+
+new given clause: 105 (100,71) -Some_Welsh_eat_not | -Some_monitors_are_not_awake.
+** KEPT: 113 (105,97) -Some_monitors_are_not_awake | -Some_Irish_fight_not.
+** KEPT: 114 (105,96) -Some_monitors_are_not_awake.
+114 back subsumes: 113 (105,97) -Some_monitors_are_not_awake | -Some_Irish_fight_not.
+114 back subsumes: 110 (100,96) -Some_Irish_fight | -Some_monitors_are_not_awake.
+114 back subsumes: 105 (100,71) -Some_Welsh_eat_not | -Some_monitors_are_not_awake.
+114 back subsumes: 101 (88,71) -Some_of_the_eleven_are_not_oiling | -Some_monitors_are_not_awake.
+114 back subsumes: 98 (87,71) Some_Germans_play_not | -Some_monitors_are_not_awake.
+114 back subsumes: 96 (86,37) Some_Welsh_eat_not | -Some_monitors_are_not_awake.
+114 back subsumes: 89 (78,71) -Some_Scotch_dance | -Some_monitors_are_not_awake.
+114 back subsumes: 71 (65,4) -Some_monitors_are_not_awake | Some_Irish_fight.
+114 back subsumes: 62 (53,37) Some_English_sing_not | -Some_monitors_are_not_awake.
+114 back subsumes: 37 (23,20) Some_Germans_play | -Some_monitors_are_not_awake.
+114 back subsumes: 20 (18,10) -Some_monitors_are_not_awake | Some_Irish_fight_not.
+
+new given clause: 114 (105,96) -Some_monitors_are_not_awake.
+
+new given clause: 106 (100,61) -Some_Welsh_eat_not | Some_English_sing_not.
+** KEPT: 115 (106,16) Some_English_sing_not | Some_Welsh_eat.
+
+new given clause: 107 (100,38) -Some_Welsh_eat_not | Some_Germans_play.
+** KEPT: 116 (107,16) Some_Germans_play | Some_Welsh_eat.
+
+new given clause: 108 (100,15) -Some_Welsh_eat_not | Some_Irish_fight_not.
+** KEPT: 117 (108,86) Some_Irish_fight_not | -Some_Germans_play.
+** KEPT: 118 (108,16) Some_Irish_fight_not | Some_Welsh_eat.
+
+new given clause: 109 (100,97) -Some_Irish_fight | -Some_Irish_fight_not.
+
+new given clause: 111 (100,86) -Some_Irish_fight | -Some_Germans_play.
+
+new given clause: 112 (100,16) -Some_Irish_fight | Some_Welsh_eat.
+
+new given clause: 115 (106,16) Some_English_sing_not | Some_Welsh_eat.
+
+new given clause: 116 (107,16) Some_Germans_play | Some_Welsh_eat.
+
+new given clause: 117 (108,86) Some_Irish_fight_not | -Some_Germans_play.
+
+new given clause: 118 (108,16) Some_Irish_fight_not | Some_Welsh_eat.
+
+------------ END OF SEARCH ------------
+
+sos empty.
+
+--------------- options ---------------
+set(binary_res).
+set(UR_res).
+set(demod_hist).
+set(for_sub).
+set(print_kept).
+set(back_sub).
+set(print_back_sub).
+set(print_given).
+set(check_arity).
+
+clear(hyper_res).
+clear(para_from).
+clear(para_into).
+clear(demod_inf).
+clear(para_from_left).
+clear(para_from_right).
+clear(para_into_vars).
+clear(para_from_vars).
+clear(para_all).
+clear(para_ones_rule).
+clear(no_para_into_left).
+clear(no_para_into_right).
+clear(demod_linear).
+clear(print_gen).
+clear(sort_literals).
+clear(Unit_deletion).
+clear(factor).
+clear(print_weight).
+clear(sos_fifo).
+clear(bird_print).
+clear(atom_wt_max_args).
+clear(print_lists_at_end).
+clear(free_all_mem).
+clear(for_sub_fpa).
+clear(no_fapl).
+clear(no_fanl).
+
+assign(report, 0).
+assign(max_seconds, 0).
+assign(max_given, 0).
+assign(max_kept, 0).
+assign(max_gen, 0).
+assign(max_mem, 0).
+assign(max_weight, 0).
+assign(max_literals, 0).
+assign(fpa_literals, 4).
+assign(fpa_terms, 4).
+assign(demod_limit, 100).
+assign(max_proofs, 1).
+assign(neg_weight, 0).
+
+-------------- statistics -------------
+clauses input                 19
+clauses given                 63
+clauses generated            249
+demodulation rewrites          0
+clauses wt or lit delete       0
+tautologies deleted           16
+clauses forward subsumed     134
+(clauses subsumed by sos)     28
+unit deletions                 0
+clauses kept                  99
+empty clauses                  0
+factors generated              0
+clauses back subsumed         70
+clauses not processed          0
+
+----------- times (seconds) -----------
+run time             1.04
+input time           0.12
+binary_res time      0.14
+hyper_res time       0.00
+UR_res time          0.08
+para_into time       0.00
+para_from time       0.00
+pre_process time     0.32
+  demod time         0.00
+  weigh time         0.00
+  for_sub time       0.14
+  unit_del time      0.00
+post_process time    0.28
+  back_sub time      0.12
+  conflict time      0.00
+  factor time        0.00
+FPA build time       0.02
+IS build time        0.04
+print_cl time        0.12
+cl integrate time    0.00
+window time          0.00
+SHAR_EOF
+if test -f 'ggson.desc'
+then
+	echo shar: over-writing existing file "'ggson.desc'"
+fi
+cat << \SHAR_EOF > 'ggson.desc'
+problem-set/puzzles/carroll/ggson.desc
+created : 07/14/86
+revised : 07/15/88
+
+Natural Language Description:
+
+          	       The Great-grandson Problem
+
+   (1) A man can always master his father.
+   (2) An inferior of a man's uncle owes that man money.
+   (3) The father of an enemy of a friend of a man owes that man
+       nothing.
+   (4) A man is always persecuted by his son's creditors.
+   (5) An inferior of the master of a man's son is senior to that man.
+   (6) A grandson of a man's junior is not his nephew.
+   (7) A servant of an inferior of a friend of a man's enemy is never
+	   persecuted by that man.
+   (8) A friend of a superior of the master of a man's victim is
+	   that man's enemy.
+   (9) An enemy of a persecutor of a servant of a man's father is that 
+	   man's friend.
+
+ 	The Problem is to deduce some facts about the great-grandsons.
+                   - Lewis Carroll, from "Symbolic Logic" p362.
+
+Versions:
+
+ggson.ver1.in : uses hyper-resolution, UR-resolution, and binary
+	resolution. Generates no useful clauses about great-grandsons.
+
+		created by :
+		verified for ITP : no proof
+		translated for OTTER by : K.R.
+		verified for OTTER : no proof
+SHAR_EOF
+if test -f 'ggson.ver1.clauses'
+then
+	echo shar: over-writing existing file "'ggson.ver1.clauses'"
+fi
+cat << \SHAR_EOF > 'ggson.ver1.clauses'
+% problem-set/puzzles/carroll/ggson.ver1.clauses
+% created : 07/15/88
+% revised : 07/15/88
+
+% description:
+%
+% This run attempts to solve "The Great-grandson Problem" using
+% hyper-resolution, binary resolution, and UR-resolution.
+% NO PROOF
+%
+%      THE GREAT-GRANDSON PROBLEM
+%                  --- Lewis Carroll from "Symbolic Logic" p362.
+%
+%  1. A man can always master his father.
+%  2. An inferior of a man's uncle owes that man money.
+%  3. The father of an enemy of a friend of a man owes that man nothing.
+%  4. A man is always persecuted by his son's creditors.
+%  5. An inferior of the master of a man's son is senior to that man.
+%  6. A grandson of a man's junior is not his nephew.
+%  7. A servant of an inferior of a friend of a man's enemy is never
+%     persecuted by that man.
+%  8. A friend of a superior of the master of a man's victim is that
+%     man's enemy.
+%  9. An enemy of a persecutor of a servant of a man's father is that 
+%     man's friend.
+%
+%  The Problem is to deduce some facts about the great-grandsons.
+
+% represenation:
+%
+
+-Father(x,y) | Master(y,x).
+NotSuperior(x,y) | NotUncle(x,z) | -NotOwes(y,z).
+-Father(x,y) | -Enemies(y,z) | -Friends(z,w) | NotOwes(x,w).
+-Father(x,y) | NotOwes(y,z) | Persecutes(z,x).
+NotSuperior(x,y) | -Master(x,z) | -Father(w,z) | Senior(y,w).
+-Father(x,y) | -Father(y,z) | -Senior(w,x) | NotUncle(w,z).
+-Master(x,y) | NotSuperior(z,x) | -Friends(z,w) | -Enemies(w,t) |
+  -Persecutes(t,y).
+-Friends(x,y) | NotSuperior(y,z) | -Master(z,w) | -Persecutes(t,w) |
+  Enemies(x,t).
+-Enemies(x,y) | -Persecutes(y,z) | -Master(w,z) | -Father(w,t) |
+  Friends(x,t).
+
+-Father(x,y) | -Father(y,z) | -Father(z,w) | Greatgrandson(x,w).
+-Friends(x,y) | Friends(y,x).
+-Enemies(x,y) | Enemies(y,x).
+-Friends(x,y) | -Enemies(x,y).
+Friends(x,y) | Enemies(x,y).
+Father(A,B).
+Father(B,C).
+Father(C,D).
+SHAR_EOF
+if test -f 'ggson.ver1.in'
+then
+	echo shar: over-writing existing file "'ggson.ver1.in'"
+fi
+cat << \SHAR_EOF > 'ggson.ver1.in'
+% problem-set/puzzles/carroll/ggson.ver1.in
+% created : 07/14/86
+% revised : 07/15/88
+
+% description:
+%
+% This run attempts to solve "The Great-grandson Problem" using
+% hyper-resolution, binary resolution, and UR-resolution.
+% NO PROOF
+%
+%    			  THE GREAT-GRANDSON PROBLEM
+%
+%  1. A man can always master his father.
+%  2. An inferior of a man's uncle owes that man money.
+%  3. The father of an enemy of a friend of a man owes that man nothing.
+%  4. A man is always persecuted by his son's creditors.
+%  5. An inferior of the master of a man's son is senior to that man.
+%  6. A grandson of a man's junior is not his nephew.
+%  7. A servant of an inferior of a friend of a man's enemy is never
+%     persecuted by that man.
+%  8. A friend of a superior of the master of a man's victim is that
+%     man's enemy.
+%  9. An enemy of a persecutor of a servant of a man's father is that 
+%     man's friend.
+%
+%  The Problem is to deduce some facts about the great-grandsons.
+%                  --- Lewis Carroll from "Symbolic Logic" p362.
+
+% representation:
+%
+
+set(hyper_res).
+set(binary_res).
+set(UR_res).
+
+
+list(axioms). 
+
+-Father(x,y) | Master(y,x).
+NotSuperior(x,y) | NotUncle(x,z) | -NotOwes(y,z).
+-Father(x,y) | -Enemies(y,z) | -Friends(z,w) | NotOwes(x,w).
+-Father(x,y) | NotOwes(y,z) | Persecutes(z,x).
+NotSuperior(x,y) | -Master(x,z) | -Father(w,z) | Senior(y,w).
+-Father(x,y) | -Father(y,z) | -Senior(w,x) | NotUncle(w,z).
+-Master(x,y) | NotSuperior(z,x) | -Friends(z,w) | -Enemies(w,t) |
+  -Persecutes(t,y).
+-Friends(x,y) | NotSuperior(y,z) | -Master(z,w) | -Persecutes(t,w) |
+  Enemies(x,t).
+-Enemies(x,y) | -Persecutes(y,z) | -Master(w,z) | -Father(w,t) |
+  Friends(x,t).
+
+-Father(x,y) | -Father(y,z) | -Father(z,w) | Greatgrandson(x,w).
+-Friends(x,y) | Friends(y,x).
+-Enemies(x,y) | Enemies(y,x).
+-Friends(x,y) | -Enemies(x,y).
+Friends(x,y) | Enemies(x,y).
+
+end_of_list.
+
+
+list(sos).
+
+Father(A,B).
+Father(B,C).
+Father(C,D).
+
+end_of_list.
+SHAR_EOF
+if test -f 'ggson.ver1.out'
+then
+	echo shar: over-writing existing file "'ggson.ver1.out'"
+fi
+cat << \SHAR_EOF > 'ggson.ver1.out'
+problem-set/puzzles/carroll/ggson.ver1.out
+created : 07/15/88
+revised : 07/15/88
+
+OTTER version 0.91, 14 June 1988.
+
+set(hyper_res).
+set(binary_res).
+set(UR_res).
+
+list(axioms).
+1 -Father(x,y) | Master(y,x).
+2 NotSuperior(x,y) | NotUncle(x,z) | -NotOwes(y,z).
+3 -Father(x,y) | -Enemies(y,z) | -Friends(z,w) | NotOwes(x,w).
+4 -Father(x,y) | NotOwes(y,z) | Persecutes(z,x).
+5 NotSuperior(x,y) | -Master(x,z) | -Father(w,z) | Senior(y,w).
+6 -Father(x,y) | -Father(y,z) | -Senior(w,x) | NotUncle(w,z).
+7 -Master(x,y) | NotSuperior(z,x) | -Friends(z,w) | -Enemies(w,t) | -Persecutes(t,y).
+8 -Friends(x,y) | NotSuperior(y,z) | -Master(z,w) | -Persecutes(t,w) | Enemies(x,t).
+9 -Enemies(x,y) | -Persecutes(y,z) | -Master(w,z) | -Father(w,t) | Friends(x,t).
+10 -Father(x,y) | -Father(y,z) | -Father(z,w) | Greatgrandson(x,w).
+11 -Friends(x,y) | Friends(y,x).
+12 -Enemies(x,y) | Enemies(y,x).
+13 -Friends(x,y) | -Enemies(x,y).
+14 Friends(x,y) | Enemies(x,y).
+end_of_list.
+
+list(sos).
+15 Father(A,B).
+16 Father(B,C).
+17 Father(C,D).
+end_of_list.
+
+new given clause: 15 Father(A,B).
+** KEPT: 18 (15,10) -Father(x,y) | -Father(y,A) | Greatgrandson(x,B).
+** KEPT: 19 (15,10) -Father(x,A) | -Father(B,y) | Greatgrandson(x,y).
+** KEPT: 20 (15,10) -Father(B,x) | -Father(x,y) | Greatgrandson(A,y).
+** KEPT: 21 (15,6) -Father(x,A) | -Senior(y,x) | NotUncle(y,B).
+** KEPT: 22 (15,6) -Father(B,x) | -Senior(y,A) | NotUncle(y,x).
+** KEPT: 23 (15,5) NotSuperior(x,y) | -Master(x,B) | Senior(y,A).
+** KEPT: 24 (15,4) NotOwes(B,x) | Persecutes(x,A).
+** KEPT: 25 (15,3) -Enemies(B,x) | -Friends(x,y) | NotOwes(A,y).
+** KEPT: 26 (15,1) Master(B,A).
+** KEPT: 27 (15,3,14,14) NotOwes(A,x) | Friends(B,y) | Enemies(y,x).
+
+new given clause: 16 Father(B,C).
+** KEPT: 28 (16,10) -Father(x,y) | -Father(y,B) | Greatgrandson(x,C).
+** KEPT: 29 (16,10) -Father(x,B) | -Father(C,y) | Greatgrandson(x,y).
+** KEPT: 30 (16,10) -Father(C,x) | -Father(x,y) | Greatgrandson(B,y).
+** KEPT: 31 (16,6) -Father(x,B) | -Senior(y,x) | NotUncle(y,C).
+** KEPT: 32 (16,6) -Father(C,x) | -Senior(y,B) | NotUncle(y,x).
+** KEPT: 33 (16,5) NotSuperior(x,y) | -Master(x,C) | Senior(y,B).
+** KEPT: 34 (16,4) NotOwes(C,x) | Persecutes(x,B).
+** KEPT: 35 (16,3) -Enemies(C,x) | -Friends(x,y) | NotOwes(B,y).
+** KEPT: 36 (16,1) Master(C,B).
+** KEPT: 37 (16,3,14,14) NotOwes(B,x) | Friends(C,y) | Enemies(y,x).
+
+new given clause: 17 Father(C,D).
+** KEPT: 38 (17,10) -Father(x,y) | -Father(y,C) | Greatgrandson(x,D).
+** KEPT: 39 (17,10) -Father(x,C) | -Father(D,y) | Greatgrandson(x,y).
+** KEPT: 40 (17,10) -Father(D,x) | -Father(x,y) | Greatgrandson(C,y).
+** KEPT: 41 (17,6) -Father(x,C) | -Senior(y,x) | NotUncle(y,D).
+** KEPT: 42 (17,6) -Father(D,x) | -Senior(y,C) | NotUncle(y,x).
+** KEPT: 43 (17,5) NotSuperior(x,y) | -Master(x,D) | Senior(y,C).
+** KEPT: 44 (17,4) NotOwes(D,x) | Persecutes(x,C).
+** KEPT: 45 (17,3) -Enemies(D,x) | -Friends(x,y) | NotOwes(C,y).
+** KEPT: 46 (17,1) Master(D,C).
+** KEPT: 47 (17,10,15,16) Greatgrandson(A,D).
+** KEPT: 48 (17,3,14,14) NotOwes(C,x) | Friends(D,y) | Enemies(y,x).
+
+new given clause: 26 (15,1) Master(B,A).
+** KEPT: 49 (26,9) -Enemies(x,y) | -Persecutes(y,A) | -Father(B,t) | Friends(x,t).
+** KEPT: 50 (26,8) -Friends(x,y) | NotSuperior(y,B) | -Persecutes(t,A) | Enemies(x,t).
+** KEPT: 51 (26,7) NotSuperior(x,B) | -Friends(x,y) | -Enemies(y,t) | -Persecutes(t,A).
+** KEPT: 52 (26,5) NotSuperior(B,x) | -Father(y,A) | Senior(x,y).
+
+new given clause: 36 (16,1) Master(C,B).
+** KEPT: 53 (36,9) -Enemies(x,y) | -Persecutes(y,B) | -Father(C,t) | Friends(x,t).
+** KEPT: 54 (36,8) -Friends(x,y) | NotSuperior(y,C) | -Persecutes(t,B) | Enemies(x,t).
+** KEPT: 55 (36,7) NotSuperior(x,C) | -Friends(x,y) | -Enemies(y,t) | -Persecutes(t,B).
+** KEPT: 56 (36,5) NotSuperior(C,x) | -Father(y,B) | Senior(x,y).
+** KEPT: 57 (36,5,15) NotSuperior(C,x) | Senior(x,A).
+
+new given clause: 46 (17,1) Master(D,C).
+** KEPT: 58 (46,9) -Enemies(x,y) | -Persecutes(y,C) | -Father(D,t) | Friends(x,t).
+** KEPT: 59 (46,8) -Friends(x,y) | NotSuperior(y,D) | -Persecutes(t,C) | Enemies(x,t).
+** KEPT: 60 (46,7) NotSuperior(x,D) | -Friends(x,y) | -Enemies(y,t) | -Persecutes(t,C).
+** KEPT: 61 (46,5) NotSuperior(D,x) | -Father(y,C) | Senior(x,y).
+** KEPT: 62 (46,5,16) NotSuperior(D,x) | Senior(x,B).
+
+new given clause: 47 (17,10,15,16) Greatgrandson(A,D).
+
+new given clause: 24 (15,4) NotOwes(B,x) | Persecutes(x,A).
+** KEPT: 63 (24,2) Persecutes(x,A) | NotSuperior(y,B) | NotUncle(y,x).
+** KEPT: 64 (24,9) NotOwes(B,x) | -Enemies(y,x) | -Master(z,A) | -Father(z,t) | Friends(y,t).
+** KEPT: 65 (24,8) NotOwes(B,t) | -Friends(x,y) | NotSuperior(y,z) | -Master(z,A) | Enemies(x,t).
+** KEPT: 66 (24,7) NotOwes(B,t) | -Master(x,A) | NotSuperior(y,x) | -Friends(y,z) | -Enemies(z,t).
+** KEPT: 67 (24,8,14,26) NotOwes(B,t) | NotSuperior(x,B) | Enemies(y,t) | Enemies(y,x).
+** KEPT: 68 (24,7,26,14,14) NotOwes(B,t) | NotSuperior(x,B) | Enemies(x,y) | Friends(y,t).
+
+new given clause: 34 (16,4) NotOwes(C,x) | Persecutes(x,B).
+** KEPT: 69 (34,2) Persecutes(x,B) | NotSuperior(y,C) | NotUncle(y,x).
+** KEPT: 70 (34,9) NotOwes(C,x) | -Enemies(y,x) | -Master(z,B) | -Father(z,t) | Friends(y,t).
+** KEPT: 71 (34,8) NotOwes(C,t) | -Friends(x,y) | NotSuperior(y,z) | -Master(z,B) | Enemies(x,t).
+** KEPT: 72 (34,7) NotOwes(C,t) | -Master(x,B) | NotSuperior(y,x) | -Friends(y,z) | -Enemies(z,t).
+** KEPT: 73 (34,8,14,36) NotOwes(C,t) | NotSuperior(x,C) | Enemies(y,t) | Enemies(y,x).
+** KEPT: 74 (34,7,36,14,14) NotOwes(C,t) | NotSuperior(x,C) | Enemies(x,y) | Friends(y,t).
+
+new given clause: 44 (17,4) NotOwes(D,x) | Persecutes(x,C).
+** KEPT: 75 (44,2) Persecutes(x,C) | NotSuperior(y,D) | NotUncle(y,x).
+** KEPT: 76 (44,9) NotOwes(D,x) | -Enemies(y,x) | -Master(z,C) | -Father(z,t) | Friends(y,t).
+** KEPT: 77 (44,8) NotOwes(D,t) | -Friends(x,y) | NotSuperior(y,z) | -Master(z,C) | Enemies(x,t).
+** KEPT: 78 (44,7) NotOwes(D,t) | -Master(x,C) | NotSuperior(y,x) | -Friends(y,z) | -Enemies(z,t).
+** KEPT: 79 (44,8,14,46) NotOwes(D,t) | NotSuperior(x,D) | Enemies(y,t) | Enemies(y,x).
+** KEPT: 80 (44,7,46,14,14) NotOwes(D,t) | NotSuperior(x,D) | Enemies(x,y) | Friends(y,t).
+
+new given clause: 57 (36,5,15) NotSuperior(C,x) | Senior(x,A).
+** KEPT: 81 (57,6) NotSuperior(C,x) | -Father(A,y) | -Father(y,z) | NotUncle(x,z).
+** KEPT: 82 (57,6,15,16) NotSuperior(C,x) | NotUncle(x,C).
+
+new given clause: 62 (46,5,16) NotSuperior(D,x) | Senior(x,B).
+** KEPT: 83 (62,6) NotSuperior(D,x) | -Father(B,y) | -Father(y,z) | NotUncle(x,z).
+** KEPT: 84 (62,6,16,17) NotSuperior(D,x) | NotUncle(x,D).
+
+new given clause: 82 (57,6,15,16) NotSuperior(C,x) | NotUncle(x,C).
+
+new given clause: 84 (62,6,16,17) NotSuperior(D,x) | NotUncle(x,D).
+
+new given clause: 18 (15,10) -Father(x,y) | -Father(y,A) | Greatgrandson(x,B).
+** KEPT: 85 (18,17) -Father(D,A) | Greatgrandson(C,B).
+** KEPT: 86 (18,16) -Father(C,A) | Greatgrandson(B,B).
+** KEPT: 87 (18,15) -Father(B,A) | Greatgrandson(A,B).
+
+new given clause: 85 (18,17) -Father(D,A) | Greatgrandson(C,B).
+
+new given clause: 86 (18,16) -Father(C,A) | Greatgrandson(B,B).
+
+new given clause: 87 (18,15) -Father(B,A) | Greatgrandson(A,B).
+
+new given clause: 19 (15,10) -Father(x,A) | -Father(B,y) | Greatgrandson(x,y).
+** KEPT: 88 (19,16) -Father(x,A) | Greatgrandson(x,C).
+
+new given clause: 88 (19,16) -Father(x,A) | Greatgrandson(x,C).
+
+new given clause: 20 (15,10) -Father(B,x) | -Father(x,y) | Greatgrandson(A,y).
+** KEPT: 89 (20,16) -Father(C,x) | Greatgrandson(A,x).
+** KEPT: 90 (20,16) -Father(B,B) | Greatgrandson(A,C).
+
+new given clause: 89 (20,16) -Father(C,x) | Greatgrandson(A,x).
+
+new given clause: 90 (20,16) -Father(B,B) | Greatgrandson(A,C).
+
+new given clause: 21 (15,6) -Father(x,A) | -Senior(y,x) | NotUncle(y,B).
+** KEPT: 91 (21,62) -Father(B,A) | NotUncle(x,B) | NotSuperior(D,x).
+** KEPT: 92 (21,57) -Father(A,A) | NotUncle(x,B) | NotSuperior(C,x).
+** KEPT: 93 (21,5) -Father(x,A) | NotUncle(y,B) | NotSuperior(z,y) | -Master(z,u) | -Father(x,u).
+
+new given clause: 22 (15,6) -Father(B,x) | -Senior(y,A) | NotUncle(y,x).
+** KEPT: 94 (22,16) -Senior(x,A) | NotUncle(x,C).
+** KEPT: 95 (22,57) -Father(B,x) | NotUncle(y,x) | NotSuperior(C,y).
+** KEPT: 96 (22,5) -Father(B,x) | NotUncle(y,x) | NotSuperior(z,y) | -Master(z,u) | -Father(A,u).
+
+new given clause: 94 (22,16) -Senior(x,A) | NotUncle(x,C).
+** KEPT: 97 (94,5) NotUncle(x,C) | NotSuperior(y,x) | -Master(y,z) | -Father(A,z).
+
+new given clause: 23 (15,5) NotSuperior(x,y) | -Master(x,B) | Senior(y,A).
+** KEPT: 98 (23,1) NotSuperior(x,y) | Senior(y,A) | -Father(B,x).
+** KEPT: 99 (23,94) NotSuperior(x,y) | -Master(x,B) | NotUncle(y,C).
+** KEPT: 100 (23,22) NotSuperior(x,y) | -Master(x,B) | -Father(B,z) | NotUncle(y,z).
+** KEPT: 101 (23,21) NotSuperior(x,y) | -Master(x,B) | -Father(A,A) | NotUncle(y,B).
+** KEPT: 102 (23,6) NotSuperior(x,y) | -Master(x,B) | -Father(A,z) | -Father(z,u) | NotUncle(y,u).
+
+new given clause: 25 (15,3) -Enemies(B,x) | -Friends(x,y) | NotOwes(A,y).
+** KEPT: 103 (25,14) -Friends(x,y) | NotOwes(A,y) | Friends(B,x).
+** KEPT: 104 (25,12) -Friends(x,y) | NotOwes(A,y) | -Enemies(x,B).
+** KEPT: 105 (25,8) -Friends(t,x) | NotOwes(A,x) | -Friends(B,y) | NotSuperior(y,z) | -Master(z,u) | -Persecutes(t,u).
+** KEPT: 106 (25,14) -Enemies(B,x) | NotOwes(A,y) | Enemies(x,y).
+** KEPT: 107 (25,11) -Enemies(B,x) | NotOwes(A,y) | -Friends(y,x).
+** KEPT: 108 (25,9) -Enemies(B,x) | NotOwes(A,t) | -Enemies(x,y) | -Persecutes(y,z) | -Master(u,z) | -Father(u,t).
+** KEPT: 109 (25,2) -Enemies(B,x) | -Friends(x,y) | NotSuperior(z,A) | NotUncle(z,y).
+
+new given clause: 27 (15,3,14,14) NotOwes(A,x) | Friends(B,y) | Enemies(y,x).
+** KEPT: 110 (27,2) Friends(B,x) | Enemies(x,y) | NotSuperior(z,A) | NotUncle(z,y).
+** KEPT: 111 (27,25) NotOwes(A,x) | Enemies(y,x) | -Enemies(B,B) | NotOwes(A,y).
+** KEPT: 112 (27,11) NotOwes(A,x) | Enemies(y,x) | Friends(y,B).
+** KEPT: 113 (27,8) NotOwes(A,x) | Enemies(y,x) | NotSuperior(y,z) | -Master(z,u) | -Persecutes(t,u) | Enemies(B,t).
+** KEPT: 114 (27,7) NotOwes(A,x) | Enemies(y,x) | -Master(z,u) | NotSuperior(B,z) | -Enemies(y,t) | -Persecutes(t,u).
+** KEPT: 115 (27,3) NotOwes(A,x) | Enemies(y,x) | -Father(z,u) | -Enemies(u,B) | NotOwes(z,y).
+** KEPT: 116 (27,25) NotOwes(A,x) | Friends(B,B) | -Friends(x,y) | NotOwes(A,y).
+** KEPT: 117 (27,12) NotOwes(A,x) | Friends(B,y) | Enemies(x,y).
+** KEPT: 118 (27,9) NotOwes(A,x) | Friends(B,y) | -Persecutes(x,z) | -Master(u,z) | -Father(u,t) | Friends(y,t).
+** KEPT: 119 (27,7) NotOwes(A,t) | Friends(B,x) | -Master(y,z) | NotSuperior(u,y) | -Friends(u,x) | -Persecutes(t,z).
+** KEPT: 120 (27,3) NotOwes(A,x) | Friends(B,y) | -Father(z,y) | -Friends(x,u) | NotOwes(z,u).
+** KEPT: 121 (27,25,27) NotOwes(A,x) | Enemies(y,x) | NotOwes(A,y) | NotOwes(A,B) | Friends(B,B).
+** KEPT: 122 (27,25,14) NotOwes(A,x) | Enemies(y,x) | NotOwes(A,y) | Friends(B,B).
+** KEPT: 123 (27,8,46,44) NotOwes(A,x) | Enemies(y,x) | NotSuperior(y,D) | Enemies(B,t) | NotOwes(D,t).
+** KEPT: 124 (27,8,36,34) NotOwes(A,x) | Enemies(y,x) | NotSuperior(y,C) | Enemies(B,t) | NotOwes(C,t).
+** KEPT: 125 (27,8,26,24) NotOwes(A,x) | Enemies(y,x) | NotSuperior(y,B) | Enemies(B,t) | NotOwes(B,t).
+** KEPT: 126 (27,7,46,14,44) NotOwes(A,x) | Enemies(y,x) | NotSuperior(B,D) | Friends(y,t) | NotOwes(D,t).
+** KEPT: 127 (27,7,36,14,34) NotOwes(A,x) | Enemies(y,x) | NotSuperior(B,C) | Friends(y,t) | NotOwes(C,t).
+** KEPT: 128 (27,7,26,14,24) NotOwes(A,x) | Enemies(y,x) | NotSuperior(B,B) | Friends(y,t) | NotOwes(B,t).
+** KEPT: 129 (27,3,17,27) NotOwes(A,x) | Enemies(y,x) | NotOwes(C,y) | NotOwes(A,B) | Friends(B,D).
+** KEPT: 130 (27,3,17,14) NotOwes(A,x) | Enemies(y,x) | NotOwes(C,y) | Friends(D,B).
+** KEPT: 131 (27,3,16,27) NotOwes(A,x) | Enemies(y,x) | NotOwes(B,y) | NotOwes(A,B) | Friends(B,C).
+** KEPT: 132 (27,3,16,14) NotOwes(A,x) | Enemies(y,x) | NotOwes(B,y) | Friends(C,B).
+** KEPT: 133 (27,7,46,14,44) NotOwes(A,t) | Friends(B,x) | NotSuperior(y,D) | Enemies(y,x) | NotOwes(D,t).
+** KEPT: 134 (27,7,36,14,34) NotOwes(A,t) | Friends(B,x) | NotSuperior(y,C) | Enemies(y,x) | NotOwes(C,t).
+** KEPT: 135 (27,7,26,14,24) NotOwes(A,t) | Friends(B,x) | NotSuperior(y,B) | Enemies(y,x) | NotOwes(B,t).
+** KEPT: 136 (27,3,17,14) NotOwes(A,x) | Friends(B,D) | NotOwes(C,y) | Enemies(x,y).
+** KEPT: 137 (27,3,16,14) NotOwes(A,x) | Friends(B,C) | NotOwes(B,y) | Enemies(x,y).
+122 back subsumes: 121 (27,25,27) NotOwes(A,x) | Enemies(y,x) | NotOwes(A,y) | NotOwes(A,B) | Friends(B,B).
+
+new given clause: 28 (16,10) -Father(x,y) | -Father(y,B) | Greatgrandson(x,C).
+** KEPT: 138 (28,17) -Father(D,B) | Greatgrandson(C,C).
+** KEPT: 139 (28,16) -Father(C,B) | Greatgrandson(B,C).
+
+new given clause: 138 (28,17) -Father(D,B) | Greatgrandson(C,C).
+
+new given clause: 139 (28,16) -Father(C,B) | Greatgrandson(B,C).
+
+new given clause: 29 (16,10) -Father(x,B) | -Father(C,y) | Greatgrandson(x,y).
+** KEPT: 140 (29,17) -Father(x,B) | Greatgrandson(x,D).
+
+new given clause: 140 (29,17) -Father(x,B) | Greatgrandson(x,D).
+
+new given clause: 30 (16,10) -Father(C,x) | -Father(x,y) | Greatgrandson(B,y).
+** KEPT: 141 (30,17) -Father(D,x) | Greatgrandson(B,x).
+** KEPT: 142 (30,17) -Father(C,C) | Greatgrandson(B,D).
+
+new given clause: 141 (30,17) -Father(D,x) | Greatgrandson(B,x).
+
+new given clause: 142 (30,17) -Father(C,C) | Greatgrandson(B,D).
+
+new given clause: 31 (16,6) -Father(x,B) | -Senior(y,x) | NotUncle(y,C).
+** KEPT: 143 (31,62) -Father(B,B) | NotUncle(x,C) | NotSuperior(D,x).
+** KEPT: 144 (31,5) -Father(x,B) | NotUncle(y,C) | NotSuperior(z,y) | -Master(z,u) | -Father(x,u).
+
+new given clause: 32 (16,6) -Father(C,x) | -Senior(y,B) | NotUncle(y,x).
+** KEPT: 145 (32,17) -Senior(x,B) | NotUncle(x,D).
+** KEPT: 146 (32,62) -Father(C,x) | NotUncle(y,x) | NotSuperior(D,y).
+** KEPT: 147 (32,5) -Father(C,x) | NotUncle(y,x) | NotSuperior(z,y) | -Master(z,u) | -Father(B,u).
+
+new given clause: 145 (32,17) -Senior(x,B) | NotUncle(x,D).
+** KEPT: 148 (145,5) NotUncle(x,D) | NotSuperior(y,x) | -Master(y,z) | -Father(B,z).
+
+new given clause: 33 (16,5) NotSuperior(x,y) | -Master(x,C) | Senior(y,B).
+** KEPT: 149 (33,1) NotSuperior(x,y) | Senior(y,B) | -Father(C,x).
+** KEPT: 150 (33,145) NotSuperior(x,y) | -Master(x,C) | NotUncle(y,D).
+** KEPT: 151 (33,32) NotSuperior(x,y) | -Master(x,C) | -Father(C,z) | NotUncle(y,z).
+** KEPT: 152 (33,31) NotSuperior(x,y) | -Master(x,C) | -Father(B,B) | NotUncle(y,C).
+** KEPT: 153 (33,21) NotSuperior(x,y) | -Master(x,C) | -Father(B,A) | NotUncle(y,B).
+** KEPT: 154 (33,6) NotSuperior(x,y) | -Master(x,C) | -Father(B,z) | -Father(z,u) | NotUncle(y,u).
+
+new given clause: 35 (16,3) -Enemies(C,x) | -Friends(x,y) | NotOwes(B,y).
+** KEPT: 155 (35,27) -Friends(x,y) | NotOwes(B,y) | NotOwes(A,x) | Friends(B,C).
+** KEPT: 156 (35,14) -Friends(x,y) | NotOwes(B,y) | Friends(C,x).
+** KEPT: 157 (35,12) -Friends(x,y) | NotOwes(B,y) | -Enemies(x,C).
+** KEPT: 158 (35,8) -Friends(t,x) | NotOwes(B,x) | -Friends(C,y) | NotSuperior(y,z) | -Master(z,u) | -Persecutes(t,u).
+** KEPT: 159 (35,27) -Enemies(C,B) | NotOwes(B,x) | NotOwes(A,y) | Enemies(x,y).
+** KEPT: 160 (35,14) -Enemies(C,x) | NotOwes(B,y) | Enemies(x,y).
+** KEPT: 161 (35,11) -Enemies(C,x) | NotOwes(B,y) | -Friends(y,x).
+** KEPT: 162 (35,9) -Enemies(C,x) | NotOwes(B,t) | -Enemies(x,y) | -Persecutes(y,z) | -Master(u,z) | -Father(u,t).
+** KEPT: 163 (35,2) -Enemies(C,x) | -Friends(x,y) | NotSuperior(z,B) | NotUncle(z,y).
+
+new given clause: 37 (16,3,14,14) NotOwes(B,x) | Friends(C,y) | Enemies(y,x).
+SHAR_EOF
+if test -f 'letters.desc'
+then
+	echo shar: over-writing existing file "'letters.desc'"
+fi
+cat << \SHAR_EOF > 'letters.desc'
+ problem-set/puzzles/carroll/letters.desc
+ created : 07/19/88
+ revised : 07/19/88 
+
+ Natural Language Description:
+
+ This run solves "The Letters Puzzle" using
+ UR-resolution, hyper-resolution, and binary resolution.     
+
+                		The Letters Puzzle
+
+ (1) All the dated letters in this room are written on blue paper.
+ (2) None of them are in black ink, except those that are written
+     in the third person.
+ (3) I have not filed any of them that I can read.
+ (4) None of them, that are written on one sheet, are undated.
+ (5) All of them, that are not crossed, are in black ink.
+ (6) All of them, written by Brown, begin with "Dear Sir."
+ (7) All of them, written on blue paper, are filed.
+ (8) None of them,  written on more than one sheet, are crossed.
+ (9) None of them, that begin with "Dear Sir," are written in
+     third person.
+     Find out everything that you can about the letters.
+					-Lewis Carroll, Symbolic Logic, p. 175 
+
+Versions:
+
+letters.ver1.in : uses hyper-resolution, binary-resolution, and 
+	UR-resolution. Answer: I cannot read any of Brown's letters.     
+
+		created by : Kelly Ratliff
+		verifed for ITP : unverified
+		translated for OTTER by : K.R.
+		verified for OTTER : 07/19/88
+SHAR_EOF
+if test -f 'letters.ver1.clauses'
+then
+	echo shar: over-writing existing file "'letters.ver1.clauses'"
+fi
+cat << \SHAR_EOF > 'letters.ver1.clauses'
+% problem-set/puzzles/carroll/letters.ver1.clauses 
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Letters Puzzle" using
+% UR-resolution, hyper-resolution, and binary resolution.     
+%
+%                		The Letters Puzzle
+%
+% (1) All the dated letters in this room are written on blue paper.
+% (2) None of them are in black ink, except those that are written
+%     in the third person.
+% (3) I have not filed any of them that I can read.
+% (4) None of them, that are written on one sheet, are undated.
+% (5) All of them, that are not crossed, are in black ink.
+% (6) All of them, written by Brown, begin with "Dear Sir."
+% (7) All of them, written on blue paper, are filed.
+% (8) None of them,  written on more than one sheet, are crossed.
+% (9) None of them, that begin with "Dear Sir," are written in
+%     third person.
+%     Find out everything that you can about the letters.
+%						-Lewis Carroll, Symbolic Logic, p. 175 
+
+% representation:
+%
+                  
+
+-DATED | ON_BLUE_PAPER.
+-IN_THIRD_PERSON | IN_BLACK_INK.
+IN_THIRD_PERSON | -IN_BLACK_INK.
+-CAN_BE_READ | -FILED.
+-ON_ONE_SHEET | DATED.
+CROSSED | IN_BLACK_INK.
+-BY_BROWN | BEGINS_WITH_DEAR_SIR.
+-ON_BLUE_PAPER | FILED.
+ON_ONE_SHEET | -CROSSED.
+-BEGINS_WITH_DEAR_SIR | -IN_THIRD_PERSON.
+SHAR_EOF
+if test -f 'letters.ver1.in'
+then
+	echo shar: over-writing existing file "'letters.ver1.in'"
+fi
+cat << \SHAR_EOF > 'letters.ver1.in'
+% problem-set/puzzles/carroll/letters.ver1.in
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Letters Puzzle" using
+% UR-resolution, hyper-resolution, and binary resolution.     
+%
+%                		The Letters Puzzle
+%
+% (1) All the dated letters in this room are written on blue paper.
+% (2) None of them are in black ink, except those that are written
+%     in the third person.
+% (3) I have not filed any of them that I can read.
+% (4) None of them, that are written on one sheet, are undated.
+% (5) All of them, that are not crossed, are in black ink.
+% (6) All of them, written by Brown, begin with "Dear Sir."
+% (7) All of them, written on blue paper, are filed.
+% (8) None of them,  written on more than one sheet, are crossed.
+% (9) None of them, that begin with "Dear Sir," are written in
+%     third person.
+%     Find out everything that you can about the letters.
+%						-Lewis Carroll, Symbolic Logic, p. 175 
+
+% representation:
+%
+                  
+set(hyper_res).
+set(UR_res).
+set(binary_res).
+
+
+list(sos).
+
+-DATED | ON_BLUE_PAPER.
+-IN_THIRD_PERSON | IN_BLACK_INK.
+IN_THIRD_PERSON | -IN_BLACK_INK.
+-CAN_BE_READ | -FILED.
+-ON_ONE_SHEET | DATED.
+CROSSED | IN_BLACK_INK.
+-BY_BROWN | BEGINS_WITH_DEAR_SIR.
+-ON_BLUE_PAPER | FILED.
+ON_ONE_SHEET | -CROSSED.
+-BEGINS_WITH_DEAR_SIR | -IN_THIRD_PERSON.
+
+end_of_list.
+SHAR_EOF
+if test -f 'letters.ver1.out'
+then
+	echo shar: over-writing existing file "'letters.ver1.out'"
+fi
+cat << \SHAR_EOF > 'letters.ver1.out'
+problem-set/puzzles/carroll/letters.ver1.out
+created : 07/19/88
+revised : 07/19/88
+
+OTTER version 0.91, 14 June 1988.
+
+set(hyper_res).
+set(UR_res).
+set(binary_res).
+
+list(sos).
+1 -DATED | ON_BLUE_PAPER.
+2 -IN_THIRD_PERSON | IN_BLACK_INK.
+3 IN_THIRD_PERSON | -IN_BLACK_INK.
+4 -CAN_BE_READ | -FILED.
+5 -ON_ONE_SHEET | DATED.
+6 CROSSED | IN_BLACK_INK.
+7 -BY_BROWN | BEGINS_WITH_DEAR_SIR.
+8 -ON_BLUE_PAPER | FILED.
+9 ON_ONE_SHEET | -CROSSED.
+10 -BEGINS_WITH_DEAR_SIR | -IN_THIRD_PERSON.
+end_of_list.
+
+new given clause: 1 -DATED | ON_BLUE_PAPER.
+
+new given clause: 2 -IN_THIRD_PERSON | IN_BLACK_INK.
+
+new given clause: 3 IN_THIRD_PERSON | -IN_BLACK_INK.
+
+new given clause: 4 -CAN_BE_READ | -FILED.
+
+new given clause: 5 -ON_ONE_SHEET | DATED.
+** KEPT: 11 (5,1) -ON_ONE_SHEET | ON_BLUE_PAPER.
+
+new given clause: 6 CROSSED | IN_BLACK_INK.
+** KEPT: 12 (6,3) CROSSED | IN_THIRD_PERSON.
+
+new given clause: 7 -BY_BROWN | BEGINS_WITH_DEAR_SIR.
+
+new given clause: 8 -ON_BLUE_PAPER | FILED.
+** KEPT: 13 (8,1) FILED | -DATED.
+** KEPT: 14 (8,4) -ON_BLUE_PAPER | -CAN_BE_READ.
+
+new given clause: 9 ON_ONE_SHEET | -CROSSED.
+** KEPT: 15 (9,5) -CROSSED | DATED.
+** KEPT: 16 (9,6) ON_ONE_SHEET | IN_BLACK_INK.
+
+new given clause: 10 -BEGINS_WITH_DEAR_SIR | -IN_THIRD_PERSON.
+** KEPT: 17 (10,7) -IN_THIRD_PERSON | -BY_BROWN.
+** KEPT: 18 (10,3) -BEGINS_WITH_DEAR_SIR | -IN_BLACK_INK.
+
+new given clause: 11 (5,1) -ON_ONE_SHEET | ON_BLUE_PAPER.
+** KEPT: 19 (11,9) ON_BLUE_PAPER | -CROSSED.
+** KEPT: 20 (11,8) -ON_ONE_SHEET | FILED.
+
+new given clause: 12 (6,3) CROSSED | IN_THIRD_PERSON.
+** KEPT: 21 (12,9) IN_THIRD_PERSON | ON_ONE_SHEET.
+** KEPT: 22 (12,10) CROSSED | -BEGINS_WITH_DEAR_SIR.
+
+new given clause: 13 (8,1) FILED | -DATED.
+** KEPT: 23 (13,4) -DATED | -CAN_BE_READ.
+
+new given clause: 14 (8,4) -ON_BLUE_PAPER | -CAN_BE_READ.
+** KEPT: 24 (14,11) -CAN_BE_READ | -ON_ONE_SHEET.
+
+new given clause: 15 (9,5) -CROSSED | DATED.
+** KEPT: 25 (15,12) DATED | IN_THIRD_PERSON.
+** KEPT: 26 (15,6) DATED | IN_BLACK_INK.
+** KEPT: 27 (15,13) -CROSSED | FILED.
+
+new given clause: 16 (9,6) ON_ONE_SHEET | IN_BLACK_INK.
+** KEPT: 28 (16,11) IN_BLACK_INK | ON_BLUE_PAPER.
+
+new given clause: 17 (10,7) -IN_THIRD_PERSON | -BY_BROWN.
+** KEPT: 29 (17,12) -BY_BROWN | CROSSED.
+** KEPT: 30 (17,3) -BY_BROWN | -IN_BLACK_INK.
+
+new given clause: 18 (10,3) -BEGINS_WITH_DEAR_SIR | -IN_BLACK_INK.
+** KEPT: 31 (18,16) -BEGINS_WITH_DEAR_SIR | ON_ONE_SHEET.
+
+new given clause: 19 (11,9) ON_BLUE_PAPER | -CROSSED.
+** KEPT: 32 (19,14) -CROSSED | -CAN_BE_READ.
+** KEPT: 33 (19,12) ON_BLUE_PAPER | IN_THIRD_PERSON.
+
+new given clause: 20 (11,8) -ON_ONE_SHEET | FILED.
+** KEPT: 34 (20,16) FILED | IN_BLACK_INK.
+
+new given clause: 21 (12,9) IN_THIRD_PERSON | ON_ONE_SHEET.
+** KEPT: 35 (21,17) ON_ONE_SHEET | -BY_BROWN.
+** KEPT: 36 (21,20) IN_THIRD_PERSON | FILED.
+
+new given clause: 22 (12,10) CROSSED | -BEGINS_WITH_DEAR_SIR.
+** KEPT: 37 (22,19) -BEGINS_WITH_DEAR_SIR | ON_BLUE_PAPER.
+** KEPT: 38 (22,15) -BEGINS_WITH_DEAR_SIR | DATED.
+
+new given clause: 23 (13,4) -DATED | -CAN_BE_READ.
+
+new given clause: 24 (14,11) -CAN_BE_READ | -ON_ONE_SHEET.
+** KEPT: 39 (24,21) -CAN_BE_READ | IN_THIRD_PERSON.
+** KEPT: 40 (24,16) -CAN_BE_READ | IN_BLACK_INK.
+
+new given clause: 25 (15,12) DATED | IN_THIRD_PERSON.
+** KEPT: 41 (25,17) DATED | -BY_BROWN.
+
+new given clause: 26 (15,6) DATED | IN_BLACK_INK.
+
+new given clause: 27 (15,13) -CROSSED | FILED.
+** KEPT: 42 (27,22) FILED | -BEGINS_WITH_DEAR_SIR.
+
+new given clause: 28 (16,11) IN_BLACK_INK | ON_BLUE_PAPER.
+
+new given clause: 29 (17,12) -BY_BROWN | CROSSED.
+** KEPT: 43 (29,27) -BY_BROWN | FILED.
+** KEPT: 44 (29,19) -BY_BROWN | ON_BLUE_PAPER.
+
+new given clause: 30 (17,3) -BY_BROWN | -IN_BLACK_INK.
+
+new given clause: 31 (18,16) -BEGINS_WITH_DEAR_SIR | ON_ONE_SHEET.
+** KEPT: 45 (31,24) -BEGINS_WITH_DEAR_SIR | -CAN_BE_READ.
+
+new given clause: 32 (19,14) -CROSSED | -CAN_BE_READ.
+** KEPT: 46 (32,29) -CAN_BE_READ | -BY_BROWN.
+
+new given clause: 33 (19,12) ON_BLUE_PAPER | IN_THIRD_PERSON.
+
+new given clause: 34 (20,16) FILED | IN_BLACK_INK.
+
+new given clause: 35 (21,17) ON_ONE_SHEET | -BY_BROWN.
+
+new given clause: 36 (21,20) IN_THIRD_PERSON | FILED.
+
+new given clause: 37 (22,19) -BEGINS_WITH_DEAR_SIR | ON_BLUE_PAPER.
+
+new given clause: 38 (22,15) -BEGINS_WITH_DEAR_SIR | DATED.
+
+new given clause: 39 (24,21) -CAN_BE_READ | IN_THIRD_PERSON.
+
+new given clause: 40 (24,16) -CAN_BE_READ | IN_BLACK_INK.
+
+new given clause: 41 (25,17) DATED | -BY_BROWN.
+
+new given clause: 42 (27,22) FILED | -BEGINS_WITH_DEAR_SIR.
+
+new given clause: 43 (29,27) -BY_BROWN | FILED.
+
+new given clause: 44 (29,19) -BY_BROWN | ON_BLUE_PAPER.
+
+new given clause: 45 (31,24) -BEGINS_WITH_DEAR_SIR | -CAN_BE_READ.
+
+new given clause: 46 (32,29) -CAN_BE_READ | -BY_BROWN.
+
+------------ END OF SEARCH ------------
+
+sos empty.
+
+--------------- options ---------------
+set(binary_res).
+set(hyper_res).
+set(UR_res).
+set(demod_hist).
+set(for_sub).
+set(print_kept).
+set(back_sub).
+set(print_back_sub).
+set(print_given).
+set(check_arity).
+
+clear(para_from).
+clear(para_into).
+clear(demod_inf).
+clear(para_from_left).
+clear(para_from_right).
+clear(para_into_vars).
+clear(para_from_vars).
+clear(para_all).
+clear(para_ones_rule).
+clear(no_para_into_left).
+clear(no_para_into_right).
+clear(demod_linear).
+clear(print_gen).
+clear(sort_literals).
+clear(Unit_deletion).
+clear(factor).
+clear(print_weight).
+clear(sos_fifo).
+clear(bird_print).
+clear(atom_wt_max_args).
+clear(print_lists_at_end).
+clear(free_all_mem).
+clear(for_sub_fpa).
+clear(no_fapl).
+clear(no_fanl).
+clear(order_eq).
+
+assign(report, 0).
+assign(max_seconds, 0).
+assign(max_given, 0).
+assign(max_kept, 0).
+assign(max_gen, 0).
+assign(max_mem, 0).
+assign(max_weight, 0).
+assign(max_literals, 0).
+assign(fpa_literals, 3).
+assign(fpa_terms, 3).
+assign(demod_limit, 100).
+assign(max_proofs, 1).
+assign(neg_weight, 0).
+
+-------------- statistics -------------
+clauses input                 10
+clauses given                 46
+clauses generated            160
+demodulation rewrites          0
+clauses wt or lit delete       0
+tautologies deleted            2
+clauses forward subsumed     122
+(clauses subsumed by sos)    106
+unit deletions                 0
+clauses kept                  36
+empty clauses                  0
+factors generated              0
+clauses back subsumed          0
+clauses not processed          0
+
+----------- times (seconds) -----------
+run time             0.88
+input time           0.07
+binary_res time      0.08
+hyper_res time       0.06
+UR_res time          0.04
+para_into time       0.00
+para_from time       0.00
+pre_process time     0.30
+  demod time         0.00
+  weigh time         0.01
+  for_sub time       0.10
+  unit_del time      0.00
+post_process time    0.05
+  back_sub time      0.03
+  conflict time      0.00
+  factor time        0.00
+FPA build time       0.04
+IS build time        0.02
+print_cl time        0.14
+cl integrate time    0.01
+window time          0.00
+SHAR_EOF
+if test -f 'lizard.desc'
+then
+	echo shar: over-writing existing file "'lizard.desc'"
+fi
+cat << \SHAR_EOF > 'lizard.desc'
+problem-set/puzzles/carroll/lizard.desc  
+created : 07/19/88
+revised : 07/19/88 
+
+Natural Language Description:
+
+                  		The Animals
+
+ (1)  All cunning savage animals are destructive.
+ (2)  No fat lazy animals climb trees.
+ (3)  All poisonous animals with claws wriggle.
+ (4)  No lizards are destructive unless they climb trees.
+ (5)  All animals, that have claws but no scales, are fat.
+ (6)  All grinning animals, that are dreaded, have claws.
+ (7)  No active destructive animal is fat.
+ (8)  All animals with scales, that are dreaded, are poisonous.
+ (9)  All grinning animals with claws are cunning.
+ (10) No savage lizard is viewed without dread.
+ (11) A savage lizard is an object of dread.
+      Deduce everything you can about these animals.
+                        -Lewis Carroll, Symbolic Logic, p.408
+
+Versions : 
+
+lizard.ver1.in : Uses hyper-resolution, UR-resolution, and 
+	binary-resolution.
+
+		created by : Kelly Ratliff
+		verified for ITP : unverified
+		translated for OTTER by : K.R.
+		verified for OTTER : 07/19/88
+SHAR_EOF
+if test -f 'lizard.ver1.clauses'
+then
+	echo shar: over-writing existing file "'lizard.ver1.clauses'"
+fi
+cat << \SHAR_EOF > 'lizard.ver1.clauses'
+% problem-set/puzzles/carroll/lizard.ver1.clauses  
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Animals Puzzle" by using UR-resolution,
+% hyper-resolution, and binary resolution.     
+%
+%                   		The Animals
+%
+%  (1)  All cunning savage animals are destructive.
+%  (2)  No fat lazy animals climb trees.
+%  (3)  All poisonous animals with claws wriggle.
+%  (4)  No lizards are destructive unless they climb trees.
+%  (5)  All animals, that have claws but no scales, are fat.
+%  (6)  All grinning animals, that are dreaded, have claws.
+%  (7)  No active destructive animal is fat.
+%  (8)  All animals with scales, that are dreaded, are poisonous.
+%  (9)  All grinning animals with claws are cunning.
+%  (10) No savage lizard is viewed without dread.
+%  (11) A savage lizard is an object of dread.
+%       Deduce everything you can about these animals.
+%                         -Lewis Carroll, Symbolic Logic, p.408
+
+% representation:
+%
+                  
+
+-CUNNING(x) | -SAVAGE(x) | DESTRUCTIVE(x).
+-FAT(x) | -LAZY(x) | -CLIMB_TREES(x).
+-POISONOUS(x) | -HAS_CLAWS(x) | WRIGGLES(x).
+-CLIMB_TREES(x) | -LIZARD(x) | DESTRUCTIVE(x).
+CLIMB_TREES(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+-HAS_CLAWS(x) | HAS_SCALES(x) | FAT(x).
+-GRINNING(x) | -DREADED(x) | HAS_CLAWS(x).
+-ACTIVE(x) | -DESTRUCTIVE(x) | -FAT(x). 
+-HAS_SCALES(x) | -DREADED(x) | POISONOUS(x).
+-GRINNING(x) | -HAS_CLAWS(x) | CUNNING(x).
+-SAVAGE(x) | -LIZARD(x) | DREADED(x).
+SHAR_EOF
+if test -f 'lizard.ver1.in'
+then
+	echo shar: over-writing existing file "'lizard.ver1.in'"
+fi
+cat << \SHAR_EOF > 'lizard.ver1.in'
+% problem-set/puzzles/carroll/lizard.ver1.in 
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Animals Puzzle" by using UR-resolution,
+% hyper-resolution, and binary resolution.     
+%
+%                   		The Animals
+%
+%  (1)  All cunning savage animals are destructive.
+%  (2)  No fat lazy animals climb trees.
+%  (3)  All poisonous animals with claws wriggle.
+%  (4)  No lizards are destructive unless they climb trees.
+%  (5)  All animals, that have claws but no scales, are fat.
+%  (6)  All grinning animals, that are dreaded, have claws.
+%  (7)  No active destructive animal is fat.
+%  (8)  All animals with scales, that are dreaded, are poisonous.
+%  (9)  All grinning animals with claws are cunning.
+%  (10) No savage lizard is viewed without dread.
+%  (11) A savage lizard is an object of dread.
+%       Deduce everything you can about these animals.
+%                         -Lewis Carroll, Symbolic Logic, p.408
+
+% representation:
+%
+                  
+set(hyper_res).
+set(UR_res).
+set(binary_res).
+
+
+list(sos).
+
+-CUNNING(x) | -SAVAGE(x) | DESTRUCTIVE(x).
+-FAT(x) | -LAZY(x) | -CLIMB_TREES(x).
+-POISONOUS(x) | -HAS_CLAWS(x) | WRIGGLES(x).
+-CLIMB_TREES(x) | -LIZARD(x) | DESTRUCTIVE(x).
+CLIMB_TREES(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+-HAS_CLAWS(x) | HAS_SCALES(x) | FAT(x).
+-GRINNING(x) | -DREADED(x) | HAS_CLAWS(x).
+-ACTIVE(x) | -DESTRUCTIVE(x) | -FAT(x). 
+-HAS_SCALES(x) | -DREADED(x) | POISONOUS(x).
+-GRINNING(x) | -HAS_CLAWS(x) | CUNNING(x).
+-SAVAGE(x) | -LIZARD(x) | DREADED(x).
+
+end_of_list.
+SHAR_EOF
+if test -f 'lizard.ver1.out'
+then
+	echo shar: over-writing existing file "'lizard.ver1.out'"
+fi
+cat << \SHAR_EOF > 'lizard.ver1.out'
+problem-set/puzzles/carroll/lizard.ver1.out
+created : 07/19/88
+revised : 07/19/88
+
+OTTER version 0.91, 14 June 1988.
+
+set(hyper_res).
+set(UR_res).
+set(binary_res).
+
+list(sos).
+12 -CUNNING(x) | -SAVAGE(x) | DESTRUCTIVE(x).
+13 -FAT(x) | -LAZY(x) | -CLIMB_TREES(x).
+14 -POISONOUS(x) | -HAS_CLAWS(x) | WRIGGLES(x).
+15 -CLIMB_TREES(x) | -LIZARD(x) | DESTRUCTIVE(x).
+16 CLIMB_TREES(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+17 -HAS_CLAWS(x) | HAS_SCALES(x) | FAT(x).
+18 -GRINNING(x) | -DREADED(x) | HAS_CLAWS(x).
+19 -ACTIVE(x) | -DESTRUCTIVE(x) | -FAT(x).
+20 -HAS_SCALES(x) | -DREADED(x) | POISONOUS(x).
+21 -GRINNING(x) | -HAS_CLAWS(x) | CUNNING(x).
+22 -SAVAGE(x) | -LIZARD(x) | DREADED(x).
+end_of_list.
+
+new given clause: 12 -CUNNING(x) | -SAVAGE(x) | DESTRUCTIVE(x).
+** KEPT: 23 (12,10) -SAVAGE(x) | DESTRUCTIVE(x) | -GRINNING(x) | -HAS_CLAWS(x).
+** KEPT: 24 (12,8) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | -FAT(x).
+** KEPT: 25 (12,5) -CUNNING(x) | -SAVAGE(x) | CLIMB_TREES(x) | -LIZARD(x).
+
+new given clause: 13 -FAT(x) | -LAZY(x) | -CLIMB_TREES(x).
+** KEPT: 26 (13,6) -LAZY(x) | -CLIMB_TREES(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+** KEPT: 27 (13,5) -FAT(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+
+new given clause: 14 -POISONOUS(x) | -HAS_CLAWS(x) | WRIGGLES(x).
+** KEPT: 28 (14,9) -HAS_CLAWS(x) | WRIGGLES(x) | -HAS_SCALES(x) | -DREADED(x).
+** KEPT: 29 (14,7) -POISONOUS(x) | WRIGGLES(x) | -GRINNING(x) | -DREADED(x).
+
+new given clause: 15 -CLIMB_TREES(x) | -LIZARD(x) | DESTRUCTIVE(x).
+** KEPT: 30 (15,8) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -FAT(x).
+
+new given clause: 16 CLIMB_TREES(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+
+new given clause: 17 -HAS_CLAWS(x) | HAS_SCALES(x) | FAT(x).
+** KEPT: 31 (17,7) HAS_SCALES(x) | FAT(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 32 (17,9) -HAS_CLAWS(x) | FAT(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 33 (17,8) -HAS_CLAWS(x) | HAS_SCALES(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 18 -GRINNING(x) | -DREADED(x) | HAS_CLAWS(x).
+** KEPT: 34 (18,11) -GRINNING(x) | HAS_CLAWS(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 35 (18,10) -GRINNING(x) | -DREADED(x) | CUNNING(x).
+
+new given clause: 19 -ACTIVE(x) | -DESTRUCTIVE(x) | -FAT(x).
+
+new given clause: 20 -HAS_SCALES(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 36 (20,11) -HAS_SCALES(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 21 -GRINNING(x) | -HAS_CLAWS(x) | CUNNING(x).
+
+new given clause: 22 -SAVAGE(x) | -LIZARD(x) | DREADED(x).
+
+new given clause: 35 (18,10) -GRINNING(x) | -DREADED(x) | CUNNING(x).
+** KEPT: 37 (35,22) -GRINNING(x) | CUNNING(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 38 (35,12) -GRINNING(x) | -DREADED(x) | -SAVAGE(x) | DESTRUCTIVE(x).
+
+new given clause: 23 (12,10) -SAVAGE(x) | DESTRUCTIVE(x) | -GRINNING(x) | -HAS_CLAWS(x).
+** KEPT: 39 (23,19) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | -ACTIVE(x) | -FAT(x).
+** KEPT: 40 (23,16) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | CLIMB_TREES(x) | -LIZARD(x).
+
+new given clause: 24 (12,8) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | -FAT(x).
+** KEPT: 41 (24,35) -SAVAGE(x) | -ACTIVE(x) | -FAT(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 42 (24,17) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+
+new given clause: 25 (12,5) -CUNNING(x) | -SAVAGE(x) | CLIMB_TREES(x) | -LIZARD(x).
+** KEPT: 43 (25,35) -SAVAGE(x) | CLIMB_TREES(x) | -LIZARD(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 44 (25,13) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -FAT(x) | -LAZY(x).
+
+new given clause: 26 (13,6) -LAZY(x) | -CLIMB_TREES(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+** KEPT: 45 (26,25) -LAZY(x) | -HAS_CLAWS(x) | HAS_SCALES(x) | -CUNNING(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 46 (26,16) -LAZY(x) | -HAS_CLAWS(x) | HAS_SCALES(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 47 (26,18) -LAZY(x) | -CLIMB_TREES(x) | HAS_SCALES(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 48 (26,20) -LAZY(x) | -CLIMB_TREES(x) | -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x).
+
+new given clause: 27 (13,5) -FAT(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 49 (27,23) -FAT(x) | -LAZY(x) | -LIZARD(x) | -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x).
+
+new given clause: 28 (14,9) -HAS_CLAWS(x) | WRIGGLES(x) | -HAS_SCALES(x) | -DREADED(x).
+** KEPT: 50 (28,18) WRIGGLES(x) | -HAS_SCALES(x) | -DREADED(x) | -GRINNING(x).
+** KEPT: 51 (28,26) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -LAZY(x) | -CLIMB_TREES(x).
+** KEPT: 52 (28,17) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | FAT(x).
+** KEPT: 53 (28,22) -HAS_CLAWS(x) | WRIGGLES(x) | -HAS_SCALES(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 29 (14,7) -POISONOUS(x) | WRIGGLES(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 54 (29,22) -POISONOUS(x) | WRIGGLES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 30 (15,8) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -FAT(x).
+** KEPT: 55 (30,17) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+
+new given clause: 31 (17,7) HAS_SCALES(x) | FAT(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 56 (31,20) FAT(x) | -GRINNING(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 57 (31,30) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+** KEPT: 58 (31,27) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 59 (31,24) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+** KEPT: 60 (31,19) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 61 (31,22) HAS_SCALES(x) | FAT(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 32 (17,9) -HAS_CLAWS(x) | FAT(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 62 (32,30) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+** KEPT: 63 (32,27) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 64 (32,24) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+** KEPT: 65 (32,19) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 66 (32,22) -HAS_CLAWS(x) | FAT(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 33 (17,8) -HAS_CLAWS(x) | HAS_SCALES(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 67 (33,28) -HAS_CLAWS(x) | -ACTIVE(x) | -DESTRUCTIVE(x) | WRIGGLES(x) | -DREADED(x).
+** KEPT: 68 (33,23) -HAS_CLAWS(x) | HAS_SCALES(x) | -ACTIVE(x) | -SAVAGE(x) | -GRINNING(x).
+
+new given clause: 34 (18,11) -GRINNING(x) | HAS_CLAWS(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 69 (34,33) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | HAS_SCALES(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 70 (34,26) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -CLIMB_TREES(x) | HAS_SCALES(x).
+** KEPT: 71 (34,23) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | DESTRUCTIVE(x).
+
+new given clause: 36 (20,11) -HAS_SCALES(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 72 (36,33) POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -HAS_CLAWS(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 73 (36,26) POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -CLIMB_TREES(x) | -HAS_CLAWS(x).
+
+new given clause: 37 (35,22) -GRINNING(x) | CUNNING(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 74 (37,25) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | CLIMB_TREES(x).
+** KEPT: 75 (37,24) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x) | -FAT(x).
+74 back subsumes: 43 (25,35) -SAVAGE(x) | CLIMB_TREES(x) | -LIZARD(x) | -GRINNING(x) | -DREADED(x).
+74 back subsumes: 40 (23,16) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | CLIMB_TREES(x) | -LIZARD(x).
+
+new given clause: 38 (35,12) -GRINNING(x) | -DREADED(x) | -SAVAGE(x) | DESTRUCTIVE(x).
+** KEPT: 76 (38,27) -GRINNING(x) | -DREADED(x) | -SAVAGE(x) | -FAT(x) | -LAZY(x) | -LIZARD(x).
+
+new given clause: 50 (28,18) WRIGGLES(x) | -HAS_SCALES(x) | -DREADED(x) | -GRINNING(x).
+** KEPT: 77 (50,31) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | FAT(x).
+** KEPT: 78 (50,22) WRIGGLES(x) | -HAS_SCALES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 52 (28,17) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | FAT(x).
+** KEPT: 79 (52,22) -HAS_CLAWS(x) | WRIGGLES(x) | FAT(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 80 (52,30) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+** KEPT: 81 (52,27) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 82 (52,24) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+
+new given clause: 56 (31,20) FAT(x) | -GRINNING(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 83 (56,30) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+** KEPT: 84 (56,27) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 85 (56,24) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+** KEPT: 86 (56,19) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 87 (56,13) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -CLIMB_TREES(x).
+** KEPT: 88 (56,22) FAT(x) | -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 71 (34,23) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | DESTRUCTIVE(x).
+** KEPT: 89 (71,27) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -FAT(x) | -LAZY(x).
+89 back subsumes: 76 (38,27) -GRINNING(x) | -DREADED(x) | -SAVAGE(x) | -FAT(x) | -LAZY(x) | -LIZARD(x).
+89 back subsumes: 49 (27,23) -FAT(x) | -LAZY(x) | -LIZARD(x) | -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x).
+
+new given clause: 74 (37,25) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | CLIMB_TREES(x).
+** KEPT: 90 (74,26) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+
+new given clause: 77 (50,31) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | FAT(x).
+** KEPT: 91 (77,22) WRIGGLES(x) | -GRINNING(x) | FAT(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 92 (77,30) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+** KEPT: 93 (77,27) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 94 (77,24) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+** KEPT: 95 (77,19) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 96 (77,13) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -LAZY(x) | -CLIMB_TREES(x).
+
+new given clause: 39 (23,19) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | -ACTIVE(x) | -FAT(x).
+** KEPT: 97 (39,77) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | -ACTIVE(x) | WRIGGLES(x) | -DREADED(x).
+** KEPT: 98 (39,56) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | -ACTIVE(x) | -DREADED(x) | POISONOUS(x).
+
+new given clause: 41 (24,35) -SAVAGE(x) | -ACTIVE(x) | -FAT(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 99 (41,77) -SAVAGE(x) | -ACTIVE(x) | -GRINNING(x) | -DREADED(x) | WRIGGLES(x).
+** KEPT: 100 (41,56) -SAVAGE(x) | -ACTIVE(x) | -GRINNING(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 101 (41,31) -SAVAGE(x) | -ACTIVE(x) | -GRINNING(x) | -DREADED(x) | HAS_SCALES(x).
+99 back subsumes: 97 (39,77) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | -ACTIVE(x) | WRIGGLES(x) | -DREADED(x).
+99 back subsumes: 94 (77,24) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+100 back subsumes: 98 (39,56) -SAVAGE(x) | -GRINNING(x) | -HAS_CLAWS(x) | -ACTIVE(x) | -DREADED(x) | POISONOUS(x).
+100 back subsumes: 85 (56,24) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+101 back subsumes: 59 (31,24) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+
+new given clause: 42 (24,17) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+** KEPT: 102 (42,34) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | HAS_SCALES(x) | -GRINNING(x) | -LIZARD(x).
+** KEPT: 103 (42,36) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | -HAS_CLAWS(x) | POISONOUS(x) | -LIZARD(x).
+
+new given clause: 44 (25,13) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -FAT(x) | -LAZY(x).
+** KEPT: 104 (44,77) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | WRIGGLES(x) | -DREADED(x) | -GRINNING(x).
+** KEPT: 105 (44,56) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -GRINNING(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 106 (44,52) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x).
+** KEPT: 107 (44,32) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 108 (44,31) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | HAS_SCALES(x) | -GRINNING(x) | -DREADED(x).
+
+new given clause: 46 (26,16) -LAZY(x) | -HAS_CLAWS(x) | HAS_SCALES(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+** KEPT: 109 (46,34) -LAZY(x) | HAS_SCALES(x) | -LIZARD(x) | -DESTRUCTIVE(x) | -GRINNING(x) | -SAVAGE(x).
+** KEPT: 110 (46,36) -LAZY(x) | -HAS_CLAWS(x) | -LIZARD(x) | -DESTRUCTIVE(x) | POISONOUS(x) | -SAVAGE(x).
+
+new given clause: 47 (26,18) -LAZY(x) | -CLIMB_TREES(x) | HAS_SCALES(x) | -GRINNING(x) | -DREADED(x).
+** KEPT: 111 (47,74) -LAZY(x) | HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -SAVAGE(x) | -LIZARD(x).
+111 back subsumes: 108 (44,31) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | HAS_SCALES(x) | -GRINNING(x) | -DREADED(x).
+
+new given clause: 48 (26,20) -LAZY(x) | -CLIMB_TREES(x) | -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x).
+** KEPT: 112 (48,74) -LAZY(x) | -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 51 (28,26) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -LAZY(x) | -CLIMB_TREES(x).
+** KEPT: 113 (51,22) -HAS_CLAWS(x) | WRIGGLES(x) | -LAZY(x) | -CLIMB_TREES(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 114 (51,74) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -LAZY(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 53 (28,22) -HAS_CLAWS(x) | WRIGGLES(x) | -HAS_SCALES(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 115 (53,46) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -DESTRUCTIVE(x).
+** KEPT: 116 (53,42) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -ACTIVE(x).
+** KEPT: 117 (53,33) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 54 (29,22) -POISONOUS(x) | WRIGGLES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 55 (30,17) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+** KEPT: 118 (55,34) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | HAS_SCALES(x) | -GRINNING(x) | -SAVAGE(x).
+** KEPT: 119 (55,53) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x).
+** KEPT: 120 (55,36) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -HAS_CLAWS(x) | POISONOUS(x) | -SAVAGE(x).
+
+new given clause: 60 (31,19) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 61 (31,22) HAS_SCALES(x) | FAT(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 121 (61,44) HAS_SCALES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+
+new given clause: 65 (32,19) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 66 (32,22) -HAS_CLAWS(x) | FAT(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 122 (66,44) -HAS_CLAWS(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+** KEPT: 123 (66,39) -HAS_CLAWS(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -GRINNING(x) | -ACTIVE(x).
+122 back subsumes: 107 (44,32) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x).
+
+new given clause: 67 (33,28) -HAS_CLAWS(x) | -ACTIVE(x) | -DESTRUCTIVE(x) | WRIGGLES(x) | -DREADED(x).
+
+new given clause: 68 (33,23) -HAS_CLAWS(x) | HAS_SCALES(x) | -ACTIVE(x) | -SAVAGE(x) | -GRINNING(x).
+** KEPT: 124 (68,34) HAS_SCALES(x) | -ACTIVE(x) | -SAVAGE(x) | -GRINNING(x) | -LIZARD(x).
+** KEPT: 125 (68,53) -HAS_CLAWS(x) | -ACTIVE(x) | -SAVAGE(x) | -GRINNING(x) | WRIGGLES(x) | -LIZARD(x).
+124 back subsumes: 118 (55,34) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | HAS_SCALES(x) | -GRINNING(x) | -SAVAGE(x).
+124 back subsumes: 102 (42,34) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | HAS_SCALES(x) | -GRINNING(x) | -LIZARD(x).
+124 back subsumes: 69 (34,33) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | HAS_SCALES(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 75 (37,24) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x) | -FAT(x).
+
+new given clause: 78 (50,22) WRIGGLES(x) | -HAS_SCALES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 79 (52,22) -HAS_CLAWS(x) | WRIGGLES(x) | FAT(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 126 (79,44) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+126 back subsumes: 106 (44,52) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x).
+
+new given clause: 86 (56,19) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+** KEPT: 127 (86,22) -GRINNING(x) | POISONOUS(x) | -ACTIVE(x) | -DESTRUCTIVE(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 87 (56,13) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -CLIMB_TREES(x).
+** KEPT: 128 (87,22) -GRINNING(x) | POISONOUS(x) | -LAZY(x) | -CLIMB_TREES(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 129 (87,74) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -SAVAGE(x) | -LIZARD(x).
+129 back subsumes: 112 (48,74) -LAZY(x) | -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+129 back subsumes: 105 (44,56) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -GRINNING(x) | -DREADED(x) | POISONOUS(x).
+
+new given clause: 88 (56,22) FAT(x) | -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 130 (88,75) -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x).
+** KEPT: 131 (88,44) -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+** KEPT: 132 (88,27) -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -DESTRUCTIVE(x).
+130 back subsumes: 127 (86,22) -GRINNING(x) | POISONOUS(x) | -ACTIVE(x) | -DESTRUCTIVE(x) | -SAVAGE(x) | -LIZARD(x).
+130 back subsumes: 123 (66,39) -HAS_CLAWS(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -GRINNING(x) | -ACTIVE(x).
+
+new given clause: 89 (71,27) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -FAT(x) | -LAZY(x).
+** KEPT: 133 (89,88) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | POISONOUS(x).
+** KEPT: 134 (89,79) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | WRIGGLES(x).
+** KEPT: 135 (89,77) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | WRIGGLES(x) | -DREADED(x).
+** KEPT: 136 (89,61) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | HAS_SCALES(x).
+133 back subsumes: 132 (88,27) -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -DESTRUCTIVE(x).
+133 back subsumes: 131 (88,44) -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+133 back subsumes: 129 (87,74) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -SAVAGE(x) | -LIZARD(x).
+133 back subsumes: 128 (87,22) -GRINNING(x) | POISONOUS(x) | -LAZY(x) | -CLIMB_TREES(x) | -SAVAGE(x) | -LIZARD(x).
+134 back subsumes: 114 (51,74) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -LAZY(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x).
+135 back subsumes: 104 (44,77) -CUNNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | WRIGGLES(x) | -DREADED(x) | -GRINNING(x).
+136 back subsumes: 121 (61,44) HAS_SCALES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+136 back subsumes: 111 (47,74) -LAZY(x) | HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -SAVAGE(x) | -LIZARD(x).
+136 back subsumes: 109 (46,34) -LAZY(x) | HAS_SCALES(x) | -LIZARD(x) | -DESTRUCTIVE(x) | -GRINNING(x) | -SAVAGE(x).
+136 back subsumes: 90 (74,26) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | HAS_SCALES(x).
+136 back subsumes: 70 (34,26) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -CLIMB_TREES(x) | HAS_SCALES(x).
+
+new given clause: 91 (77,22) WRIGGLES(x) | -GRINNING(x) | FAT(x) | -SAVAGE(x) | -LIZARD(x).
+** KEPT: 137 (91,89) WRIGGLES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x).
+** KEPT: 138 (91,75) WRIGGLES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x).
+137 back subsumes: 135 (89,77) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | WRIGGLES(x) | -DREADED(x).
+137 back subsumes: 134 (89,79) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -HAS_CLAWS(x) | WRIGGLES(x).
+138 back subsumes: 125 (68,53) -HAS_CLAWS(x) | -ACTIVE(x) | -SAVAGE(x) | -GRINNING(x) | WRIGGLES(x) | -LIZARD(x).
+
+new given clause: 95 (77,19) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 96 (77,13) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -LAZY(x) | -CLIMB_TREES(x).
+
+new given clause: 99 (41,77) -SAVAGE(x) | -ACTIVE(x) | -GRINNING(x) | -DREADED(x) | WRIGGLES(x).
+
+new given clause: 100 (41,56) -SAVAGE(x) | -ACTIVE(x) | -GRINNING(x) | -DREADED(x) | POISONOUS(x).
+
+new given clause: 101 (41,31) -SAVAGE(x) | -ACTIVE(x) | -GRINNING(x) | -DREADED(x) | HAS_SCALES(x).
+
+new given clause: 124 (68,34) HAS_SCALES(x) | -ACTIVE(x) | -SAVAGE(x) | -GRINNING(x) | -LIZARD(x).
+
+new given clause: 130 (88,75) -GRINNING(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x).
+
+new given clause: 133 (89,88) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | POISONOUS(x).
+
+new given clause: 136 (89,61) -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | HAS_SCALES(x).
+
+new given clause: 137 (91,89) WRIGGLES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x).
+
+new given clause: 138 (91,75) WRIGGLES(x) | -GRINNING(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x).
+
+new given clause: 45 (26,25) -LAZY(x) | -HAS_CLAWS(x) | HAS_SCALES(x) | -CUNNING(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 57 (31,30) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+
+new given clause: 58 (31,27) HAS_SCALES(x) | -GRINNING(x) | -DREADED(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+
+new given clause: 62 (32,30) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+
+new given clause: 63 (32,27) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+
+new given clause: 64 (32,24) -HAS_CLAWS(x) | -DREADED(x) | POISONOUS(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+
+new given clause: 72 (36,33) POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -HAS_CLAWS(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 73 (36,26) POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -CLIMB_TREES(x) | -HAS_CLAWS(x).
+
+new given clause: 80 (52,30) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+
+new given clause: 81 (52,27) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+
+new given clause: 82 (52,24) -HAS_CLAWS(x) | WRIGGLES(x) | -DREADED(x) | -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x).
+
+new given clause: 83 (56,30) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+
+new given clause: 84 (56,27) -GRINNING(x) | -DREADED(x) | POISONOUS(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+
+new given clause: 92 (77,30) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x).
+
+new given clause: 93 (77,27) WRIGGLES(x) | -DREADED(x) | -GRINNING(x) | -LAZY(x) | -LIZARD(x) | -DESTRUCTIVE(x).
+
+new given clause: 103 (42,36) -CUNNING(x) | -SAVAGE(x) | -ACTIVE(x) | -HAS_CLAWS(x) | POISONOUS(x) | -LIZARD(x).
+
+new given clause: 110 (46,36) -LAZY(x) | -HAS_CLAWS(x) | -LIZARD(x) | -DESTRUCTIVE(x) | POISONOUS(x) | -SAVAGE(x).
+
+new given clause: 113 (51,22) -HAS_CLAWS(x) | WRIGGLES(x) | -LAZY(x) | -CLIMB_TREES(x) | -SAVAGE(x) | -LIZARD(x).
+
+new given clause: 115 (53,46) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -LAZY(x) | -DESTRUCTIVE(x).
+
+new given clause: 116 (53,42) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -ACTIVE(x).
+
+new given clause: 117 (53,33) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -ACTIVE(x) | -DESTRUCTIVE(x).
+
+new given clause: 119 (55,53) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x).
+
+new given clause: 120 (55,36) -CLIMB_TREES(x) | -LIZARD(x) | -ACTIVE(x) | -HAS_CLAWS(x) | POISONOUS(x) | -SAVAGE(x).
+
+new given clause: 122 (66,44) -HAS_CLAWS(x) | POISONOUS(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+
+new given clause: 126 (79,44) -HAS_CLAWS(x) | WRIGGLES(x) | -SAVAGE(x) | -LIZARD(x) | -CUNNING(x) | -LAZY(x).
+
+------------ END OF SEARCH ------------
+
+sos empty.
+
+--------------- options ---------------
+set(binary_res).
+set(hyper_res).
+set(UR_res).
+set(demod_hist).
+set(for_sub).
+set(print_kept).
+set(back_sub).
+set(print_back_sub).
+set(print_given).
+set(check_arity).
+
+clear(para_from).
+clear(para_into).
+clear(demod_inf).
+clear(para_from_left).
+clear(para_from_right).
+clear(para_into_vars).
+clear(para_from_vars).
+clear(para_all).
+clear(para_ones_rule).
+clear(no_para_into_left).
+clear(no_para_into_right).
+clear(demod_linear).
+clear(print_gen).
+clear(sort_literals).
+clear(Unit_deletion).
+clear(factor).
+clear(print_weight).
+clear(sos_fifo).
+clear(bird_print).
+clear(atom_wt_max_args).
+clear(print_lists_at_end).
+clear(free_all_mem).
+clear(for_sub_fpa).
+clear(no_fapl).
+clear(no_fanl).
+clear(order_eq).
+
+assign(report, 0).
+assign(max_seconds, 0).
+assign(max_given, 0).
+assign(max_kept, 0).
+assign(max_gen, 0).
+assign(max_mem, 0).
+assign(max_weight, 0).
+assign(max_literals, 0).
+assign(fpa_literals, 3).
+assign(fpa_terms, 3).
+assign(demod_limit, 100).
+assign(max_proofs, 1).
+assign(neg_weight, 0).
+
+-------------- statistics -------------
+clauses input                 22
+clauses given                 94
+clauses generated            846
+demodulation rewrites          0
+clauses wt or lit delete       0
+tautologies deleted            6
+clauses forward subsumed     724
+(clauses subsumed by sos)    515
+unit deletions                 0
+clauses kept                 116
+empty clauses                  0
+factors generated              0
+clauses back subsumed         33
+clauses not processed          0
+
+----------- times (seconds) -----------
+run time            13.53
+input time           0.24
+binary_res time      1.05
+hyper_res time       0.07
+UR_res time          0.23
+para_into time       0.00
+para_from time       0.00
+pre_process time     9.73
+  demod time         0.00
+  weigh time         0.04
+  for_sub time       7.80
+  unit_del time      0.00
+post_process time    1.37
+  back_sub time      1.07
+  conflict time      0.01
+  factor time        0.00
+FPA build time       0.33
+IS build time        0.14
+print_cl time        0.98
+cl integrate time    0.08
+window time          0.00
+SHAR_EOF
+if test -f 'pigs.desc'
+then
+	echo shar: over-writing existing file "'pigs.desc'"
+fi
+cat << \SHAR_EOF > 'pigs.desc'
+ problem-set/puzzles/carroll/pigs.desc
+ created : 07/19/88
+ revised : 07/19/88 
+
+ description:
+ This run solves "The Pigs and Balloons Puzzle" by Lewis Carroll
+ using UR-resolution. 
+
+		 The Pigs and Balloons Puzzle
+
+ (1) All, who neither dance on tight ropes nor eat penny-buns,
+     are old.
+ (2) Pigs, that are liable to giddiness, are treated with respect.
+ (3) A wise balloonist takes an umbrella with him.
+ (4) No one ought to lunch in public who looks ridiculous and eats
+     penny-buns.
+ (5) Young creatures, who go up in balloons, are liable to 
+     giddiness.
+ (6) Fat creatures, who look ridiculous, may lunch in
+     public, provided that they do not dance on tight ropes.
+ (7) No wise creatures dance on tight ropes, if liable to giddiness.
+ (8) A pig looks ridiculous, carrying an umbrella.
+ (9) All, who do not dance on tight ropes, and who are treated
+     with respect are fat.
+     Show that no wise young pigs go up in balloons.
+					-Lewis Carroll, Symbolic Logic, p. 378
+
+Versions : 
+
+pigs.ver1.in : Uses hyper-resolution, UR-resolution, and 
+	binary-resolution.
+
+		created by : Kelly Ratliff
+		verified for ITP : unverified
+		translated for OTTER by : K.R.
+		verified for OTTER : 07/19/88
+SHAR_EOF
+if test -f 'pigs.ver1.clauses'
+then
+	echo shar: over-writing existing file "'pigs.ver1.clauses'"
+fi
+cat << \SHAR_EOF > 'pigs.ver1.clauses'
+% problem-set/puzzles/carroll/pigs.ver1.clauses 
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Pigs and Balloons Puzzle" by Lewis Carroll
+% using UR-resolution. 
+%
+%				 The Pigs and Balloons Puzzle
+%
+% (1) All, who neither dance on tight ropes nor eat penny-buns,
+%     are old.
+% (2) Pigs, that are liable to giddiness, are treated with respect.
+% (3) A wise balloonist takes an umbrella with him.
+% (4) No one ought to lunch in public who looks ridiculous and eats
+%     penny-buns.
+% (5) Young creatures, who go up in balloons, are liable to 
+%     giddiness.
+% (6) Fat creatures, who look ridiculous, may lunch in
+%     public, provided that they do not dance on tight ropes.
+% (7) No wise creatures dance on tight ropes, if liable to giddiness.
+% (8) A pig looks ridiculous, carrying an umbrella.
+% (9) All, who do not dance on tight ropes, and who are treated
+%     with respect are fat.
+%     Show that no wise young pigs go up in balloons.
+%							-Lewis Carroll, Symbolic Logic, p. 378
+
+% representation:
+%
+                  
+
+% problem in clause form.
+
+Dances_on_tightropes(x) | Eats_pennybuns(x) | Old(x).
+-Pig(x)|-Liable_to_giddiness(x) | Treated_with_respect(x).
+-Wise(x) | -Balloonist(x) | Has_umbrella(x).
+-Looks_ridiculous(x) | -Eats_pennybuns(x) | -Eats_lunch_in_public(x).
+-Balloonist(x) | -Young(x) | Liable_to_giddiness(x).
+-Fat(x) | -Looks_ridiculous(x) | Dances_on_tightropes(x) |
+Eats_lunch_in_public(x).
+-Liable_to_giddiness(x) | -Wise(x) | -Dances_on_tightropes(x).
+-Pig(x) | -Has_umbrella(x) | Looks_ridiculous(x).
+Dances_on_tightropes(x) | -Treated_with_respect(x) | Fat(x).
+
+% Everyone is young or old.
+
+Young(x) | Old(x).
+-Young(x) | -Old(x).
+Wise(PIGGY).
+Young(PIGGY).
+Pig(PIGGY).
+Balloonist(PIGGY).
+SHAR_EOF
+if test -f 'pigs.ver1.in'
+then
+	echo shar: over-writing existing file "'pigs.ver1.in'"
+fi
+cat << \SHAR_EOF > 'pigs.ver1.in'
+% problem-set/puzzles/carroll/pigs.ver1.in
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Pigs and Balloons Puzzle" by Lewis Carroll
+% using UR-resolution. 
+%
+%				 The Pigs and Balloons Puzzle
+%
+% (1) All, who neither dance on tight ropes nor eat penny-buns,
+%     are old.
+% (2) Pigs, that are liable to giddiness, are treated with respect.
+% (3) A wise balloonist takes an umbrella with him.
+% (4) No one ought to lunch in public who looks ridiculous and eats
+%     penny-buns.
+% (5) Young creatures, who go up in balloons, are liable to 
+%     giddiness.
+% (6) Fat creatures, who look ridiculous, may lunch in
+%     public, provided that they do not dance on tight ropes.
+% (7) No wise creatures dance on tight ropes, if liable to giddiness.
+% (8) A pig looks ridiculous, carrying an umbrella.
+% (9) All, who do not dance on tight ropes, and who are treated
+%     with respect are fat.
+%     Show that no wise young pigs go up in balloons.
+%							-Lewis Carroll, Symbolic Logic, p. 378
+
+% representation:
+%
+
+set(hyper_res).
+
+
+list(axioms).
+
+% problem in clause form.
+
+Dances_on_tightropes(x) | Eats_pennybuns(x) | Old(x).
+-Pig(x)|-Liable_to_giddiness(x) | Treated_with_respect(x).
+-Wise(x) | -Balloonist(x) | Has_umbrella(x).
+-Looks_ridiculous(x) | -Eats_pennybuns(x) | -Eats_lunch_in_public(x).
+-Balloonist(x) | -Young(x) | Liable_to_giddiness(x).
+-Fat(x) | -Looks_ridiculous(x) | Dances_on_tightropes(x) |
+Eats_lunch_in_public(x).
+-Liable_to_giddiness(x) | -Wise(x) | -Dances_on_tightropes(x).
+-Pig(x) | -Has_umbrella(x) | Looks_ridiculous(x).
+Dances_on_tightropes(x) | -Treated_with_respect(x) | Fat(x).
+
+% Everyone is young or old.
+
+Young(x) | Old(x).
+-Young(x) | -Old(x).
+
+end_of_list.
+
+
+list(sos).
+
+Wise(PIGGY).
+Young(PIGGY).
+Pig(PIGGY).
+Balloonist(PIGGY).
+
+end_of_list.
+SHAR_EOF
+if test -f 'pigs.ver1.out'
+then
+	echo shar: over-writing existing file "'pigs.ver1.out'"
+fi
+cat << \SHAR_EOF > 'pigs.ver1.out'
+problem-set/puzzles/carroll/pigs.ver1.out
+created : 07/19/88
+revised : 07/19/88
+
+OTTER version 0.91, 14 June 1988.
+
+set(hyper_res).
+
+list(axioms).
+1 Dances_on_tightropes(x) | Eats_pennybuns(x) | Old(x).
+2 -Pig(x) | -Liable_to_giddiness(x) | Treated_with_respect(x).
+3 -Wise(x) | -Balloonist(x) | Has_umbrella(x).
+4 -Looks_ridiculous(x) | -Eats_pennybuns(x) | -Eats_lunch_in_public(x).
+5 -Balloonist(x) | -Young(x) | Liable_to_giddiness(x).
+6 -Fat(x) | -Looks_ridiculous(x) | Dances_on_tightropes(x) | Eats_lunch_in_public(x).
+7 -Liable_to_giddiness(x) | -Wise(x) | -Dances_on_tightropes(x).
+8 -Pig(x) | -Has_umbrella(x) | Looks_ridiculous(x).
+9 Dances_on_tightropes(x) | -Treated_with_respect(x) | Fat(x).
+10 Young(x) | Old(x).
+11 -Young(x) | -Old(x).
+end_of_list.
+
+list(sos).
+12 Wise(PIGGY).
+13 Young(PIGGY).
+14 Pig(PIGGY).
+15 Balloonist(PIGGY).
+end_of_list.
+
+---------------- PROOF ----------------
+
+1 Dances_on_tightropes(x) | Eats_pennybuns(x) | Old(x).
+2 -Pig(x) | -Liable_to_giddiness(x) | Treated_with_respect(x).
+3 -Wise(x) | -Balloonist(x) | Has_umbrella(x).
+4 -Looks_ridiculous(x) | -Eats_pennybuns(x) | -Eats_lunch_in_public(x).
+5 -Balloonist(x) | -Young(x) | Liable_to_giddiness(x).
+6 -Fat(x) | -Looks_ridiculous(x) | Dances_on_tightropes(x) | Eats_lunch_in_public(x).
+7 -Liable_to_giddiness(x) | -Wise(x) | -Dances_on_tightropes(x).
+8 -Pig(x) | -Has_umbrella(x) | Looks_ridiculous(x).
+9 Dances_on_tightropes(x) | -Treated_with_respect(x) | Fat(x).
+11 -Young(x) | -Old(x).
+12 Wise(PIGGY).
+13 Young(PIGGY).
+14 Pig(PIGGY).
+15 Balloonist(PIGGY).
+16 (13,11,1) Dances_on_tightropes(PIGGY) | Eats_pennybuns(PIGGY).
+17 (15,5,13) Liable_to_giddiness(PIGGY).
+18 (15,3,12) Has_umbrella(PIGGY).
+20 (17,2,14) Treated_with_respect(PIGGY).
+21 (18,8,14) Looks_ridiculous(PIGGY).
+22 (20,9) Dances_on_tightropes(PIGGY) | Fat(PIGGY).
+23 (16,7,17,12) Eats_pennybuns(PIGGY).
+25 (22,6,21) Dances_on_tightropes(PIGGY) | Eats_lunch_in_public(PIGGY).
+26 (25,7,17,12) Eats_lunch_in_public(PIGGY).
+28 (26,4,21,23) .
+
+--------------- options ---------------
+set(hyper_res).
+set(demod_hist).
+set(for_sub).
+set(print_kept).
+set(back_sub).
+set(print_back_sub).
+set(print_given).
+set(check_arity).
+
+clear(binary_res).
+clear(UR_res).
+clear(para_from).
+clear(para_into).
+clear(demod_inf).
+clear(para_from_left).
+clear(para_from_right).
+clear(para_into_vars).
+clear(para_from_vars).
+clear(para_all).
+clear(para_ones_rule).
+clear(no_para_into_left).
+clear(no_para_into_right).
+clear(demod_linear).
+clear(print_gen).
+clear(sort_literals).
+clear(Unit_deletion).
+clear(factor).
+clear(print_weight).
+clear(sos_fifo).
+clear(bird_print).
+clear(atom_wt_max_args).
+clear(print_lists_at_end).
+clear(free_all_mem).
+clear(for_sub_fpa).
+clear(no_fapl).
+clear(no_fanl).
+clear(order_eq).
+
+assign(report, 0).
+assign(max_seconds, 0).
+assign(max_given, 0).
+assign(max_kept, 0).
+assign(max_gen, 0).
+assign(max_mem, 0).
+assign(max_weight, 0).
+assign(max_literals, 0).
+assign(fpa_literals, 3).
+assign(fpa_terms, 3).
+assign(demod_limit, 100).
+assign(max_proofs, 1).
+assign(neg_weight, 0).
+
+-------------- statistics -------------
+clauses input                 15
+clauses given                 14
+clauses generated             18
+demodulation rewrites          0
+clauses wt or lit delete       0
+tautologies deleted            0
+clauses forward subsumed       5
+(clauses subsumed by sos)      4
+unit deletions                 0
+clauses kept                  13
+empty clauses                  1
+factors generated              0
+clauses back subsumed          4
+clauses not processed          1
+
+----------- times (seconds) -----------
+run time             0.48
+input time           0.16
+binary_res time      0.00
+hyper_res time       0.05
+UR_res time          0.00
+para_into time       0.00
+para_from time       0.00
+pre_process time     0.07
+  demod time         0.00
+  weigh time         0.00
+  for_sub time       0.01
+  unit_del time      0.00
+post_process time    0.03
+  back_sub time      0.01
+  conflict time      0.00
+  factor time        0.00
+FPA build time       0.03
+IS build time        0.01
+print_cl time        0.13
+cl integrate time    0.01
+window time          0.00
+SHAR_EOF
+if test -f 'winds.desc'
+then
+	echo shar: over-writing existing file "'winds.desc'"
+fi
+cat << \SHAR_EOF > 'winds.desc'
+ problem-set/puzzles/carroll/winds.desc 
+ created : 07/19/88
+ revised : 07/19/88 
+
+ description:
+ This run solves "The Winds and the Windows Puzzle" by Lewis Carroll
+ using UR-resolution. 
+
+                   The Winds and the Windows
+
+ (1)  There is always sunshine when the wind is in the East.
+ (2)  When it is cold and foggy, my neighbor practices the flute.
+ (3)  When my fire smokes, I set the door open.
+ (4)  When it is cold and I feel rheumatic, I light my fire.
+ (5)  When the wind is in the East and comes in gusts, my fire smokes.
+ (6)  When I keep the door open, I am free from headache.
+ (7)  Even when the sun is shining and it is not cold, I keep my window
+      shut if it is foggy.
+ (8)  When the wind does not come in gusts, and when I have a fire
+      and keep the door shut, I do not feel rheumatic.
+ (9)  Sunshine always brings on fog.
+ (10) When my neighbor practices the flute, I shut the door, even
+      if I have no headache.
+ (11) When there is a fog and the wind is in the East, I feel rheumatic
+      Show that when the wind is in the East, I keep my windows shut.
+					-Lewis Carroll, Symbolic Logic, p. 382
+
+Versions : 
+
+winds.ver1.in : Uses hyper-resolution
+
+		created by : Kelly Ratliff
+		verified for ITP : unverified
+		translated for OTTER by : K.R.
+		verified for OTTER : 07/19/88
+SHAR_EOF
+if test -f 'winds.ver1.clauses'
+then
+	echo shar: over-writing existing file "'winds.ver1.clauses'"
+fi
+cat << \SHAR_EOF > 'winds.ver1.clauses'
+% problem-set/puzzles/carroll/winds.ver1.clauses 
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Winds and the Windows Puzzle" by Lewis Carroll
+% using UR-resolution. 
+%
+%                   The Winds and the Windows
+%
+% (1)  There is always sunshine when the wind is in the East.
+% (2)  When it is cold and foggy, my neighbor practices the flute.
+% (3)  When my fire smokes, I set the door open.
+% (4)  When it is cold and I feel rheumatic, I light my fire.
+% (5)  When the wind is in the East and comes in gusts, my fire smokes.
+% (6)  When I keep the door open, I am free from headache.
+% (7)  Even when the sun is shining and it is not cold, I keep my window
+%      shut if it is foggy.
+% (8)  When the wind does not come in gusts, and when I have a fire
+%      and keep the door shut, I do not feel rheumatic.
+% (9)  Sunshine always brings on fog.
+% (10) When my neighbor practices the flute, I shut the door, even
+%      if I have no headache.
+% (11) When there is a fog and the wind is in the East, I feel rheumatic
+%      Show that when the wind is in the East, I keep my windows shut.
+%							-Lewis Carroll, Symbolic Logic, p. 382
+
+% representation:
+%
+                  
+-WIND_IN_EAST | SUNSHINE.
+-COLD | -FOGGY | NEIGHBOR_PRACTICES_FLUTE.
+-FIRE_SMOKES | DOOR_IS_OPEN.
+-COLD | -I_FEEL_RHEUMATIC | FIRE_IS_LIT.
+-WIND_IN_EAST | -WIND_IN_GUSTS | FIRE_SMOKES.
+-DOOR_IS_OPEN | -HEADACHE.
+-SUNSHINE | COLD | -FOGGY | WINDOW_IS_SHUT.
+WIND_IN_GUSTS | -FIRE_IS_LIT | DOOR_IS_OPEN | -I_FEEL_RHEUMATIC.
+-SUNSHINE | FOGGY.
+-NEIGHBOR_PRACTICES_FLUTE | -DOOR_IS_OPEN.
+-FOGGY | -WIND_IN_EAST | I_FEEL_RHEUMATIC.
+WIND_IN_EAST.
+-WINDOW_IS_SHUT.
+SHAR_EOF
+if test -f 'winds.ver1.in'
+then
+	echo shar: over-writing existing file "'winds.ver1.in'"
+fi
+cat << \SHAR_EOF > 'winds.ver1.in'
+% problem-set/puzzles/carroll/winds.ver1.in
+% created : 07/19/88
+% revised : 07/19/88 
+
+% description:
+%
+% This run solves "The Winds and the Windows Puzzle" by Lewis Carroll
+% using UR-resolution. 
+%
+%                   The Winds and the Windows
+%
+% (1)  There is always sunshine when the wind is in the East.
+% (2)  When it is cold and foggy, my neighbor practices the flute.
+% (3)  When my fire smokes, I set the door open.
+% (4)  When it is cold and I feel rheumatic, I light my fire.
+% (5)  When the wind is in the East and comes in gusts, my fire smokes.
+% (6)  When I keep the door open, I am free from headache.
+% (7)  Even when the sun is shining and it is not cold, I keep my window
+%      shut if it is foggy.
+% (8)  When the wind does not come in gusts, and when I have a fire
+%      and keep the door shut, I do not feel rheumatic.
+% (9)  Sunshine always brings on fog.
+% (10) When my neighbor practices the flute, I shut the door, even
+%      if I have no headache.
+% (11) When there is a fog and the wind is in the East, I feel rheumatic
+%      Show that when the wind is in the East, I keep my windows shut.
+%							-Lewis Carroll, Symbolic Logic, p. 382
+
+% representation:
+%
+                  
+set(hyper_res).
+
+
+list(axioms).
+
+-WIND_IN_EAST | SUNSHINE.
+-COLD | -FOGGY | NEIGHBOR_PRACTICES_FLUTE.
+-FIRE_SMOKES | DOOR_IS_OPEN.
+-COLD | -I_FEEL_RHEUMATIC | FIRE_IS_LIT.
+-WIND_IN_EAST | -WIND_IN_GUSTS | FIRE_SMOKES.
+-DOOR_IS_OPEN | -HEADACHE.
+-SUNSHINE | COLD | -FOGGY | WINDOW_IS_SHUT.
+WIND_IN_GUSTS | -FIRE_IS_LIT | DOOR_IS_OPEN | -I_FEEL_RHEUMATIC.
+-SUNSHINE | FOGGY.
+-NEIGHBOR_PRACTICES_FLUTE | -DOOR_IS_OPEN.
+-FOGGY | -WIND_IN_EAST | I_FEEL_RHEUMATIC.
+
+end_of_list.
+
+
+list(sos).
+
+WIND_IN_EAST.
+-WINDOW_IS_SHUT.
+
+end_of_list.
+SHAR_EOF
+if test -f 'winds.ver1.out'
+then
+	echo shar: over-writing existing file "'winds.ver1.out'"
+fi
+cat << \SHAR_EOF > 'winds.ver1.out'
+problem-set/puzzles/carroll/winds.ver1.out
+created : 07/19/88
+revised : 07/19/88
+
+OTTER version 0.91, 14 June 1988.
+
+set(hyper_res).
+
+list(axioms).
+1 -WIND_IN_EAST | SUNSHINE.
+2 -COLD | -FOGGY | NEIGHBOR_PRACTICES_FLUTE.
+3 -FIRE_SMOKES | DOOR_IS_OPEN.
+4 -COLD | -I_FEEL_RHEUMATIC | FIRE_IS_LIT.
+5 -WIND_IN_EAST | -WIND_IN_GUSTS | FIRE_SMOKES.
+6 -DOOR_IS_OPEN | -HEADACHE.
+7 -SUNSHINE | COLD | -FOGGY | WINDOW_IS_SHUT.
+8 WIND_IN_GUSTS | -FIRE_IS_LIT | DOOR_IS_OPEN | -I_FEEL_RHEUMATIC.
+9 -SUNSHINE | FOGGY.
+10 -NEIGHBOR_PRACTICES_FLUTE | -DOOR_IS_OPEN.
+11 -FOGGY | -WIND_IN_EAST | I_FEEL_RHEUMATIC.
+end_of_list.
+
+list(sos).
+12 WIND_IN_EAST.
+13 -WINDOW_IS_SHUT.
+end_of_list.
+
+---------------- PROOF ----------------
+
+1 -WIND_IN_EAST | SUNSHINE.
+2 -COLD | -FOGGY | NEIGHBOR_PRACTICES_FLUTE.
+3 -FIRE_SMOKES | DOOR_IS_OPEN.
+4 -COLD | -I_FEEL_RHEUMATIC | FIRE_IS_LIT.
+5 -WIND_IN_EAST | -WIND_IN_GUSTS | FIRE_SMOKES.
+7 -SUNSHINE | COLD | -FOGGY | WINDOW_IS_SHUT.
+8 WIND_IN_GUSTS | -FIRE_IS_LIT | DOOR_IS_OPEN | -I_FEEL_RHEUMATIC.
+9 -SUNSHINE | FOGGY.
+10 -NEIGHBOR_PRACTICES_FLUTE | -DOOR_IS_OPEN.
+11 -FOGGY | -WIND_IN_EAST | I_FEEL_RHEUMATIC.
+12 WIND_IN_EAST.
+13 -WINDOW_IS_SHUT.
+14 (12,1) SUNSHINE.
+15 (14,9) FOGGY.
+16 (15,11,12) I_FEEL_RHEUMATIC.
+17 (15,7,14) COLD | WINDOW_IS_SHUT.
+20 (17,13) COLD.
+21 (20,4,16) FIRE_IS_LIT.
+22 (20,2,15) NEIGHBOR_PRACTICES_FLUTE.
+23 (21,8,16) WIND_IN_GUSTS | DOOR_IS_OPEN.
+25 (23,10,22) WIND_IN_GUSTS.
+26 (25,5,12) FIRE_SMOKES.
+27 (26,3) DOOR_IS_OPEN.
+28 (27,10,22) .
+
+--------------- options ---------------
+set(hyper_res).
+set(demod_hist).
+set(for_sub).
+set(print_kept).
+set(back_sub).
+set(print_back_sub).
+set(print_given).
+set(check_arity).
+
+clear(binary_res).
+clear(UR_res).
+clear(para_from).
+clear(para_into).
+clear(demod_inf).
+clear(para_from_left).
+clear(para_from_right).
+clear(para_into_vars).
+clear(para_from_vars).
+clear(para_all).
+clear(para_ones_rule).
+clear(no_para_into_left).
+clear(no_para_into_right).
+clear(demod_linear).
+clear(print_gen).
+clear(sort_literals).
+clear(Unit_deletion).
+clear(factor).
+clear(print_weight).
+clear(sos_fifo).
+clear(bird_print).
+clear(atom_wt_max_args).
+clear(print_lists_at_end).
+clear(free_all_mem).
+clear(for_sub_fpa).
+clear(no_fapl).
+clear(no_fanl).
+clear(order_eq).
+
+assign(report, 0).
+assign(max_seconds, 0).
+assign(max_given, 0).
+assign(max_kept, 0).
+assign(max_gen, 0).
+assign(max_mem, 0).
+assign(max_weight, 0).
+assign(max_literals, 0).
+assign(fpa_literals, 3).
+assign(fpa_terms, 3).
+assign(demod_limit, 100).
+assign(max_proofs, 1).
+assign(neg_weight, 0).
+
+-------------- statistics -------------
+clauses input                 13
+clauses given                 13
+clauses generated             15
+demodulation rewrites          0
+clauses wt or lit delete       0
+tautologies deleted            0
+clauses forward subsumed       0
+(clauses subsumed by sos)      0
+unit deletions                 0
+clauses kept                  15
+empty clauses                  1
+factors generated              0
+clauses back subsumed         14
+clauses not processed          0
+
+----------- times (seconds) -----------
+run time             0.40
+input time           0.11
+binary_res time      0.00
+hyper_res time       0.03
+UR_res time          0.00
+para_into time       0.00
+para_from time       0.00
+pre_process time     0.06
+  demod time         0.00
+  weigh time         0.00
+  for_sub time       0.01
+  unit_del time      0.00
+post_process time    0.06
+  back_sub time      0.01
+  conflict time      0.00
+  factor time        0.00
+FPA build time       0.02
+IS build time        0.01
+print_cl time        0.11
+cl integrate time    0.00
+window time          0.00
+SHAR_EOF
+#	End of shell archive
+exit 0
