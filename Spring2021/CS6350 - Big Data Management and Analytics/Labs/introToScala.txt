@@ -1,0 +1,54 @@
+// creating and storing values
+val x = 1 + 1
+println(x) 
+
+// variables are different than values
+var x = 1 + 1
+x = 3 // This compiles because "x" is declared with the "var" keyword.
+println(x * x) // 9
+
+// Functions
+// Anonymous
+(x: Int) => x + 1
+// Named
+val addOne = (x: Int) => x + 1
+println(addOne(1)) // 2
+
+// Methods
+def add(x: Int, y: Int): Int = x + y
+println(add(1, 2)) // 3
+
+// Higher order functions
+val salaries = Seq(20000, 70000, 40000)
+val doubleSalary = (x: Int) => x * 2
+val newSalaries = salaries.map(doubleSalary) // List(40000, 140000, 80000)
+
+
+// Lists:
+val x = List(1,2,3)
+x.foreach { println }
+val names = List("Bob", "Fred", "Joe", "Julia", "Kim")
+for (name <- names) println(name)
+val y = x.map(a => a * 2)
+val y = x.map(_ * 2)
+val x = List(10, 2, 5)
+val y = x.sort(_ < _)
+val words = List("the", "quick", "brown", "fox")
+
+// map and flatmap
+words.map(_.length)
+ List(1,2,3).map { x => x*2 }
+ "Hello".map { _.toUpper }
+ val nestedNumbers = List(List(1, 2), List(3, 4))
+ nestedNumbers.flatMap(x => x.map(_ * 2))
+ 
+ // filter
+ val numbers = List(1, 2, 3, 4)
+ numbers.filter((i: Int) => i % 2 == 0)
+ def isEven(i: Int): Boolean = i % 2 == 0
+ numbers.filter(isEven)
+ words dropWhile (_ startsWith "t")
+  
+ // fold (reduce)
+numbers.foldLeft(0)((m: Int, n: Int) => m + n)
+numbers.foldRight(0) { (m: Int, n: Int) => println("m: " + m + " n: " + n); m + n }
