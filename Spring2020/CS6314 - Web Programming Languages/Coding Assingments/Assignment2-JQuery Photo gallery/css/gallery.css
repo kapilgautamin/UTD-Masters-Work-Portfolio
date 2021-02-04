@@ -1,0 +1,40 @@
+.gallery {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.gallery li{
+    float: left;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.gallery img{
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    z-index: 4;
+}
+
+
+
+#preview {
+    position: absolute;
+    padding: 10px 10px 0 10px;
+    display: none;
+    background-color: #424242;
+}
+#preview p {
+    color: white; 
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.gray {
+     filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
