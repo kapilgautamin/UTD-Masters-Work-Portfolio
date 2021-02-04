@@ -1,1 +1,0 @@
-The project is now hosted at: https://github.com/kapilgautamin/Coffee-Shop

@@ -1,1 +1,0 @@
-https://www.kaggle.com/zhongtr0n/sars-who-data
